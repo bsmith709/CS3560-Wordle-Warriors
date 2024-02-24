@@ -1,0 +1,27 @@
+Tasks:
+    Person 1:
+        Find a valid wordle words list and use the "Random" library to pick one at the begining of the program
+        Setup user input loop and input validation(Make sure the word is in the valid words list and make sure it is in the same case as the correct word)
+
+    Person 2:
+        Write the code to keep track of guesses (I'd use a list of wordleWords)
+        Write the code to print the game state when necessary (wordleWord class has a print() member function)
+
+    Person 3:
+        Put together the main game loop
+
+
+
+main game loop plan
+
+wordGuessed means word was guessed correctly
+wordLimit means 6 guesses limit reached
+Done means the user decided to quit
+
+while not Done
+    choose a new word and make game state default
+    while not wordGuessed and not wordLimit
+        print current game state
+        prompt for user input and re-prompt if input is invalid
+        check users guess against correct word and add it to the game state
+    ask if user wants to play again
