@@ -20,6 +20,10 @@ class wordleLetter:
 class wordleWord:
     word = []
 
+    # Constructor for a wordleWord
+    # To call it use wordleWord(str, correct_word)
+    # str - The word guessed by the user
+    # correct_word - The word that the user needs to guess
     def __init__(self, str, correct_word):
         for i in range(5):
             if str[i] == correct_word[i]:
@@ -29,6 +33,8 @@ class wordleWord:
             else:
                 self.word.append(wordleLetter(str[i], "gray"))
     
+    # Print function for a wordleWord that prints each letter in the correct color
+    # To call it use word.print() with the word variable being a wordleWord
     def print(self):
         for letter in self.word:
             if letter.color == "gray":
