@@ -81,11 +81,17 @@ if __name__ == "__main__":
 
     # Game loop
     while numguesses > 0 and not done:
-        guess = wordleWord(getWord(), correct)
+        guess_str = getWord()  # Getting the guess as a string
+        guess = wordleWord(guess_str, correct)
         guess.print()
-        # Logic for checking word needs to be implemented here
-
-        guesses.append(guess)
+        guesses.append(guess_str)
         numguesses -= 1
-
-
+        if guess_str == correct:
+            done = True
+        if(done == False):
+            if numguesses == 0:
+                # If the user did not guess the correct word and ran out of guesses display the correct word
+                print("The correct word was " + correct)
+        else:
+            # If the user guessed the correct word, display the amount of guesses it took by subtracting 6 from the number of guesses left
+            print("You solved in " + str(6 - numguesses) + " guesses!")
