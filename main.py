@@ -83,8 +83,13 @@ if __name__ == "__main__":
     while numguesses > 0 and not done:
         guess_str = getWord()  # Getting the guess as a string
         guess = wordleWord(guess_str, correct)
-        guess.print()
-        guesses.append(guess_str)
+        guesses.append(guess)
+
+        print()
+        for word in guesses:
+            word.print()
+        print()
+
         numguesses -= 1
         if guess_str == correct:
             done = True
