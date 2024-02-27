@@ -4,6 +4,10 @@ import random
 # "with" ensures that file closes after reading
 with open('wordlist.txt', 'r') as file:
     # Removes leading and trailing whitespaces and converts words to lower (implemented to work with any list file)
+    valid_solutions = [word.strip().lower() for word in file.readlines()]
+
+with open('valid-wordle-words.txt', 'r') as file:
+    # Removes leading and trailing whitespaces and converts words to lower (implemented to work with any list file)
     valid_words = [word.strip().lower() for word in file.readlines()]
 
 # Picks a random word
@@ -69,7 +73,7 @@ if __name__ == "__main__":
     done = False
 
     # Stub for correct_word, actual variable needs to be implemented from randomword
-    correct = randomword(valid_words)
+    correct = randomword(valid_solutions)
 
     def getWord():
         word = input("Guess: ")
