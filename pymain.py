@@ -17,24 +17,40 @@ screen.fill('gray26')
 clock = pygame.time.Clock()
 
 # 'Surfaces' are images that can be displayed using the blit() function
-width = 200
-height = 200
+width = 80
+height = 80
 example_surface = pygame.Surface((width, height))
 example_surface.fill('green')
 
 # Loading a surface from an image
-filePath = 'assets/image.png'
+filePath = 'assets/square.png'
 example_surface2 = pygame.image.load(filePath)
 
 # Creating a text surface
 font_type = None
 font_size = 50
 example_font = pygame.font.Font(font_type, font_size)
-#text_surface = example_font.render('My game', False, 'black')
+text_surface = example_font.render('My game', False, 'black')
+
+
+# Function stub to maybe be used for displaying words later
+def displayWords(guesses):
+    x_cord = 120
+    y_cord = 100
+    row = 0
+    for guess in guesses:
+        row += 1
+        column = 0
+        for letter in guess:
+            column += 1
+            screen.blit(example_surface, (x_cord * column, y_cord * row))
+            pass
+
+guesses = ["words", "words", "words", "words", "words", "words"]
 
 # Main game loop
 while True:
-    
+
     # This is the event loop it checks for any player input
     for event in pygame.event.get():
         
@@ -46,6 +62,11 @@ while True:
                 # blit() "A" letter image to the screen in the correct space
                 pass
 
+            # This means user hit the enter key which should mean they typed a word and need it checked
+            if event.key == pygame.K_KP_ENTER: 
+                # Check the word that the user is trying to use and add it to the guesses if it is valid
+                pass
+
         # This means the user closed the window\
         if event.type == pygame.QUIT:
             # Terminates the program
@@ -55,8 +76,11 @@ while True:
 
     
     # The blit() function displays a surface at a specified coordinate
-    coords = (0,0)
-    screen.blit(example_surface2, coords)
+    # coords = (0,0)
+    # screen.blit(example_surface2, coords)
+
+    # Maybe use a function like this to update the display with the words?
+    displayWords(guesses)
 
     # Updates the display with all new objects
     pygame.display.update()
