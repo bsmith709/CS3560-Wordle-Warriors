@@ -54,7 +54,6 @@ font_size = 100
 example_font = pygame.font.Font(font_type, font_size)
 
 
-# Function stub to maybe be used for displaying words later
 def displayWords(guesses, correct):
     x_cord = 120
     y_cord = 100
@@ -90,16 +89,14 @@ if __name__ == "__main__":
     guesses = []
     guess = ""
     correct_word = randomword(valid_solutions)
-    print(correct_word)
-    time.sleep(3)
-    
 
     # Main game loop
     while True:
+
+        screen.fill('gray26')
         # This is the event loop it checks for any player input
         for event in pygame.event.get():
-            
-            # This means the user pressed a key, this is where all of our letter inputs will be handled
+            # This means the user pressed a key, this is where all of our letter inputs are handled
             if event.type == pygame.KEYDOWN:
 
                 if len(guess) < 5:
@@ -171,7 +168,6 @@ if __name__ == "__main__":
                 # Terminates the program
                 pygame.quit()
                 exit()
-            print(guess)
 
 
         
@@ -179,7 +175,7 @@ if __name__ == "__main__":
         # coords = (0,0)
         # screen.blit(example_surface2, coords)
 
-        # Maybe use a function like this to update the display with the words?
+        # Display guesses and current word being typed
         displayWords(guesses, correct_word)
         displayGuess(guess, len(guesses))
 
