@@ -29,7 +29,8 @@ SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 800
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Wordle")
-screen.fill('gray26')
+#screen.fill('gray26')
+screen.fill('darkgreen')
 
 # Initialize the game clock to control FPS
 clock = pygame.time.Clock()
@@ -37,16 +38,19 @@ clock = pygame.time.Clock()
 # 'Surfaces' are images that can be displayed using the blit() function
 width = 80
 height = 80
-correct_surface = pygame.Surface((width, height))
-correct_surface.fill('green')
-partially_correct_surface = pygame.Surface((width, height))
-partially_correct_surface.fill('orange')
-incorrect_surface = pygame.Surface((width, height))
-incorrect_surface.fill('gray')
+#correct_surface = pygame.Surface((width, height))
+correct_surface = pygame.image.load('assets/correctSq.png')
+#correct_surface.fill('green')
+#partially_correct_surface = pygame.Surface((width, height))
+partially_correct_surface = pygame.image.load('assets/partialSq.png')
+#partially_correct_surface.fill('orange')
+#incorrect_surface = pygame.Surface((width, height))
+incorrect_surface = pygame.image.load('assets/incorrectSq.png')
+#incorrect_surface.fill('gray')
 
 # Loading a surface from an image
 filePath = 'assets/square.png'
-example_surface2 = pygame.image.load(filePath)
+example_surface2 = pygame.image.load(filePath) #this goes for correct surface and etc
 
 # Creating a text surface
 font_type = None
@@ -64,7 +68,9 @@ def displayWords(guesses, correct):
         i = 0
         for letter in guess:
             column += 1
-            text = example_font.render(letter, False, 'black')
+
+            text = example_font.render(letter.upper(), False, 'black')
+
             if letter == correct[i]:
                 screen.blit(correct_surface, (x_cord * column, y_cord * row))
             elif letter in correct:
@@ -80,12 +86,23 @@ def displayGuess(guess, row):
     column = 0
     for letter in guess:
         column += 1
-        text = example_font.render(letter, False, 'black')
+
+        square_center_x = x_cord * column + width / 2 #added
+        square_center_y = y_cord + height / 2 #parentheses?
+
+        text = example_font.render(letter.upper(), False, 'black')
+        text_width, text_height = example_font.size(letter.upper()) #added
+
+        text_x = square_center_x - text_width / 2 #added
+        text_y = square_center_y - text_height / 2
+
         screen.blit(incorrect_surface, (x_cord * column, y_cord))
-        screen.blit(text, (x_cord * column, y_cord))
+    
+        #screen.blit(text, (x_cord * column, y_cord))
+        screen.blit(text, (text_x, text_y)) #added
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": #print game board w squares
     guesses = []
     guess = ""
     correct_word = randomword(valid_solutions)
@@ -93,7 +110,8 @@ if __name__ == "__main__":
     # Main game loop
     while True:
 
-        screen.fill('gray26')
+        #screen.fill('gray26')
+        screen.fill('darkgreen')
         # This is the event loop it checks for any player input
         for event in pygame.event.get():
             # This means the user pressed a key, this is where all of our letter inputs are handled
