@@ -32,6 +32,13 @@ pygame.display.set_caption("Wordle")
 #screen.fill('gray26')
 screen.fill('aquamarine4')
 
+logo_image = pygame.image.load('assets/newlogo.png')
+logo_width = 375
+logo_height = 75
+logo_image = pygame.transform.scale(logo_image, (logo_width, logo_height))
+logo_x = (SCREEN_WIDTH - logo_image.get_width()) // 2
+logo_y = 3
+
 # Initialize the game clock to control FPS
 clock = pygame.time.Clock()
 
@@ -59,7 +66,7 @@ example_font = pygame.font.Font(font_type, font_size)
 
 
 def displayWords(guesses, correct):
-    x_cord = 100
+    x_cord = 120
     y_cord = 100
     row = 0
     for guess in guesses:
@@ -92,7 +99,7 @@ def displayWords(guesses, correct):
             screen.blit(text, (text_x, text_y)) #added * row
 
 def displayGuess(guess, row):
-    x_cord = 100
+    x_cord = 120
     y_cord = 100 + (100 * row)
     column = 0
     for letter in guess:
@@ -107,22 +114,22 @@ def displayGuess(guess, row):
         text_x = square_center_x - text_width / 2 #added
         text_y = square_center_y - text_height / 2
 
-        screen.blit(incorrect_surface, (x_cord * column, y_cord))
+        screen.blit(incorrect_surface, (x_cord * column, y_cord)) #CHANGES GO HERE
+        #screen.blit(incorrect_surface, (x_cord * column, y_cord * row))
     
         #screen.blit(text, (x_cord * column, y_cord))
         screen.blit(text, (text_x, text_y)) #added
 
 def displayEmptyBoard():
-    x_cord = 100
+    screen.blit(logo_image, (logo_x, logo_y))
+    x_cord = 120
     y_cord = 100
     for row in range(1, 7):
         for column in range(1, 6):
             square_center_x = x_cord * column + width / 2
             square_center_y = y_cord * row + height / 2
 
-            screen.blit(incorrect_surface, (x_cord * column, y_cord * row))
-
-
+            screen.blit(incorrect_surface, (x_cord * column, y_cord * row)) #added -20
 
 if __name__ == "__main__": #print game board w squares
     guesses = []
