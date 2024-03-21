@@ -64,6 +64,19 @@ font_type = None
 font_size = 75
 example_font = pygame.font.Font(font_type, font_size)
 
+# Creating smaller sizes for the keyboard
+smaller_width = 30
+smaller_height = 30
+unguessed_surface = pygame.Surface((smaller_width, smaller_height))
+unguessed_surface.fill('white')
+smaller_correct_surface = pygame.Surface((smaller_width, smaller_height))
+smaller_correct_surface.fill((34,177,76))
+smaller_partially_correct_surface = pygame.Surface((smaller_width, smaller_height))
+smaller_partially_correct_surface.fill((255,207,93))
+smaller_incorrect_surface = pygame.Surface((smaller_width, smaller_height))
+smaller_incorrect_surface.fill('gray46')
+smaller_font_size = 40
+smaller_font = pygame.font.Font(font_type, smaller_font_size)
 
 def displayWords(guesses, correct):
     x_cord = 120
@@ -119,6 +132,45 @@ def displayGuess(guess, row):
     
         #screen.blit(text, (x_cord * column, y_cord))
         screen.blit(text, (text_x, text_y)) #added
+
+def displayKeyboard(guesses, correct):
+    x_cord = 100
+    y_cord = 700
+    # If there are no guesses display all letters as unguessed
+    if not guesses:
+        for letter in 'abcdefghijklmnopqrstuvwxyz':
+            if x_cord > 720:
+                x_cord = 200
+                y_cord += 40
+            text = smaller_font.render(letter.upper(), False, 'black')
+            screen.blit(unguessed_surface, (x_cord - 4, y_cord - 3))
+            screen.blit(text, (x_cord, y_cord))
+            x_cord += 40
+        return
+    for letter in 'abcdefghijklmnopqrstuvwxyz':
+        if x_cord > 720:
+            x_cord = 200
+            y_cord += 40
+        text = smaller_font.render(letter.upper(), False, 'black')
+        # If the current letter is in the correct word, record the indices
+        if letter in correct:
+            indices = [i for i, x in enumerate(correct) if x == letter]
+        else:
+            indices = []
+        # If the letter is in the correct word and in the correct position in any of the guesses display the green correct surface
+        if letter in correct and any(guess[i] == letter for i in indices for guess in guesses):
+            screen.blit(smaller_correct_surface, (x_cord - 4, y_cord - 3))
+        # If the letter is in the correct word but not in the correct position in any of the guesses display the partially correct surface
+        elif letter in correct and any(letter in guess for guess in guesses):
+            screen.blit(smaller_partially_correct_surface, (x_cord - 4, y_cord - 3))
+        # If the letter is not in the correct word display the incorrect surface
+        elif any(letter in guess for guess in guesses):
+            screen.blit(smaller_incorrect_surface, (x_cord - 4, y_cord - 3))
+        # If the letter is not in the guess display the unguessed surface
+        else:
+            screen.blit(unguessed_surface, (x_cord - 4, y_cord - 3))
+        screen.blit(text, (x_cord, y_cord))
+        x_cord += 40
 
 def displayEmptyBoard():
     screen.blit(logo_image, (logo_x, logo_y))
@@ -244,7 +296,7 @@ if __name__ == "__main__": #print game board w squares
         displayEmptyBoard()
         displayWords(guesses, correct_word)
         displayGuess(guess, len(guesses))
-
+        displayKeyboard(guesses, correct_word)
         # Updates the display with all new objects
         pygame.display.update()
 
