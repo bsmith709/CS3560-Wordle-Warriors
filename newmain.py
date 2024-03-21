@@ -112,6 +112,17 @@ def displayGuess(guess, row):
         #screen.blit(text, (x_cord * column, y_cord))
         screen.blit(text, (text_x, text_y)) #added
 
+def displayEmptyBoard():
+    x_cord = 100
+    y_cord = 100
+    for row in range(1, 7):
+        for column in range(1, 6):
+            square_center_x = x_cord * column + width / 2
+            square_center_y = y_cord * row + height / 2
+
+            screen.blit(incorrect_surface, (x_cord * column, y_cord * row))
+
+
 
 if __name__ == "__main__": #print game board w squares
     guesses = []
@@ -205,6 +216,7 @@ if __name__ == "__main__": #print game board w squares
         # screen.blit(example_surface2, coords)
 
         # Display guesses and current word being typed
+        displayEmptyBoard()
         displayWords(guesses, correct_word)
         displayGuess(guess, len(guesses))
 
