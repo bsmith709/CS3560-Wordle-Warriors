@@ -1,7 +1,6 @@
-import pygame
 import random
-import time
 from sys import exit
+import pygame
 
 # Opens txt file in read mode
 # "with" ensures that file closes after reading
@@ -178,8 +177,6 @@ def displayEmptyBoard():
     y_cord = 100
     for row in range(1, 7):
         for column in range(1, 6):
-            square_center_x = x_cord * column + width / 2
-            square_center_y = y_cord * row + height / 2
 
             screen.blit(incorrect_surface, (x_cord * column, y_cord * row)) #added -20
 
