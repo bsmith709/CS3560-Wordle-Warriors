@@ -30,7 +30,7 @@ SCREEN_HEIGHT = 800
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Wordle")
 #screen.fill('gray26')
-screen.fill('darkgreen')
+screen.fill('aquamarine4')
 
 # Initialize the game clock to control FPS
 clock = pygame.time.Clock()
@@ -54,12 +54,12 @@ example_surface2 = pygame.image.load(filePath) #this goes for correct surface an
 
 # Creating a text surface
 font_type = None
-font_size = 100
+font_size = 75
 example_font = pygame.font.Font(font_type, font_size)
 
 
 def displayWords(guesses, correct):
-    x_cord = 120
+    x_cord = 100
     y_cord = 100
     row = 0
     for guess in guesses:
@@ -69,7 +69,17 @@ def displayWords(guesses, correct):
         for letter in guess:
             column += 1
 
-            text = example_font.render(letter.upper(), False, 'black')
+            square_center_x = x_cord * column + width / 2 #added
+            # square_center_y = y_cord + height / 2 #parentheses?
+            square_center_y = y_cord * row + height / 2 #parentheses?
+
+            text = example_font.render(letter.upper(), False, 'white')
+            text_width, text_height = example_font.size(letter.upper()) #added
+
+            text_x = square_center_x - text_width / 2 #added
+            text_y = square_center_y - text_height / 2
+
+            #text = example_font.render(letter.upper(), False, 'black')
 
             if letter == correct[i]:
                 screen.blit(correct_surface, (x_cord * column, y_cord * row))
@@ -78,10 +88,11 @@ def displayWords(guesses, correct):
             else:
                 screen.blit(incorrect_surface, (x_cord * column, y_cord * row))
             i += 1
-            screen.blit(text, (x_cord * column, y_cord * row))
+            #screen.blit(text, (x_cord * column, y_cord * row))
+            screen.blit(text, (text_x, text_y)) #added * row
 
 def displayGuess(guess, row):
-    x_cord = 120
+    x_cord = 100
     y_cord = 100 + (100 * row)
     column = 0
     for letter in guess:
@@ -90,7 +101,7 @@ def displayGuess(guess, row):
         square_center_x = x_cord * column + width / 2 #added
         square_center_y = y_cord + height / 2 #parentheses?
 
-        text = example_font.render(letter.upper(), False, 'black')
+        text = example_font.render(letter.upper(), False, 'white')
         text_width, text_height = example_font.size(letter.upper()) #added
 
         text_x = square_center_x - text_width / 2 #added
@@ -111,7 +122,7 @@ if __name__ == "__main__": #print game board w squares
     while True:
 
         #screen.fill('gray26')
-        screen.fill('darkgreen')
+        screen.fill('aquamarine4')
         # This is the event loop it checks for any player input
         for event in pygame.event.get():
             # This means the user pressed a key, this is where all of our letter inputs are handled
