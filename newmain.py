@@ -182,22 +182,25 @@ def displayEmptyBoard():
             screen.blit(incorrect_surface, (x_cord * column, y_cord * row)) #added -20
 
 class Bobcat:
-    speed = 0
-    rect = bobcat_image.get_rect()
+    x_coord = 0
 
     def __init__(self, s, coords):
         self.speed = s
         self.rect = bobcat_image.get_rect()
-        self.rect.topleft = coords
+        self.rect.topleft = (Bobcat.x_coord, coords[1])
+        #self.rect.topleft = coords
+        Bobcat.x_coord = Bobcat.x_coord + 70
+        if Bobcat.x_coord > 750:
+            Bobcat.x_coord = 0
 
 def displayBobcats(bobcats):
     for bobcat in bobcats:
-        if bobcat.rect.y > 800 or bobcat.rect.y < -100:
+        if bobcat.rect.y > 800 or bobcat.rect.y < -300:
             bobcats.remove(bobcat)
 
-    while(len(bobcats) < 35):
+    while(len(bobcats) < 50):
         speed = random.randint(2, 4)
-        coords = (random.randint(-50, 750), -100)
+        coords = (random.randint(-50, 750), random.randint(-300, -100))
         new_bobcat = Bobcat(speed, coords)
         bobcats.append(new_bobcat)
 
