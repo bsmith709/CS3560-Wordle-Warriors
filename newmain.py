@@ -38,6 +38,8 @@ logo_image = pygame.transform.scale(logo_image, (logo_width, logo_height))
 logo_x = (SCREEN_WIDTH - logo_image.get_width()) // 2
 logo_y = 3
 
+bobcat_image = pygame.image.load('assets/bobcat.png')
+
 # Initialize the game clock to control FPS
 clock = pygame.time.Clock()
 
@@ -177,19 +179,46 @@ def displayEmptyBoard():
     y_cord = 100
     for row in range(1, 7):
         for column in range(1, 6):
-
             screen.blit(incorrect_surface, (x_cord * column, y_cord * row)) #added -20
+
+class Bobcat:
+    speed = 0
+    rect = bobcat_image.get_rect()
+
+    def __init__(self, s, coords):
+        self.speed = s
+        self.rect = bobcat_image.get_rect()
+        self.rect.topleft = coords
+
+def displayBobcats(bobcats):
+    for bobcat in bobcats:
+        if bobcat.rect.y > 800 or bobcat.rect.y < -100:
+            bobcats.remove(bobcat)
+
+    while(len(bobcats) < 35):
+        speed = random.randint(2, 4)
+        coords = (random.randint(-50, 750), -100)
+        new_bobcat = Bobcat(speed, coords)
+        bobcats.append(new_bobcat)
+
+    for bobcat in bobcats:
+        bobcat.rect.topleft = (bobcat.rect.x, bobcat.rect.y + bobcat.speed)
+        screen.blit(bobcat_image, bobcat)
+    return bobcats
 
 if __name__ == "__main__": #print game board w squares
     guesses = []
     guess = ""
     correct_word = randomword(valid_solutions)
+    bobcats = []
+
 
     # Main game loop
     while True:
 
         #screen.fill('gray26')
         screen.fill('aquamarine4')
+        bobcats = displayBobcats(bobcats)
         # This is the event loop it checks for any player input
         for event in pygame.event.get():
             # This means the user pressed a key, this is where all of our letter inputs are handled
@@ -268,11 +297,11 @@ if __name__ == "__main__": #print game board w squares
                             exit()
                         if len(guesses) == 6 and guess != correct_word:
                             font_win = pygame.font.Font(None, 60)
-                            text_win = font_win.render("You lose!", True, (255, 255, 255))
+                            text_win = font_win.render("You lose! Correct word: " + correct_word, True, (255, 255, 255))
                             text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
                             screen.blit(text_win, text_rect)
                             pygame.display.update()
-                            pygame.time.delay(2000)
+                            pygame.time.delay(5000)
                             pygame.quit()
                             exit()
                     pass
