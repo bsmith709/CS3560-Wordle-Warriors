@@ -288,17 +288,16 @@ if __name__ == "__main__": #print game board w squares
                 if event.key == pygame.K_RETURN: 
                     if guess in valid_words:
                         guesses.append(guess)
-                        guess = ""
                         if guess == correct_word:
                             font_win = pygame.font.Font(None, 60)
                             text_win = font_win.render("You win!", True, (255, 255, 255))
                             text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
                             screen.blit(text_win, text_rect)
                             pygame.display.update()
-                            pygame.time.delay(2000)
+                            pygame.time.delay(5000)
                             pygame.quit()
                             exit()
-                        if len(guesses) == 6 and guess != correct_word:
+                        elif len(guesses) == 6 and guess != correct_word:
                             font_win = pygame.font.Font(None, 60)
                             text_win = font_win.render("You lose! Correct word: " + correct_word, True, (255, 255, 255))
                             text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
@@ -307,6 +306,7 @@ if __name__ == "__main__": #print game board w squares
                             pygame.time.delay(5000)
                             pygame.quit()
                             exit()
+                        guess = ""
                     pass
 
             # This means the user closed the window
