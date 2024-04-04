@@ -276,7 +276,7 @@ if __name__ == "__main__": #print game board w squares
                     x += SCREEN_WIDTH / 20
                 # Check if the mouse was clicked inside any of the boxes and add it to the guess if it was
                 for i in range(len(boxes)):
-                    if boxes[i].collidepoint(mouse_x, mouse_y):
+                    if boxes[i].collidepoint(mouse_x, mouse_y) and len(guess) < 5:
                         guess += letters[i]
                         break
 
