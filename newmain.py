@@ -135,23 +135,23 @@ def displayGuess(guess, row):
         screen.blit(text, (text_x, text_y)) #added
 
 def displayKeyboard(guesses, correct):
-    x_cord = 100
-    y_cord = 700
+    x_cord = SCREEN_WIDTH - 700
+    y_cord = SCREEN_HEIGHT - 100
     # If there are no guesses display all letters as unguessed
     if not guesses:
         for letter in 'abcdefghijklmnopqrstuvwxyz':
-            if x_cord > 720:
-                x_cord = 200
-                y_cord += 40
+            if x_cord > SCREEN_WIDTH - 80:
+                x_cord = SCREEN_WIDTH - 600
+                y_cord += SCREEN_HEIGHT / 20
             text = smaller_font.render(letter.upper(), False, 'black')
             screen.blit(unguessed_surface, (x_cord - 4, y_cord - 3))
             screen.blit(text, (x_cord, y_cord))
-            x_cord += 40
+            x_cord += SCREEN_WIDTH / 20
         return
     for letter in 'abcdefghijklmnopqrstuvwxyz':
-        if x_cord > 720:
-            x_cord = 200
-            y_cord += 40
+        if x_cord > SCREEN_WIDTH - 80:
+            x_cord = SCREEN_WIDTH - 600
+            y_cord += SCREEN_HEIGHT / 20
         text = smaller_font.render(letter.upper(), False, 'black')
         # If the current letter is in the correct word, record the indices
         if letter in correct:
@@ -171,7 +171,7 @@ def displayKeyboard(guesses, correct):
         else:
             screen.blit(unguessed_surface, (x_cord - 4, y_cord - 3))
         screen.blit(text, (x_cord, y_cord))
-        x_cord += 40
+        x_cord += SCREEN_WIDTH / 20
 
 def displayEmptyBoard():
     screen.blit(logo_image, (logo_x, logo_y))
@@ -224,6 +224,29 @@ if __name__ == "__main__": #print game board w squares
         bobcats = displayBobcats(bobcats)
         # This is the event loop it checks for any player input
         for event in pygame.event.get():
+            # Create event for the user clicking the mouse
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                # Get mouse position
+                mouse_x, mouse_y = pygame.mouse.get_pos()
+                # Get a list of characters for each letter in the alphabet
+                letters = [letter for letter in 'abcdefghijklmnopqrstuvwxyz']
+                boxes = []
+                x = SCREEN_WIDTH - 700
+                y = SCREEN_HEIGHT - 100
+                # Create a box for each letter in the alphabet and record the box coordinates in a list
+                for letter in  'abcdefghijklmnopqrstuvwxyz':
+                    if x > SCREEN_WIDTH - 80:
+                        x = SCREEN_WIDTH - 600
+                        y += SCREEN_HEIGHT / 20
+                    box = pygame.Rect(x - 4, y - 3, smaller_width, smaller_height)
+                    boxes.append(box)
+                    x += SCREEN_WIDTH / 20
+                # Check if the mouse was clicked inside any of the boxes and add it to the guess if it was
+                for i in range(len(boxes)):
+                    if boxes[i].collidepoint(mouse_x, mouse_y):
+                        guess += letters[i]
+                        break
+
             # This means the user pressed a key, this is where all of our letter inputs are handled
             if event.type == pygame.KEYDOWN:
 
