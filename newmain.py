@@ -40,6 +40,30 @@ logo_y = 3
 
 bobcat_image = pygame.image.load('assets/bobcat.png')
 
+restart_image = pygame.image.load('assets/restart.png')
+quit_image = pygame.image.load('assets/quit.png')
+
+#Restart Button
+button_width = 50 
+button_height = 50 
+restart_button_x = 740
+restart_button_y = 10
+
+#End Restart Button
+end_button_width = 200
+end_button_height = 50
+end_restart_button_x = (SCREEN_WIDTH - button_width) // 2
+end_restart_button_y = SCREEN_HEIGHT / 2 + 50
+
+#Quit Button
+quit_button_width = 200
+quit_button_height = 50
+quit_button_x = (SCREEN_WIDTH - button_width) // 2
+quit_button_y = SCREEN_HEIGHT / 2 + 125
+
+restart_image = pygame.transform.scale(restart_image, (50, 47))
+quit_image = pygame.transform.scale(quit_image, (50, 47))
+
 # Initialize the game clock to control FPS
 clock = pygame.time.Clock()
 
@@ -135,23 +159,23 @@ def displayGuess(guess, row):
         screen.blit(text, (text_x, text_y)) #added
 
 def displayKeyboard(guesses, correct):
-    x_cord = 100
-    y_cord = 700
+    x_cord = SCREEN_WIDTH - 700
+    y_cord = SCREEN_HEIGHT - 100
     # If there are no guesses display all letters as unguessed
     if not guesses:
         for letter in 'abcdefghijklmnopqrstuvwxyz':
-            if x_cord > 720:
-                x_cord = 200
-                y_cord += 40
+            if x_cord > SCREEN_WIDTH - 80:
+                x_cord = SCREEN_WIDTH - 600
+                y_cord += SCREEN_HEIGHT / 20
             text = smaller_font.render(letter.upper(), False, 'black')
             screen.blit(unguessed_surface, (x_cord - 4, y_cord - 3))
             screen.blit(text, (x_cord, y_cord))
-            x_cord += 40
+            x_cord += SCREEN_WIDTH / 20
         return
     for letter in 'abcdefghijklmnopqrstuvwxyz':
-        if x_cord > 720:
-            x_cord = 200
-            y_cord += 40
+        if x_cord > SCREEN_WIDTH - 80:
+            x_cord = SCREEN_WIDTH - 600
+            y_cord += SCREEN_HEIGHT / 20
         text = smaller_font.render(letter.upper(), False, 'black')
         # If the current letter is in the correct word, record the indices
         if letter in correct:
@@ -171,7 +195,7 @@ def displayKeyboard(guesses, correct):
         else:
             screen.blit(unguessed_surface, (x_cord - 4, y_cord - 3))
         screen.blit(text, (x_cord, y_cord))
-        x_cord += 40
+        x_cord += SCREEN_WIDTH / 20
 
 def displayEmptyBoard():
     screen.blit(logo_image, (logo_x, logo_y))
@@ -180,6 +204,15 @@ def displayEmptyBoard():
     for row in range(1, 7):
         for column in range(1, 6):
             screen.blit(incorrect_surface, (x_cord * column, y_cord * row)) #added -20
+
+def draw_restart_button():
+    screen.blit(restart_image, (restart_button_x, restart_button_y))
+
+def draw_restart_button_end():
+    screen.blit(restart_image, (end_restart_button_x, end_restart_button_y))
+
+def draw_quit_button():
+    screen.blit(quit_image, (quit_button_x, quit_button_y))
 
 class Bobcat:
     x_coord = 0
@@ -224,6 +257,37 @@ if __name__ == "__main__": #print game board w squares
         bobcats = displayBobcats(bobcats)
         # This is the event loop it checks for any player input
         for event in pygame.event.get():
+            # Create event for the user clicking the mouse
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                # Get mouse position
+                mouse_x, mouse_y = pygame.mouse.get_pos()
+                # Get a list of characters for each letter in the alphabet
+                letters = [letter for letter in 'abcdefghijklmnopqrstuvwxyz']
+                boxes = []
+                x = SCREEN_WIDTH - 700
+                y = SCREEN_HEIGHT - 100
+                # Create a box for each letter in the alphabet and record the box coordinates in a list
+                for letter in  'abcdefghijklmnopqrstuvwxyz':
+                    if x > SCREEN_WIDTH - 80:
+                        x = SCREEN_WIDTH - 600
+                        y += SCREEN_HEIGHT / 20
+                    box = pygame.Rect(x - 4, y - 3, smaller_width, smaller_height)
+                    boxes.append(box)
+                    x += SCREEN_WIDTH / 20
+                # Check if the mouse was clicked inside any of the boxes and add it to the guess if it was
+                for i in range(len(boxes)):
+                    if boxes[i].collidepoint(mouse_x, mouse_y):
+                        guess += letters[i]
+                        break
+
+                #Check if mouse clicks within bounds of restart button. If so, restart game
+                if restart_button_x <= mouse_x <= restart_button_x + button_width and restart_button_y <= mouse_y <= restart_button_y + button_height:
+                    guesses = []
+                    guess = ""
+                    correct_word = randomword(valid_solutions)
+                    bobcats = []
+                    continue
+
             # This means the user pressed a key, this is where all of our letter inputs are handled
             if event.type == pygame.KEYDOWN:
 
@@ -294,20 +358,64 @@ if __name__ == "__main__": #print game board w squares
                             text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
                             screen.fill('aquamarine4')
                             screen.blit(text_win, text_rect)
+                            draw_restart_button_end()
+                            draw_quit_button()
                             pygame.display.update()
-                            pygame.time.delay(5000)
-                            pygame.quit()
-                            exit()
+                            #pygame.time.delay(5000)
+
+                            #Click functionality for restart and quit
+                            guess = ""
+                            while True:
+                                for event in pygame.event.get():
+                                    if event.type == pygame.MOUSEBUTTONDOWN:
+                                        mouse_x, mouse_y = pygame.mouse.get_pos()
+                                        if end_restart_button_x <= mouse_x <= end_restart_button_x + end_button_width and end_restart_button_y <= mouse_y <= end_restart_button_y + end_button_height:
+                                            guesses = []
+                                            guess = ""
+                                            correct_word = randomword(valid_solutions)
+                                            bobcats = []
+                                            break
+                                        elif quit_button_x <= mouse_x <= quit_button_x + quit_button_width and quit_button_y <= mouse_y <= quit_button_y + quit_button_height:
+                                            pygame.quit()
+                                            exit()
+                                else:
+                                    continue
+                                break
+                            
+                            # pygame.quit()
+                            # exit()
                         elif len(guesses) == 6 and guess != correct_word:
                             font_win = pygame.font.Font(None, 60)
                             text_win = font_win.render("You lose! Correct word: " + correct_word, True, (255, 255, 255))
                             text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
                             screen.fill('aquamarine4')
                             screen.blit(text_win, text_rect)
+                            draw_restart_button_end()
+                            draw_quit_button()
                             pygame.display.update()
-                            pygame.time.delay(5000)
-                            pygame.quit()
-                            exit()
+                           # pygame.time.delay(5000)
+
+                            #Click functionality for restart and quit
+                            guess = ""
+                            while True:
+                                for event in pygame.event.get():
+                                    if event.type == pygame.MOUSEBUTTONDOWN:
+                                        mouse_x, mouse_y = pygame.mouse.get_pos()
+                                        if end_restart_button_x <= mouse_x <= end_restart_button_x + end_button_width and end_restart_button_y <= mouse_y <= end_restart_button_y + end_button_height:
+                                            guesses = []
+                                            guess = ""
+                                            correct_word = randomword(valid_solutions)
+                                            bobcats = []
+                                            break
+                                        elif quit_button_x <= mouse_x <= quit_button_x + quit_button_width and quit_button_y <= mouse_y <= quit_button_y + quit_button_height:
+                                            pygame.quit()
+                                            exit()
+                                else:
+                                    continue
+                                break
+
+                            # pygame.quit()
+                            # exit()
                         guess = ""
                     pass
 
@@ -328,6 +436,7 @@ if __name__ == "__main__": #print game board w squares
         displayWords(guesses, correct_word)
         displayGuess(guess, len(guesses))
         displayKeyboard(guesses, correct_word)
+        draw_restart_button()
         # Updates the display with all new objects
         pygame.display.update()
 
