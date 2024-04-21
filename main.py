@@ -39,7 +39,10 @@ logo_image = pygame.transform.scale(logo_image, (logo_width, logo_height))
 logo_x = (SCREEN_WIDTH - logo_image.get_width()) // 2
 logo_y = 3
 
+global falling_image 
 bobcat_image = pygame.image.load('assets/bobcat.png')
+falling_image = bobcat_image
+chang = pygame.image.load('assets/CHANG.png')
 
 restart_image = pygame.image.load('assets/restart.png')
 quit_image = pygame.image.load('assets/quit.png')
@@ -142,27 +145,28 @@ def displayWords(guesses, correct):
             #screen.blit(text, (x_cord * column, y_cord * row))
             screen.blit(text, (text_x, text_y)) #added * row
 
-def displayGuess(guess, row):
-    x_cord = 120
-    y_cord = 100 + (100 * row)
+def displayGuess(guess, row, frames):
+    x_coord = 120
+    y_coord = 100 + (100 * row)
     column = 0
     for letter in guess:
         column += 1
-
-        square_center_x = x_cord * column + width / 2 #added
-        square_center_y = y_cord + height / 2 #parentheses?
+        square_center_x = x_coord * column + width / 2
+        if(frames[column - 1] < 5):
+            # Offsets the guess display height based on its animation frame so it appears to slide into place
+            square_center_y = (y_coord + height / 2) - (30 - (frames[column - 1] * 6))
+            frames[column - 1] += 1
+        else:
+            square_center_y = y_coord + height / 2
 
         text = example_font.render(letter.upper(), False, 'white')
-        text_width, text_height = example_font.size(letter.upper()) #added
+        text_width, text_height = example_font.size(letter.upper())
 
-        text_x = square_center_x - text_width / 2 #added
+        text_x = square_center_x - text_width / 2
         text_y = square_center_y - text_height / 2
 
-        screen.blit(incorrect_surface, (x_cord * column, y_cord)) #CHANGES GO HERE
-        #screen.blit(incorrect_surface, (x_cord * column, y_cord * row))
-    
-        #screen.blit(text, (x_cord * column, y_cord))
-        screen.blit(text, (text_x, text_y)) #added
+        screen.blit(incorrect_surface, (x_coord * column, y_coord))
+        screen.blit(text, (text_x, text_y))
 
 def displayKeyboard(guesses, correct):
     x_cord = SCREEN_WIDTH - 700
@@ -231,7 +235,7 @@ class Bobcat:
 
     def __init__(self, s, coords):
         self.speed = s
-        self.rect = bobcat_image.get_rect()
+        self.rect = falling_image.get_rect()
         self.rect.topleft = (Bobcat.x_coord, coords[1])
         #self.rect.topleft = coords
         Bobcat.x_coord = Bobcat.x_coord + 70
@@ -251,12 +255,14 @@ def displayBobcats(bobcats):
 
     for bobcat in bobcats:
         bobcat.rect.topleft = (bobcat.rect.x, bobcat.rect.y + bobcat.speed)
-        screen.blit(bobcat_image, bobcat)
+        screen.blit(falling_image, bobcat)
     return bobcats
 
 async def main():
+    global falling_image
     if __name__ == "__main__": #print game board w squares
         guesses = []
+        frames = []
         guess = ""
         correct_word = randomword(valid_solutions)
         bobcats = []
@@ -292,18 +298,24 @@ async def main():
                     for i in range(len(boxes)):
                         if boxes[i].collidepoint(mouse_x, mouse_y) and len(guess) < 5:
                             guess += letters[i]
+                            frames.append(0)
                             break
 
-                    #Check if mouse clicks within bounds of restart button. If so, restart game
+                    # Check if mouse clicks within bounds of restart button. If so, restart game
                     if restart_button_x <= mouse_x <= restart_button_x + button_width and restart_button_y <= mouse_y <= restart_button_y + button_height:
                         guesses = []
                         guess = ""
+                        frames = []
+                        falling_image = bobcat_image
                         correct_word = randomword(valid_solutions)
                         bobcats = []
                         continue
+                    # If mouse clicks enter button
                     if SCREEN_WIDTH - enter_button_width - 10 <= mouse_x <= SCREEN_WIDTH - 10 and SCREEN_HEIGHT - enter_button_height - 10 <= mouse_y <= SCREEN_HEIGHT - 10:
                         if guess in valid_words:
                             guesses.append(guess)
+                            if guess == "chang":
+                                falling_image = chang
                             if guess == correct_word:
                                 font_win = pygame.font.Font(None, 60)
                                 text_win = font_win.render("You win!", True, (255, 255, 255))
@@ -319,6 +331,7 @@ async def main():
                                             if end_restart_button_x <= mouse_x <= end_restart_button_x + end_button_width and end_restart_button_y <= mouse_y <= end_restart_button_y + end_button_height:
                                                 guesses = []
                                                 guess = ""
+                                                frames = []
                                                 correct_word = randomword(valid_solutions)
                                                 bobcats = []
                                                 break
@@ -343,6 +356,8 @@ async def main():
                                             if end_restart_button_x <= mouse_x <= end_restart_button_x + end_button_width and end_restart_button_y <= mouse_y <= end_restart_button_y + end_button_height:
                                                 guesses = []
                                                 guess = ""
+                                                falling_image = bobcat_image
+                                                frames = []
                                                 correct_word = randomword(valid_solutions)
                                                 bobcats = []
                                                 break
@@ -360,64 +375,93 @@ async def main():
                     if len(guess) < 5:
                         if event.key == pygame.K_a: # K_a is the constant for the 'a' key, the rest of the constants are at https://www.pygame.org/docs/ref/key.html
                             guess += "a"
-                        if event.key == pygame.K_b:
-                            guess += "b" 
-                        if event.key == pygame.K_c:
+                            frames.append(0)
+                        elif event.key == pygame.K_b:
+                            guess += "b"
+                            frames.append(0) 
+                        elif event.key == pygame.K_c:
                             guess += "c"
-                        if event.key == pygame.K_d:
+                            frames.append(0)
+                        elif event.key == pygame.K_d:
                             guess += "d"
-                        if event.key == pygame.K_e:
+                            frames.append(0)
+                        elif event.key == pygame.K_e:
                             guess += "e"
-                        if event.key == pygame.K_f:
+                            frames.append(0)
+                        elif event.key == pygame.K_f:
                             guess += "f"
-                        if event.key == pygame.K_g:
+                            frames.append(0)
+                        elif event.key == pygame.K_g:
                             guess += "g"
-                        if event.key == pygame.K_h:
+                            frames.append(0)
+                        elif event.key == pygame.K_h:
                             guess += "h"
-                        if event.key == pygame.K_i:
+                            frames.append(0)
+                        elif event.key == pygame.K_i:
                             guess += "i"
-                        if event.key == pygame.K_j:
+                            frames.append(0)
+                        elif event.key == pygame.K_j:
                             guess += "j"
-                        if event.key == pygame.K_k:
+                            frames.append(0)
+                        elif event.key == pygame.K_k:
                             guess += "k"
-                        if event.key == pygame.K_l:
-                            guess += "l" 
-                        if event.key == pygame.K_m:
+                            frames.append(0)
+                        elif event.key == pygame.K_l:
+                            guess += "l"
+                            frames.append(0)
+                        elif event.key == pygame.K_m:
                             guess += "m"
-                        if event.key == pygame.K_n:
+                            frames.append(0)
+                        elif event.key == pygame.K_n:
                             guess += "n"
-                        if event.key == pygame.K_o:
+                            frames.append(0)
+                        elif event.key == pygame.K_o:
                             guess += "o"
-                        if event.key == pygame.K_p:
+                            frames.append(0)
+                        elif event.key == pygame.K_p:
                             guess += "p"
-                        if event.key == pygame.K_q:
+                            frames.append(0)
+                        elif event.key == pygame.K_q:
                             guess += "q"
-                        if event.key == pygame.K_r:
+                            frames.append(0)
+                        elif event.key == pygame.K_r:
                             guess += "r"
-                        if event.key == pygame.K_s: 
+                            frames.append(0)
+                        elif event.key == pygame.K_s: 
                             guess += "s"
-                        if event.key == pygame.K_t: 
+                            frames.append(0)
+                        elif event.key == pygame.K_t: 
                             guess += "t"
-                        if event.key == pygame.K_u: 
+                            frames.append(0)
+                        elif event.key == pygame.K_u: 
                             guess += "u"
-                        if event.key == pygame.K_v: 
+                            frames.append(0)
+                        elif event.key == pygame.K_v: 
                             guess += "v"
-                        if event.key == pygame.K_w: 
+                            frames.append(0)
+                        elif event.key == pygame.K_w: 
                             guess += "w"
-                        if event.key == pygame.K_x: 
+                            frames.append(0)
+                        elif event.key == pygame.K_x: 
                             guess += "x"
-                        if event.key == pygame.K_y: 
+                            frames.append(0)
+                        elif event.key == pygame.K_y: 
                             guess += "y"
-                        if event.key == pygame.K_z: 
+                            frames.append(0)
+                        elif event.key == pygame.K_z: 
                             guess += "z"
+                            frames.append(0)
 
                     if event.key == pygame.K_BACKSPACE: 
                         guess = guess[0:-1]
+                        frames = frames[0:-1]
 
                     # This means user hit the enter key which should mean they typed a word and need it checked
                     if event.key == pygame.K_RETURN: 
                         if guess in valid_words:
                             guesses.append(guess)
+                            if guess == "chang":
+                                falling_image = chang
                             if guess == correct_word:
                                 font_win = pygame.font.Font(None, 60)
                                 text_win = font_win.render("You win!", True, (255, 255, 255))
@@ -438,6 +482,8 @@ async def main():
                                             if end_restart_button_x <= mouse_x <= end_restart_button_x + end_button_width and end_restart_button_y <= mouse_y <= end_restart_button_y + end_button_height:
                                                 guesses = []
                                                 guess = ""
+                                                frames = []
+                                                falling_image = bobcat_image
                                                 correct_word = randomword(valid_solutions)
                                                 bobcats = []
                                                 break
@@ -470,6 +516,8 @@ async def main():
                                             if end_restart_button_x <= mouse_x <= end_restart_button_x + end_button_width and end_restart_button_y <= mouse_y <= end_restart_button_y + end_button_height:
                                                 guesses = []
                                                 guess = ""
+                                                frames = []
+                                                falling_image = bobcat_image
                                                 correct_word = randomword(valid_solutions)
                                                 bobcats = []
                                                 break
@@ -500,7 +548,7 @@ async def main():
             # Display guesses and current word being typed
             displayEmptyBoard()
             displayWords(guesses, correct_word)
-            displayGuess(guess, len(guesses))
+            displayGuess(guess, len(guesses), frames)
             displayKeyboard(guesses, correct_word)
             draw_restart_button()
             # Updates the display with all new objects
