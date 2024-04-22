@@ -57,6 +57,7 @@ siege = pygame.image.load('assets/siege.png')
 audio_among = pygame.mixer.Sound('assets/output.wav') 
 audio_drake = pygame.mixer.Sound('assets/output2.wav')
 audio_siege = pygame.mixer.Sound('assets/output3.wav')
+audio_homer = pygame.mixer.Sound('assets/output4.wav')
 
 restart_image = pygame.image.load('assets/restart.png')
 solver_image = pygame.image.load('assets/robot_AI.png')
@@ -432,6 +433,7 @@ async def main():
                                 audio_drake.play()
                             if guess == "homer":
                                 falling_image = homer
+                                audio_homer.play()
                             if guess == "sonic":
                                 falling_image = sonic
                             if guess == "sigma":
@@ -602,6 +604,7 @@ async def main():
                                 audio_drake.play()
                             if guess == "homer":
                                 falling_image = homer
+                                audio_homer.play()
                             if guess == "sonic":
                                 falling_image = sonic
                             if guess == "sigma":
