@@ -2,6 +2,7 @@ import asyncio
 import random
 from sys import exit
 import pygame
+import pygame.mixer #added
 
 # Opens txt file in read mode
 # "with" ensures that file closes after reading
@@ -23,6 +24,7 @@ def randomword(wordlist):
 
 # Initialize the pygame module
 pygame.init()
+pygame.mixer.init()
 
 # Initialize the display area
 SCREEN_WIDTH = 800
@@ -43,6 +45,15 @@ global falling_image
 bobcat_image = pygame.image.load('assets/bobcat.png')
 falling_image = bobcat_image
 chang = pygame.image.load('assets/CHANG.png')
+among = pygame.image.load('assets/among.png')
+drake = pygame.image.load('assets/drake.png')
+homer = pygame.image.load('assets/Homer.png')
+sonic = pygame.image.load('assets/sanic.png')
+sigma = pygame.image.load('assets/sigma.png')
+spike = pygame.image.load('assets/spike.png')
+
+audio_among = pygame.mixer.Sound('assets/output.wav') #added
+audio_drake = pygame.mixer.Sound('assets/output2.wav') #added
 
 restart_image = pygame.image.load('assets/restart.png')
 quit_image = pygame.image.load('assets/quit.png')
@@ -362,6 +373,20 @@ async def main():
                             frames = []
                             if guess == "chang":
                                 falling_image = chang
+                            if guess == "among":
+                                falling_image = among
+                                audio_among.play() #added
+                            if guess == "drake":
+                                falling_image = drake 
+                                audio_drake.play() #added
+                            if guess == "homer":
+                                falling_image = homer
+                            if guess == "sonic":
+                                falling_image = sonic
+                            if guess == "sigma":
+                                falling_image = sigma
+                            if guess == "spike":
+                                falling_image = spike
                             if guess == correct_word:
                                 font_win = pygame.font.Font(None, 60)
                                 text_win = font_win.render("You win!", True, (255, 255, 255))
@@ -510,6 +535,20 @@ async def main():
                             frames = []
                             if guess == "chang":
                                 falling_image = chang
+                            if guess == "among":
+                                falling_image = among
+                                audio_among.play()
+                            if guess == "drake":
+                                falling_image = drake
+                                audio_drake.play()
+                            if guess == "homer":
+                                falling_image = homer
+                            if guess == "sonic":
+                                falling_image = sonic
+                            if guess == "sigma":
+                                falling_image = sigma
+                            if guess == "spike":
+                                falling_image = spike
                             if guess == correct_word:
                                 font_win = pygame.font.Font(None, 60)
                                 text_win = font_win.render("You win!", True, (255, 255, 255))
