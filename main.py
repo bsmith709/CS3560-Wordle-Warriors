@@ -112,38 +112,78 @@ smaller_incorrect_surface.fill('gray46')
 smaller_font_size = 40
 smaller_font = pygame.font.Font(font_type, smaller_font_size)
 
+global frames_per_letter
+frames_per_letter = 11
+def animateGuess(guess, guessnum, correct, frame):
+    x_coord = 120
+    y_coord = 100
+    row = guessnum
+    column = 0
+
+    # Math to determine where letter should be displayed
+    letter_column = ((frame - (frame % frames_per_letter)) / frames_per_letter) + 1
+    letter_frame = frame % frames_per_letter
+    y_offset = 0
+    mid_frame = ((frames_per_letter - 1) / 2)
+    px_per_frame = 30 / (mid_frame + 1)
+    if letter_frame <= mid_frame:
+        y_offset = (letter_frame + 1) * px_per_frame
+    else:
+        y_offset = (frames_per_letter - letter_frame) * px_per_frame
+
+
+    for letter in guess:
+        column += 1
+
+        square_center_x = x_coord * column + width / 2
+        if column == letter_column:
+            square_center_y = (y_coord * row + height / 2) - y_offset
+        else:
+            square_center_y = y_coord * row + height / 2
+
+        text = example_font.render(letter.upper(), False, 'white')
+        text_width, text_height = example_font.size(letter.upper())
+
+        text_x = square_center_x - text_width / 2
+        text_y = square_center_y - text_height / 2
+        if column < letter_column:
+            if letter == correct[column - 1]:
+                screen.blit(correct_surface, (x_coord * column, y_coord * row))
+            elif letter in correct:
+                screen.blit(partially_correct_surface, (x_coord * column, y_coord * row))
+            else:
+                screen.blit(incorrect_surface, (x_coord * column, y_coord * row))
+        else:
+            screen.blit(incorrect_surface, (x_coord * column, y_coord * row))
+        screen.blit(text, (text_x, text_y))
+
+
 def displayWords(guesses, correct):
-    x_cord = 120
-    y_cord = 100
+    x_coord = 120
+    y_coord = 100
     row = 0
     for guess in guesses:
         row += 1
         column = 0
-        i = 0
         for letter in guess:
             column += 1
 
-            square_center_x = x_cord * column + width / 2 #added
-            # square_center_y = y_cord + height / 2 #parentheses?
-            square_center_y = y_cord * row + height / 2 #parentheses?
+            square_center_x = x_coord * column + width / 2
+            square_center_y = y_coord * row + height / 2
 
             text = example_font.render(letter.upper(), False, 'white')
-            text_width, text_height = example_font.size(letter.upper()) #added
+            text_width, text_height = example_font.size(letter.upper())
 
-            text_x = square_center_x - text_width / 2 #added
+            text_x = square_center_x - text_width / 2
             text_y = square_center_y - text_height / 2
 
-            #text = example_font.render(letter.upper(), False, 'black')
-
-            if letter == correct[i]:
-                screen.blit(correct_surface, (x_cord * column, y_cord * row))
+            if letter == correct[column - 1]:
+                screen.blit(correct_surface, (x_coord * column, y_coord * row))
             elif letter in correct:
-                screen.blit(partially_correct_surface, (x_cord * column, y_cord * row))
+                screen.blit(partially_correct_surface, (x_coord * column, y_coord * row))
             else:
-                screen.blit(incorrect_surface, (x_cord * column, y_cord * row))
-            i += 1
-            #screen.blit(text, (x_cord * column, y_cord * row))
-            screen.blit(text, (text_x, text_y)) #added * row
+                screen.blit(incorrect_surface, (x_coord * column, y_coord * row))
+            screen.blit(text, (text_x, text_y))
 
 def displayGuess(guess, row, frames):
     x_coord = 120
@@ -262,7 +302,11 @@ async def main():
     global falling_image
     if __name__ == "__main__": #print game board w squares
         guesses = []
+        guesses_frames = []
         frames = []
+        new_word = False
+        new_word_frame = 0
+        
         guess = ""
         correct_word = randomword(valid_solutions)
         bobcats = []
@@ -313,7 +357,9 @@ async def main():
                     # If mouse clicks enter button
                     if SCREEN_WIDTH - enter_button_width - 10 <= mouse_x <= SCREEN_WIDTH - 10 and SCREEN_HEIGHT - enter_button_height - 10 <= mouse_y <= SCREEN_HEIGHT - 10:
                         if guess in valid_words:
+                            new_word = True
                             guesses.append(guess)
+                            frames = []
                             if guess == "chang":
                                 falling_image = chang
                             if guess == correct_word:
@@ -460,6 +506,8 @@ async def main():
                     if event.key == pygame.K_RETURN: 
                         if guess in valid_words:
                             guesses.append(guess)
+                            new_word = True
+                            frames = []
                             if guess == "chang":
                                 falling_image = chang
                             if guess == correct_word:
@@ -547,7 +595,18 @@ async def main():
 
             # Display guesses and current word being typed
             displayEmptyBoard()
-            displayWords(guesses, correct_word)
+            if new_word:
+                if len(guesses) > 1:
+                    displayWords(guesses[0:-1], correct_word)
+                    animateGuess(guesses[-1], len(guesses), correct_word, new_word_frame)
+                else:
+                    animateGuess(guesses[-1], len(guesses), correct_word, new_word_frame)
+                new_word_frame += 1
+                if new_word_frame > (frames_per_letter * 5) - 1:
+                    new_word = False
+                    new_word_frame = 0
+            else:
+                displayWords(guesses, correct_word)
             displayGuess(guess, len(guesses), frames)
             displayKeyboard(guesses, correct_word)
             draw_restart_button()
