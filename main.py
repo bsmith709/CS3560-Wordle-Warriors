@@ -51,12 +51,15 @@ homer = pygame.image.load('assets/Homer.png')
 sonic = pygame.image.load('assets/sanic.png')
 sigma = pygame.image.load('assets/sigma.png')
 spike = pygame.image.load('assets/spike.png')
+siege = pygame.image.load('assets/siege.png')
 
 #Audio sounds for easter eggs
 audio_among = pygame.mixer.Sound('assets/output.wav') 
 audio_drake = pygame.mixer.Sound('assets/output2.wav')
+audio_siege = pygame.mixer.Sound('assets/output3.wav')
 
 restart_image = pygame.image.load('assets/restart.png')
+solver_image = pygame.image.load('assets/robot_AI.png')
 quit_image = pygame.image.load('assets/quit.png')
 
 #Restart Button
@@ -83,6 +86,7 @@ quit_button_x = (SCREEN_WIDTH - button_width) // 2
 quit_button_y = SCREEN_HEIGHT / 2 + 125
 
 restart_image = pygame.transform.scale(restart_image, (50, 47))
+solver_image = pygame.transform.scale(solver_image, (50, 47))
 quit_image = pygame.transform.scale(quit_image, (50, 47))
 
 # Initialize the game clock to control FPS
@@ -275,6 +279,9 @@ def displayEmptyBoard():
 def draw_restart_button():
     screen.blit(restart_image, (restart_button_x, restart_button_y))
 
+def draw_solver_button():
+    screen.blit(solver_image, (solver_button_x, solver_button_y))
+
 def draw_restart_button_end():
     screen.blit(restart_image, (end_restart_button_x, end_restart_button_y))
 
@@ -391,7 +398,21 @@ async def main():
                         bobcats = []
                         start_time = pygame.time.get_ticks() #added
                         continue
+
+
+
+
+
+                    # Check if mouse clicks within bounds of solve button. If so, solve game
+                    # if solver_button_x <= mouse_x <= solver_button_x + button_width and solver_button_y <= mouse_y <= solver_button_y + button_height:
+                    #     #Implement functionality
+                    #     continue
                     # If mouse clicks enter button
+
+
+
+
+
                     if SCREEN_WIDTH - enter_button_width - 10 <= mouse_x <= SCREEN_WIDTH - 10 and SCREEN_HEIGHT - enter_button_height - 10 <= mouse_y <= SCREEN_HEIGHT - 10:
                         if guess in valid_words:
                             new_word = True
@@ -414,6 +435,9 @@ async def main():
                                 falling_image = sigma
                             if guess == "spike":
                                 falling_image = spike
+                            if guess == "siege":
+                                falling_image = siege
+                                audio_siege.play()
                             if guess == correct_word:
                                 font_win = pygame.font.Font(None, 60)
                                 text_win = font_win.render("You win!", True, (255, 255, 255))
@@ -581,6 +605,9 @@ async def main():
                                 falling_image = sigma
                             if guess == "spike":
                                 falling_image = spike
+                            if guess == "siege":
+                                falling_image = siege
+                                audio_siege.play()
                             if guess == correct_word:
                                 font_win = pygame.font.Font(None, 60)
                                 text_win = font_win.render("You win!", True, (255, 255, 255))
@@ -685,6 +712,7 @@ async def main():
             displayGuess(guess, len(guesses), frames)
             displayKeyboard(guesses, correct_word)
             draw_restart_button()
+            draw_solver_button()
             # Updates the display with all new objects
             pygame.display.update()
 
