@@ -24,7 +24,7 @@ def randomword(wordlist):
 
 # Initialize the pygame module
 pygame.init()
-pygame.mixer.init()
+#pygame.mixer.init()
 
 # Initialize the display area
 SCREEN_WIDTH = 800
@@ -57,11 +57,11 @@ spike = pygame.image.load('assets/spike.png')
 siege = pygame.image.load('assets/siege.png')
 
 #Audio sounds for easter eggs
-audio_among = pygame.mixer.Sound('assets/output.wav') 
-audio_drake = pygame.mixer.Sound('assets/output2.wav')
-audio_siege = pygame.mixer.Sound('assets/output3.wav')
-audio_homer = pygame.mixer.Sound('assets/output4.wav')
-audio_spike = pygame.mixer.Sound('assets/output5.wav')
+#audio_among = pygame.mixer.Sound('assets/output.wav') 
+#audio_drake = pygame.mixer.Sound('assets/output2.wav')
+#audio_siege = pygame.mixer.Sound('assets/output3.wav')
+#audio_homer = pygame.mixer.Sound('assets/output4.wav')
+#audio_spike = pygame.mixer.Sound('assets/output5.wav')
 
 #Convert alpha to load with anti-aliasing
 restart_image = pygame.image.load('assets/restart.png').convert_alpha()
@@ -429,23 +429,23 @@ async def main():
                                 falling_image = chang
                             if guess == "among":
                                 falling_image = among
-                                audio_among.play()
+                                #audio_among.play()
                             if guess == "drake":
                                 falling_image = drake 
-                                audio_drake.play()
+                                #audio_drake.play()
                             if guess == "homer":
                                 falling_image = homer
-                                audio_homer.play()
+                                #audio_homer.play()
                             if guess == "sonic":
                                 falling_image = sonic
                             if guess == "sigma":
                                 falling_image = sigma
                             if guess == "spike":
                                 falling_image = spike
-                                audio_spike.play()
+                                #audio_spike.play()
                             if guess == "siege":
                                 falling_image = siege
-                                audio_siege.play()
+                                #audio_siege.play()
                             if guess == correct_word:
                                 font_win = pygame.font.Font(None, 60)
                                 text_win = font_win.render("You win!", True, (255, 255, 255))
@@ -609,23 +609,23 @@ async def main():
                                 falling_image = chang
                             if guess == "among":
                                 falling_image = among
-                                audio_among.play()
+                                #audio_among.play()
                             if guess == "drake":
                                 falling_image = drake
-                                audio_drake.play()
+                                #audio_drake.play()
                             if guess == "homer":
                                 falling_image = homer
-                                audio_homer.play()
+                                #audio_homer.play()
                             if guess == "sonic":
                                 falling_image = sonic
                             if guess == "sigma":
                                 falling_image = sigma
                             if guess == "spike":
                                 falling_image = spike
-                                audio_spike.play()
+                                #audio_spike.play()
                             if guess == "siege":
                                 falling_image = siege
-                                audio_siege.play()
+                                #audio_siege.play()
                             if guess == correct_word:
                                 font_win = pygame.font.Font(None, 60)
                                 text_win = font_win.render("You win!", True, (255, 255, 255))
@@ -712,12 +712,6 @@ async def main():
                     # Terminates the program
                     pygame.quit()
                     exit()
-
-
-            
-            # The blit() function displays a surface at a specified coordinate
-            # coords = (0,0)
-            # screen.blit(example_surface2, coords)
 
             # Display guesses and current word being typed
             displayEmptyBoard()
