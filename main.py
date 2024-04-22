@@ -68,6 +68,9 @@ button_height = 50
 restart_button_x = 740
 restart_button_y = 10
 
+solver_button_x = 740
+solver_button_y = 70
+
 # Enter button
 enter_button_width = 100
 enter_button_height = 50
