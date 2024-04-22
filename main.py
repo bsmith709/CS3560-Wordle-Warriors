@@ -62,6 +62,7 @@ audio_spike = pygame.mixer.Sound('assets/output5.wav')
 
 restart_image = pygame.image.load('assets/restart.png')
 solver_image = pygame.image.load('assets/robot_AI.png')
+hint_image = pygame.image.load('assets/hint.png')
 quit_image = pygame.image.load('assets/quit.png')
 
 #Restart Button
@@ -72,6 +73,9 @@ restart_button_y = 10
 
 solver_button_x = 740
 solver_button_y = 70
+
+hint_button_x = 740
+hint_button_y = 130
 
 # Enter button
 enter_button_width = 100
@@ -92,6 +96,7 @@ quit_button_y = SCREEN_HEIGHT / 2 + 125
 
 restart_image = pygame.transform.scale(restart_image, (50, 47))
 solver_image = pygame.transform.scale(solver_image, (50, 47))
+hint_image = pygame.transform.scale(hint_image, (50, 47))
 quit_image = pygame.transform.scale(quit_image, (50, 47))
 
 # Initialize the game clock to control FPS
@@ -287,6 +292,9 @@ def draw_restart_button():
 def draw_solver_button():
     screen.blit(solver_image, (solver_button_x, solver_button_y))
 
+def draw_hint_button():
+    screen.blit(hint_image, (hint_button_x, hint_button_y))
+
 def draw_restart_button_end():
     screen.blit(restart_image, (end_restart_button_x, end_restart_button_y))
 
@@ -412,7 +420,11 @@ async def main():
                     # if solver_button_x <= mouse_x <= solver_button_x + button_width and solver_button_y <= mouse_y <= solver_button_y + button_height:
                     #     #Implement functionality
                     #     continue
-                    # If mouse clicks enter button
+
+                    # if hint_button_x <= mouse_x <= hint_button_x + button_width and hint_button_y <= mouse_y <= hint_button_y + button_height:
+                    #     #Implement functionality
+                    #     continue
+                    
 
 
 
@@ -481,6 +493,21 @@ async def main():
                                 draw_restart_button_end()
                                 draw_quit_button()
                                 pygame.display.update()
+
+                                # #New function to show elapsed time on two separate lines.
+                                # #Implemented to use with win/loss removed
+                                # font_win = pygame.font.Font(None, 60)
+                                # font_win2 = pygame.font.Font(None, 60)
+                                # text_win = font_win.render(f"You lost in {elapsed_time // 1000} seconds! Correct word: " + correct_word, True, (255, 255, 255))
+                                # text_win2 = font_win2.render("Correct word: " + correct_word, True, (255, 255, 255))
+                                # text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
+                                # text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, (SCREEN_HEIGHT // 2) + 60))
+                                # screen.blit(text_win, text_rect)
+                                # start_time = pygame.time.get_ticks() #added
+                                # draw_restart_button_end()
+                                # draw_quit_button()
+                                # pygame.display.update()
+
                                 while True:
                                     for event in pygame.event.get():
                                         if event.type == pygame.MOUSEBUTTONDOWN:
@@ -663,7 +690,23 @@ async def main():
                                 draw_restart_button_end()
                                 draw_quit_button()
                                 pygame.display.update()
-                            # pygame.time.delay(5000)
+
+                                #New function to show elapsed time on two separate lines.
+                                #Implemented to use with win/loss removed
+                                # font_win = pygame.font.Font(None, 60)
+                                # font_win2 = pygame.font.Font(None, 60)
+                                # text_win = font_win.render(f"You lost in {elapsed_time // 1000} seconds.", True, (255, 255, 255))
+                                # text_win2 = font_win2.render("Correct word: " + correct_word, True, (255, 255, 255))
+                                # text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, (SCREEN_HEIGHT // 2) - 40))
+                                # text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, (SCREEN_HEIGHT // 2) + 20))
+                                # screen.blit(text_win, text_rect)
+                                # screen.blit(text_win2, text_rect2)
+                                # start_time = pygame.time.get_ticks() #added
+                                # draw_restart_button_end()
+                                # draw_quit_button()
+                                # pygame.display.update()
+
+
 
                                 #Click functionality for restart and quit
                                 guess = ""
@@ -722,6 +765,7 @@ async def main():
             displayKeyboard(guesses, correct_word)
             draw_restart_button()
             draw_solver_button()
+            draw_hint_button()
             # Updates the display with all new objects
             pygame.display.update()
 
