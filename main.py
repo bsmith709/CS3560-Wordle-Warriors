@@ -31,20 +31,22 @@ SCREEN_WIDTH = 800
 SCREEN_HEIGHT = 800
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Wordle")
-#screen.fill('gray26')
 screen.fill('aquamarine4')
 
 #Convert alpha and smoothscale to load with anti-aliasing
-logo_image = pygame.image.load('assets/newlogo.png').convert_alpha() #added2
+logo_image = pygame.image.load('assets/newlogo.png').convert_alpha()
 logo_width = 375
 logo_height = 75
 logo_image = pygame.transform.smoothscale(logo_image, (logo_width, logo_height))
 logo_x = (SCREEN_WIDTH - logo_image.get_width()) // 2
 logo_y = 3
 
+#Initializes falling Bobcat image
 global falling_image 
 bobcat_image = pygame.image.load('assets/bobcat.png')
 falling_image = bobcat_image
+
+#Loads easter eggs
 chang = pygame.image.load('assets/CHANG.png')
 among = pygame.image.load('assets/among.png')
 drake = pygame.image.load('assets/drake.png')
@@ -62,50 +64,47 @@ audio_homer = pygame.mixer.Sound('assets/output4.wav')
 audio_spike = pygame.mixer.Sound('assets/output5.wav')
 
 #Convert alpha to load with anti-aliasing
-restart_image = pygame.image.load('assets/restart.png').convert_alpha() #added2
-solver_image = pygame.image.load('assets/robot_AI.png').convert_alpha() #added2
-hint_image = pygame.image.load('assets/hint.png').convert_alpha() #added2
-timer_image = pygame.image.load('assets/timer.png').convert_alpha() #added2
-# quit_image = pygame.image.load('assets/quit.png')
+restart_image = pygame.image.load('assets/restart.png').convert_alpha()
+solver_image = pygame.image.load('assets/robot_AI.png').convert_alpha()
+hint_image = pygame.image.load('assets/hint.png').convert_alpha()
+timer_image = pygame.image.load('assets/timer.png').convert_alpha()
 
-#Restart Button
+#Uniform Button Size
 button_width = 50 
 button_height = 50 
+
+#Restart Button Coordinates
 restart_button_x = 740
 restart_button_y = 10
 
+#Solver Button Coordinates
 solver_button_x = 740
 solver_button_y = 70
 
+#Hint Button Coordinates
 hint_button_x = 740
 hint_button_y = 130
 
+#Timer Button Coordinates
 timer_image_x = 10
 timer_image_y = 10
 
-# Enter button
+#Enter button size + color
 enter_button_width = 100
 enter_button_height = 50
 enter_button_color = (0, 70, 0)
 
-#End Restart Button
+#End Restart Button size + coordinates (To be removed?)
 end_button_width = 200
 end_button_height = 50
 end_restart_button_x = (SCREEN_WIDTH - button_width) // 2
 end_restart_button_y = SCREEN_HEIGHT / 2 + 50
 
-#Quit Button
-# quit_button_width = 200
-# quit_button_height = 50
-# quit_button_x = (SCREEN_WIDTH - button_width) // 2
-# quit_button_y = SCREEN_HEIGHT / 2 + 125
-
-#Smoothscale for anti-aliasing scaling
+#Image transformation using smoothscale to enable anti-aliasing
 restart_image = pygame.transform.smoothscale(restart_image, (50, 47))
 solver_image = pygame.transform.smoothscale(solver_image, (50, 47))
 hint_image = pygame.transform.smoothscale(hint_image, (50, 47))
 timer_image = pygame.transform.smoothscale(timer_image, (35, 33))
-# quit_image = pygame.transform.scale(quit_image, (50, 47))
 
 # Initialize the game clock to control FPS
 clock = pygame.time.Clock()
@@ -118,19 +117,13 @@ elapsed_time = elapsed_time // 1000 #Converts from milliseconds to seconds
 # 'Surfaces' are images that can be displayed using the blit() function
 width = 80
 height = 80
-#correct_surface = pygame.Surface((width, height))
 correct_surface = pygame.image.load('assets/correctSq.png')
-#correct_surface.fill('green')
-#partially_correct_surface = pygame.Surface((width, height))
 partially_correct_surface = pygame.image.load('assets/partialSq.png')
-#partially_correct_surface.fill('orange')
-#incorrect_surface = pygame.Surface((width, height))
 incorrect_surface = pygame.image.load('assets/incorrectSq.png')
-#incorrect_surface.fill('gray')
 
 # Loading a surface from an image
 filePath = 'assets/square.png'
-example_surface2 = pygame.image.load(filePath) #this goes for correct surface and etc
+example_surface2 = pygame.image.load(filePath) #Example
 
 # Creating a text surface
 font_type = None
@@ -292,7 +285,7 @@ def displayEmptyBoard():
     y_cord = 100
     for row in range(1, 7):
         for column in range(1, 6):
-            screen.blit(incorrect_surface, (x_cord * column, y_cord * row)) #added -20
+            screen.blit(incorrect_surface, (x_cord * column, y_cord * row))
 
 def draw_restart_button():
     screen.blit(restart_image, (restart_button_x, restart_button_y))
@@ -309,9 +302,6 @@ def draw_hint_button():
 def draw_restart_button_end():
     screen.blit(restart_image, (end_restart_button_x, end_restart_button_y))
 
-# def draw_quit_button():
-#     screen.blit(quit_image, (quit_button_x, quit_button_y))
-
 def draw_enter_button():
     pygame.draw.rect(screen, enter_button_color, (SCREEN_WIDTH - enter_button_width - 10, SCREEN_HEIGHT - enter_button_height - 10, enter_button_width, enter_button_height))
     font = pygame.font.Font(None, 36)
@@ -325,7 +315,6 @@ class Bobcat:
         self.speed = s
         self.rect = falling_image.get_rect()
         self.rect.topleft = (Bobcat.x_coord, coords[1])
-        #self.rect.topleft = coords
         Bobcat.x_coord = Bobcat.x_coord + 70
         if Bobcat.x_coord > 750:
             Bobcat.x_coord = 0
@@ -359,9 +348,8 @@ async def main():
         correct_word = randomword(valid_solutions)
         bobcats = []
 
-        #added
+        #Starts timer
         start_time = pygame.time.get_ticks()
-
 
         # Main game loop
         while True:
@@ -370,16 +358,11 @@ async def main():
             bobcats = displayBobcats(bobcats)
             draw_enter_button()
 
-            #Timer start + stop
-            #added
-            # elapsed_time = 0
-            # elapsed_time = elapsed_time // 1000 #Converts from milliseconds to seconds  
-
             #Displays time in seconds and milliseconds. Example (7.42 seconds)
             current_time = pygame.time.get_ticks()
-            elapsed_time = (current_time - start_time) / 1000.0 #Changed from // 1000
-            seconds = int(elapsed_time) #added2
-            milliseconds = int((elapsed_time - seconds) * 100) #added2
+            elapsed_time = (current_time - start_time) / 1000.0
+            seconds = int(elapsed_time)
+            milliseconds = int((elapsed_time - seconds) * 100)
             elapsed_time_str = f"{seconds}.{milliseconds}"
 
             font = pygame.font.Font(None, 36)
@@ -425,23 +408,16 @@ async def main():
                         start_time = pygame.time.get_ticks() #added
                         continue
 
-
-
-
-
+                    #PLACEHOLDERS
                     # Check if mouse clicks within bounds of solve button. If so, solve game
                     # if solver_button_x <= mouse_x <= solver_button_x + button_width and solver_button_y <= mouse_y <= solver_button_y + button_height:
                     #     #Implement functionality
                     #     continue
 
+                    #Same for hint
                     # if hint_button_x <= mouse_x <= hint_button_x + button_width and hint_button_y <= mouse_y <= hint_button_y + button_height:
                     #     #Implement functionality
                     #     continue
-                    
-
-
-
-
 
                     if SCREEN_WIDTH - enter_button_width - 10 <= mouse_x <= SCREEN_WIDTH - 10 and SCREEN_HEIGHT - enter_button_height - 10 <= mouse_y <= SCREEN_HEIGHT - 10:
                         if guess in valid_words:
@@ -476,7 +452,6 @@ async def main():
                                 text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
                                 screen.blit(text_win, text_rect)
                                 draw_restart_button_end()
-                                # draw_quit_button()
 
                                 pygame.display.update()
                                 while True:
@@ -489,39 +464,34 @@ async def main():
                                                 frames = []
                                                 correct_word = randomword(valid_solutions)
                                                 bobcats = []
-                                                start_time = pygame.time.get_ticks() #added
+                                                start_time = pygame.time.get_ticks()
                                                 break
-                                            # elif quit_button_x <= mouse_x <= quit_button_x + quit_button_width and quit_button_y <= mouse_y <= quit_button_y + quit_button_height:
-                                            #     pygame.quit()
-                                            #     exit()
                                     else:
                                         continue
                                     break
                             elif len(guesses) == 6 and guess != correct_word:
-                                # font_win = pygame.font.Font(None, 60)
-                                # text_win = font_win.render("You lose! Correct word: " + correct_word, True, (255, 255, 255))
-                                # text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
-                                # screen.fill('aquamarine4')
-                                # screen.blit(text_win, text_rect)
-                                # start_time = pygame.time.get_ticks() #added
-                                # draw_restart_button_end()
-                                # draw_quit_button()
-                                # pygame.display.update()
+                                font_win = pygame.font.Font(None, 60)
+                                text_win = font_win.render("You lose! Correct word: " + correct_word, True, (255, 255, 255))
+                                text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
+                                screen.fill('aquamarine4')
+                                screen.blit(text_win, text_rect)
+                                start_time = pygame.time.get_ticks()
+                                draw_restart_button_end()
+                                pygame.display.update()
 
                                 # #New function to show elapsed time on two separate lines.
                                 # #Implemented to use with win/loss removed
-                                font_win = pygame.font.Font(None, 60)
-                                font_win2 = pygame.font.Font(None, 60)
-                                text_win = font_win.render(f"You lost in {elapsed_time // 1000} seconds.", True, (255, 255, 255))
-                                text_win2 = font_win2.render("Correct word: " + correct_word, True, (255, 255, 255))
-                                text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, (SCREEN_HEIGHT // 2) - 40))
-                                text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, (SCREEN_HEIGHT // 2) + 20))
-                                screen.blit(text_win, text_rect)
-                                screen.blit(text_win2, text_rect2)
-                                start_time = pygame.time.get_ticks() #added
-                                draw_restart_button_end()
-                                # draw_quit_button()
-                                pygame.display.update()
+                                # font_win = pygame.font.Font(None, 60)
+                                # font_win2 = pygame.font.Font(None, 60)
+                                # text_win = font_win.render(f"You lost in {elapsed_time // 1000} seconds.", True, (255, 255, 255))
+                                # text_win2 = font_win2.render("Correct word: " + correct_word, True, (255, 255, 255))
+                                # text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, (SCREEN_HEIGHT // 2) - 40))
+                                # text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, (SCREEN_HEIGHT // 2) + 20))
+                                # screen.blit(text_win, text_rect)
+                                # screen.blit(text_win2, text_rect2)
+                                # start_time = pygame.time.get_ticks()
+                                # draw_restart_button_end()
+                                # pygame.display.update()
 
                                 while True:
                                     for event in pygame.event.get():
@@ -534,11 +504,8 @@ async def main():
                                                 frames = []
                                                 correct_word = randomword(valid_solutions)
                                                 bobcats = []
-                                                start_time = pygame.time.get_ticks() #added
+                                                start_time = pygame.time.get_ticks()
                                                 break
-                                            # elif quit_button_x <= mouse_x <= quit_button_x + quit_button_width and quit_button_y <= mouse_y <= quit_button_y + quit_button_height:
-                                            #     pygame.quit()
-                                            #     exit()
                                     else:
                                         continue
                                     break
@@ -665,11 +632,9 @@ async def main():
                                 text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
                                 screen.fill('aquamarine4')
                                 screen.blit(text_win, text_rect)
-                                start_time = pygame.time.get_ticks() #added
+                                start_time = pygame.time.get_ticks()
                                 draw_restart_button_end()
-                                # draw_quit_button()
                                 pygame.display.update()
-                                #pygame.time.delay(5000)
 
                                 #Click functionality for restart and quit
                                 guess = ""
@@ -684,11 +649,8 @@ async def main():
                                                 falling_image = bobcat_image
                                                 correct_word = randomword(valid_solutions)
                                                 bobcats = []
-                                                start_time = pygame.time.get_ticks() #added
+                                                start_time = pygame.time.get_ticks()
                                                 break
-                                            # elif quit_button_x <= mouse_x <= quit_button_x + quit_button_width and quit_button_y <= mouse_y <= quit_button_y + quit_button_height:
-                                            #     pygame.quit()
-                                            #     exit()
                                     else:
                                         continue
                                     break
@@ -696,30 +658,28 @@ async def main():
                                 # pygame.quit()
                                 # exit()
                             elif len(guesses) == 6 and guess != correct_word:
-                                # font_win = pygame.font.Font(None, 60)
-                                # text_win = font_win.render("You lose! Correct word: " + correct_word, True, (255, 255, 255))
-                                # text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
-                                # screen.fill('aquamarine4')
-                                # screen.blit(text_win, text_rect)
-                                # start_time = pygame.time.get_ticks() #added
-                                # draw_restart_button_end()
-                                # draw_quit_button()
-                                # pygame.display.update()
+                                font_win = pygame.font.Font(None, 60)
+                                text_win = font_win.render("You lose! Correct word: " + correct_word, True, (255, 255, 255))
+                                text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
+                                screen.fill('aquamarine4')
+                                screen.blit(text_win, text_rect)
+                                start_time = pygame.time.get_ticks() #added
+                                draw_restart_button_end()
+                                pygame.display.update()
 
                                 #New function to show elapsed time on two separate lines.
                                 #Implemented to use with win/loss removed
-                                font_win = pygame.font.Font(None, 60)
-                                font_win2 = pygame.font.Font(None, 60)
-                                text_win = font_win.render(f"You lost in {elapsed_time // 1000} seconds.", True, (255, 255, 255))
-                                text_win2 = font_win2.render("Correct word: " + correct_word, True, (255, 255, 255))
-                                text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, (SCREEN_HEIGHT // 2) - 40))
-                                text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, (SCREEN_HEIGHT // 2) + 20))
-                                screen.blit(text_win, text_rect)
-                                screen.blit(text_win2, text_rect2)
-                                start_time = pygame.time.get_ticks() #added
-                                draw_restart_button_end()
-                                # draw_quit_button()
-                                pygame.display.update()
+                                # font_win = pygame.font.Font(None, 60)
+                                # font_win2 = pygame.font.Font(None, 60)
+                                # text_win = font_win.render(f"You lost in {elapsed_time // 1000} seconds.", True, (255, 255, 255))
+                                # text_win2 = font_win2.render("Correct word: " + correct_word, True, (255, 255, 255))
+                                # text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, (SCREEN_HEIGHT // 2) - 40))
+                                # text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, (SCREEN_HEIGHT // 2) + 20))
+                                # screen.blit(text_win, text_rect)
+                                # screen.blit(text_win2, text_rect2)
+                                # start_time = pygame.time.get_ticks()
+                                # draw_restart_button_end()
+                                # pygame.display.update()
 
 
 
@@ -736,11 +696,8 @@ async def main():
                                                 falling_image = bobcat_image
                                                 correct_word = randomword(valid_solutions)
                                                 bobcats = []
-                                                start_time = pygame.time.get_ticks() #added
+                                                start_time = pygame.time.get_ticks()
                                                 break
-                                            # elif quit_button_x <= mouse_x <= quit_button_x + quit_button_width and quit_button_y <= mouse_y <= quit_button_y + quit_button_height:
-                                            #     pygame.quit()
-                                            #     exit()
                                     else:
                                         continue
                                     break
