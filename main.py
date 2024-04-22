@@ -189,7 +189,6 @@ def animateGuess(guess, guessnum, correct, frame):
             screen.blit(incorrect_surface, (x_coord * column, y_coord * row))
         screen.blit(text, (text_x, text_y))
 
-
 def displayWords(guesses, correct):
     x_coord = 120
     y_coord = 100
@@ -308,6 +307,7 @@ def draw_enter_button():
     text = font.render("Enter", True, (255, 255, 255))
     text_rect = text.get_rect(center=(SCREEN_WIDTH - enter_button_width // 2 - 10, SCREEN_HEIGHT - enter_button_height // 2 - 10))
     screen.blit(text, text_rect)
+
 class Bobcat:
     x_coord = 0
 
@@ -405,6 +405,7 @@ async def main():
                         falling_image = bobcat_image
                         correct_word = randomword(valid_solutions)
                         bobcats = []
+                        new_word = False
                         start_time = pygame.time.get_ticks() #added
                         continue
 
@@ -462,8 +463,10 @@ async def main():
                                                 guesses = []
                                                 guess = ""
                                                 frames = []
+                                                falling_image = bobcat_image
                                                 correct_word = randomword(valid_solutions)
                                                 bobcats = []
+                                                new_word = False
                                                 start_time = pygame.time.get_ticks()
                                                 break
                                     else:
@@ -500,10 +503,11 @@ async def main():
                                             if end_restart_button_x <= mouse_x <= end_restart_button_x + end_button_width and end_restart_button_y <= mouse_y <= end_restart_button_y + end_button_height:
                                                 guesses = []
                                                 guess = ""
-                                                falling_image = bobcat_image
                                                 frames = []
+                                                falling_image = bobcat_image
                                                 correct_word = randomword(valid_solutions)
                                                 bobcats = []
+                                                new_word = False
                                                 start_time = pygame.time.get_ticks()
                                                 break
                                     else:
@@ -649,6 +653,7 @@ async def main():
                                                 falling_image = bobcat_image
                                                 correct_word = randomword(valid_solutions)
                                                 bobcats = []
+                                                new_word = False
                                                 start_time = pygame.time.get_ticks()
                                                 break
                                     else:
@@ -696,6 +701,7 @@ async def main():
                                                 falling_image = bobcat_image
                                                 correct_word = randomword(valid_solutions)
                                                 bobcats = []
+                                                new_word = False
                                                 start_time = pygame.time.get_ticks()
                                                 break
                                     else:
