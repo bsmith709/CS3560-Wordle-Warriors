@@ -2,7 +2,7 @@ import asyncio
 import random
 from sys import exit
 import pygame
-import pygame.mixer #added
+import pygame.mixer
 
 # Opens txt file in read mode
 # "with" ensures that file closes after reading
@@ -52,8 +52,9 @@ sonic = pygame.image.load('assets/sanic.png')
 sigma = pygame.image.load('assets/sigma.png')
 spike = pygame.image.load('assets/spike.png')
 
-audio_among = pygame.mixer.Sound('assets/output.wav') #added
-audio_drake = pygame.mixer.Sound('assets/output2.wav') #added
+#Audio sounds for easter eggs
+audio_among = pygame.mixer.Sound('assets/output.wav') 
+audio_drake = pygame.mixer.Sound('assets/output2.wav')
 
 restart_image = pygame.image.load('assets/restart.png')
 quit_image = pygame.image.load('assets/quit.png')
@@ -86,6 +87,11 @@ quit_image = pygame.transform.scale(quit_image, (50, 47))
 
 # Initialize the game clock to control FPS
 clock = pygame.time.Clock()
+
+#Initializes timer
+start_time = pygame.time.get_ticks()
+elapsed_time = 0
+elapsed_time = elapsed_time // 1000 #Converts from milliseconds to seconds
 
 # 'Surfaces' are images that can be displayed using the blit() function
 width = 80
@@ -322,14 +328,33 @@ async def main():
         correct_word = randomword(valid_solutions)
         bobcats = []
 
+        #added
+        start_time = pygame.time.get_ticks()
+
 
         # Main game loop
         while True:
 
-            #screen.fill('gray26')
             screen.fill('aquamarine4')
             bobcats = displayBobcats(bobcats)
             draw_enter_button()
+
+            #Timer start + stop
+            #added
+            # elapsed_time = 0
+            # elapsed_time = elapsed_time // 1000 #Converts from milliseconds to seconds  
+
+            current_time = pygame.time.get_ticks()
+            elapsed_time = (current_time - start_time) // 1000
+
+            font = pygame.font.Font(None, 36)
+            timer_text = pygame.font.Font(None, 30)
+            timer_text = timer_text.render(f"Time: {elapsed_time} seconds", True, (255, 255, 255))
+            screen.blit(timer_text, (10, 10))
+
+
+            current_time = pygame.time.get_ticks()
+            elapsed_time = current_time - start_time
             # This is the event loop it checks for any player input
             for event in pygame.event.get():
                 # Create event for the user clicking the mouse
@@ -364,6 +389,7 @@ async def main():
                         falling_image = bobcat_image
                         correct_word = randomword(valid_solutions)
                         bobcats = []
+                        start_time = pygame.time.get_ticks() #added
                         continue
                     # If mouse clicks enter button
                     if SCREEN_WIDTH - enter_button_width - 10 <= mouse_x <= SCREEN_WIDTH - 10 and SCREEN_HEIGHT - enter_button_height - 10 <= mouse_y <= SCREEN_HEIGHT - 10:
@@ -371,14 +397,15 @@ async def main():
                             new_word = True
                             guesses.append(guess)
                             frames = []
+                            #Easter eggs
                             if guess == "chang":
                                 falling_image = chang
                             if guess == "among":
                                 falling_image = among
-                                audio_among.play() #added
+                                audio_among.play()
                             if guess == "drake":
                                 falling_image = drake 
-                                audio_drake.play() #added
+                                audio_drake.play()
                             if guess == "homer":
                                 falling_image = homer
                             if guess == "sonic":
@@ -394,6 +421,7 @@ async def main():
                                 screen.blit(text_win, text_rect)
                                 draw_restart_button_end()
                                 draw_quit_button()
+
                                 pygame.display.update()
                                 while True:
                                     for event in pygame.event.get():
@@ -405,6 +433,7 @@ async def main():
                                                 frames = []
                                                 correct_word = randomword(valid_solutions)
                                                 bobcats = []
+                                                start_time = pygame.time.get_ticks() #added
                                                 break
                                             elif quit_button_x <= mouse_x <= quit_button_x + quit_button_width and quit_button_y <= mouse_y <= quit_button_y + quit_button_height:
                                                 pygame.quit()
@@ -417,6 +446,7 @@ async def main():
                                 text_win = font_win.render("You lose! Correct word: " + correct_word, True, (255, 255, 255))
                                 text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
                                 screen.blit(text_win, text_rect)
+                                start_time = pygame.time.get_ticks() #added
                                 draw_restart_button_end()
                                 draw_quit_button()
                                 pygame.display.update()
@@ -431,6 +461,7 @@ async def main():
                                                 frames = []
                                                 correct_word = randomword(valid_solutions)
                                                 bobcats = []
+                                                start_time = pygame.time.get_ticks() #added
                                                 break
                                             elif quit_button_x <= mouse_x <= quit_button_x + quit_button_width and quit_button_y <= mouse_y <= quit_button_y + quit_button_height:
                                                 pygame.quit()
@@ -533,6 +564,7 @@ async def main():
                             guesses.append(guess)
                             new_word = True
                             frames = []
+                            #Easter eggs
                             if guess == "chang":
                                 falling_image = chang
                             if guess == "among":
@@ -555,6 +587,7 @@ async def main():
                                 text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
                                 screen.fill('aquamarine4')
                                 screen.blit(text_win, text_rect)
+                                start_time = pygame.time.get_ticks() #added
                                 draw_restart_button_end()
                                 draw_quit_button()
                                 pygame.display.update()
@@ -573,6 +606,7 @@ async def main():
                                                 falling_image = bobcat_image
                                                 correct_word = randomword(valid_solutions)
                                                 bobcats = []
+                                                start_time = pygame.time.get_ticks() #added
                                                 break
                                             elif quit_button_x <= mouse_x <= quit_button_x + quit_button_width and quit_button_y <= mouse_y <= quit_button_y + quit_button_height:
                                                 pygame.quit()
@@ -589,6 +623,7 @@ async def main():
                                 text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
                                 screen.fill('aquamarine4')
                                 screen.blit(text_win, text_rect)
+                                start_time = pygame.time.get_ticks() #added
                                 draw_restart_button_end()
                                 draw_quit_button()
                                 pygame.display.update()
@@ -607,6 +642,7 @@ async def main():
                                                 falling_image = bobcat_image
                                                 correct_word = randomword(valid_solutions)
                                                 bobcats = []
+                                                start_time = pygame.time.get_ticks() #added
                                                 break
                                             elif quit_button_x <= mouse_x <= quit_button_x + quit_button_width and quit_button_y <= mouse_y <= quit_button_y + quit_button_height:
                                                 pygame.quit()
