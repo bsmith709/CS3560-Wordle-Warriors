@@ -69,6 +69,7 @@ restart_image = pygame.image.load('assets/restart.png').convert_alpha()
 solver_image = pygame.image.load('assets/robot_AI.png').convert_alpha()
 hint_image = pygame.image.load('assets/hint.png').convert_alpha()
 timer_image = pygame.image.load('assets/timer.png').convert_alpha()
+backspace_image = pygame.image.load('assets/backspace.png').convert_alpha()
 
 #Uniform Button Size
 button_width = 50 
@@ -91,8 +92,8 @@ timer_image_x = 10
 timer_image_y = 10
 
 #Backspace Button Coordinates
-backspace_button_x = 600
-backspace_button_y = 680
+backspace_button_x = 594
+backspace_button_y = 685
 
 #Enter button size + color
 enter_button_width = 100
@@ -110,7 +111,7 @@ restart_image = pygame.transform.smoothscale(restart_image, (50, 47))
 solver_image = pygame.transform.smoothscale(solver_image, (50, 47))
 hint_image = pygame.transform.smoothscale(hint_image, (50, 47))
 timer_image = pygame.transform.smoothscale(timer_image, (35, 33))
-backspace_image = pygame.transform.smoothscale(hint_image, (50, 47))
+backspace_image = pygame.transform.smoothscale(backspace_image, (100, 35))
 
 # Initialize the game clock to control FPS
 clock = pygame.time.Clock()
