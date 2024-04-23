@@ -338,7 +338,7 @@ def displayBobcats(bobcats):
 
     while(len(bobcats) < 50):
         speed = random.randint(2, 4)
-        coords = (random.randint(-50, 750), random.randint(-300, -100))
+        coords = (random.randint(-50, 750), random.randint(-300, -00))
         new_bobcat = Bobcat(speed, coords)
         bobcats.append(new_bobcat)
 
@@ -517,12 +517,12 @@ async def main():
                         continue
 
                     # Check if mouse clicks within bounds of backspace button. If so, remove last letter from guess
-                    if backspace_button_x <= mouse_x <= backspace_button_x + button_width and backspace_button_y <= mouse_y <= backspace_button_y + button_height:
+                    if backspace_button_x <= mouse_x <= backspace_button_x + 30 and backspace_button_y <= mouse_y <= backspace_button_y + 30:
                         if len(guess) > 0:
                             guess = guess[0:-1]
                             frames = frames[0:-1]
 
-                    if enter_button_x <= mouse_x <= enter_button_x + 100 and enter_button_y <= mouse_y <= enter_button_y + 64:
+                    if enter_button_x <= mouse_x <= enter_button_x + 82 and enter_button_y <= mouse_y <= enter_button_y + 30:
                         if mouse_x <= 600 and mouse_y <= 760:
                             pass
                         elif guess in valid_words and guess not in guesses:
