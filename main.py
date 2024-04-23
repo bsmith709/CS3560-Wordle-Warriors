@@ -401,6 +401,14 @@ def ai_solve(words, guessed, unusable_letters, contains_letters, correct_letters
 
     return word_scores[0][1]
 
+def notValidWordText(text_display_time):
+    if(text_display_time > 0):
+        font = pygame.font.Font(None, 36)
+        text_not_real_word = font.render("Please only enter valid words!", True, 'white')
+        screen.blit(text_not_real_word, (SCREEN_WIDTH // 2 - 170, SCREEN_HEIGHT // 2 - 328))
+        text_display_time -= 1
+    return text_display_time
+
 async def main():
     global falling_image
     if __name__ == "__main__": #print game board w squares
@@ -413,6 +421,8 @@ async def main():
         guess = ""
         correct_word = randomword(valid_solutions)
         bobcats = []
+        notValidWord = False
+        text_display_time = 0
 
         #Starts timer
         start_time = pygame.time.get_ticks()
@@ -915,6 +925,9 @@ async def main():
                                 # pygame.quit()
                                 # exit()
                             guess = ""
+                        elif guess not in valid_words and len(guess) == 5:
+                            notValidWord = True
+                            text_display_time = 120
                         pass
 
                 # This means the user closed the window
@@ -943,6 +956,10 @@ async def main():
             draw_solver_button()
             draw_hint_button()
             draw_backspace_button()
+            if notValidWord:
+                text_display_time = notValidWordText(text_display_time)
+                if text_display_time == 0:
+                    notValidWord = False
             # Updates the display with all new objects
             pygame.display.update()
 
