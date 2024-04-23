@@ -522,7 +522,7 @@ async def main():
                             guess = guess[0:-1]
                             frames = frames[0:-1]
 
-                    if SCREEN_WIDTH - enter_button_x <= mouse_x <= SCREEN_WIDTH and SCREEN_HEIGHT - enter_button_y <= mouse_y <= SCREEN_HEIGHT:
+                    if enter_button_x <= mouse_x <= enter_button_x + 100 and enter_button_y <= mouse_y <= enter_button_y + 64:
                         if mouse_x <= 600 and mouse_y <= 760:
                             pass
                         elif guess in valid_words and guess not in guesses:
