@@ -1,3 +1,5 @@
+import sys
+import os
 import asyncio
 import random
 from sys import exit
@@ -6,13 +8,17 @@ import pygame
 import time
 #import pygame.mixer
 
+exe_dir = os.path.dirname(sys.executable)
+wordlist_file_path = os.path.join(exe_dir, 'wordlist.txt')
+valid_wordle_words_file_path = os.path.join(exe_dir, 'valid-wordle-words.txt')
+
 # Opens txt file in read mode
 # "with" ensures that file closes after reading
-with open('wordlist.txt', 'r') as file:
+with open(wordlist_file_path, 'r') as file:
     # Removes leading and trailing whitespaces and converts words to lower (implemented to work with any list file)
     valid_solutions = [word.strip().lower() for word in file.readlines()]
 
-with open('valid-wordle-words.txt', 'r') as file:
+with open(valid_wordle_words_file_path, 'r') as file:
     # Removes leading and trailing whitespaces and converts words to lower (implemented to work with any list file)
     valid_words = [word.strip().lower() for word in file.readlines()]
 
@@ -255,6 +261,17 @@ def displayGuess(guess, row, frames):
         screen.blit(text, (text_x, text_y))
 
 def displayKeyboard(guesses, correct):
+    """
+    Display Keyboard Function
+
+    Function to display the current status of the keyboard.
+
+    Example:
+        Display the keyboard with letters in the array of strings that are correct in green, partially correct in yellow, and incorrect in dark gray
+
+    Usage:
+        displayKeyboard(['words', 'chang', 'ohiou'], 'watch')
+    """
     x_cord = SCREEN_WIDTH - 600
     y_cord = SCREEN_HEIGHT - 110
     # If there are no guesses display all letters as unguessed
@@ -326,6 +343,15 @@ def draw_restart_button_end():
     screen.blit(restart_image, (restart_button_x, restart_button_y))
 
 def draw_enter_button():
+    """
+    Draw Enter Button Function
+
+    Function to display the enter button image on the screen
+
+    Usage:
+        draw_enter_button()
+
+    """
     screen.blit(enter_image, (enter_button_x, enter_button_y))
 
 def draw_backspace_button():
@@ -406,6 +432,18 @@ def ai_solve(words, guessed, unusable_letters, contains_letters, correct_letters
     return word_scores[0][1]
 
 def notValidWordText(text_display_time):
+    """ 
+    Not Valid Words Function
+
+    Function to display text on the screen when the user inputs an invalid word
+    The text will display for 2 seconds before disappearing
+
+    Example:
+        Display text "Please only enter valid words!" for 2 seconds
+        
+    Usage:
+        notValidWordText(120)
+    """
     if(text_display_time > 0):
         font = pygame.font.Font(None, 36)
         text_not_real_word = font.render("Please only enter valid words!", True, 'white')
