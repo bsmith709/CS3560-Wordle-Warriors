@@ -427,18 +427,41 @@ async def main():
             bobcats = displayBobcats(bobcats)
             draw_enter_button()
 
-            #Displays time in seconds and milliseconds. Example (7.42 seconds)
-            current_time = pygame.time.get_ticks()
-            elapsed_time = (current_time - start_time) / 1000.0
-            seconds = int(elapsed_time)
-            milliseconds = int((elapsed_time - seconds) * 100)
-            elapsed_time_str = f"{seconds}.{milliseconds}"
+            """
+            Game Timer
 
-            font = pygame.font.Font(None, 36)
+            Provides functionality to display time in seconds and milliseconds to be displayed on the top-left
+            of the game board. Time is displayed in seconds and milliseconds. Example (7.42 seconds)
+            
+            Example:
+                Display time as 7.43 seconds
+
+            Usage:
+                Initialize start_time to effectively track time
+
+            Example:
+                >>> start_time = pygame.time.get_ticks()
+            """
+            #get current time in milliseconds
+            current_time = pygame.time.get_ticks()
+            #calculates elapsed time and converts to seconds
+            elapsed_time = (current_time - start_time) / 1000.0
+            #extracts seconds
+            seconds = int(elapsed_time)
+            #extracts milliseconds
+            milliseconds = int((elapsed_time - seconds) * 100)
+            #formats a string with format SS:MiMi
+            elapsed_time_str = f"{seconds}.{milliseconds}"
+            ##creates a font object of size 30
+
+            font = pygame.font.Font(None, 36) 
             timer_text = pygame.font.Font(None, 30)
+            #draws timer icon
             draw_timer_button()
-            timer_text = timer_text.render(f"{elapsed_time_str}", True, (255, 255, 255))
-            screen.blit(timer_text, (48, 17))
+            #renders font using specified color and anti-aliasing
+            timer_text = timer_text.render(f"{elapsed_time_str}", True, (255, 255, 255)) 
+            #draws text on screen
+            screen.blit(timer_text, (48, 17)) 
 
             # This is the event loop it checks for any player input
             for event in pygame.event.get():
