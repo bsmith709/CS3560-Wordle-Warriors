@@ -693,12 +693,16 @@ async def main():
                                 falling_image = siege
                                 #audio_siege.play()
                             if guess == correct_word:
+                                displayKeyboard(guesses, correct_word)
+                                displayWords(guesses, correct_word)
                                 font_win = pygame.font.Font(None, 60)
-                                text_win = font_win.render("You win!", True, (255, 255, 255))
+                                text_win = font_win.render("You win! Correct word: " + correct_word, True, (255, 255, 255))
                                 text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
-                                screen.fill('aquamarine4')
+                                overlay_surface = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.SRCALPHA)
+                                overlay_surface.fill((0, 0, 0, 128))  # Transparent black overlay
+                                screen.blit(overlay_surface, (0, 0))
                                 screen.blit(text_win, text_rect)
-                                start_time = pygame.time.get_ticks()
+                                start_time = pygame.time.get_ticks() #added
                                 draw_restart_button_end()
                                 pygame.display.update()
 
@@ -725,10 +729,14 @@ async def main():
                                 # pygame.quit()
                                 # exit()
                             elif len(guesses) == 6 and guess != correct_word:
+                                displayKeyboard(guesses, correct_word)
+                                displayWords(guesses, correct_word)
                                 font_win = pygame.font.Font(None, 60)
                                 text_win = font_win.render("You lose! Correct word: " + correct_word, True, (255, 255, 255))
                                 text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
-                                screen.fill('aquamarine4')
+                                overlay_surface = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.SRCALPHA)
+                                overlay_surface.fill((0, 0, 0, 128))  # Transparent black overlay
+                                screen.blit(overlay_surface, (0, 0))
                                 screen.blit(text_win, text_rect)
                                 start_time = pygame.time.get_ticks() #added
                                 draw_restart_button_end()
