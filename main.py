@@ -90,9 +90,13 @@ hint_button_y = 130
 timer_image_x = 10
 timer_image_y = 10
 
+#Backspace Button Coordinates
+backspace_button_x = 600
+backspace_button_y = 680
+
 #Enter button size + color
 enter_button_width = 100
-enter_button_height = 50
+enter_button_height = 35
 enter_button_color = (0, 70, 0)
 
 #End Restart Button size + coordinates (To be removed?)
@@ -106,6 +110,7 @@ restart_image = pygame.transform.smoothscale(restart_image, (50, 47))
 solver_image = pygame.transform.smoothscale(solver_image, (50, 47))
 hint_image = pygame.transform.smoothscale(hint_image, (50, 47))
 timer_image = pygame.transform.smoothscale(timer_image, (35, 33))
+backspace_image = pygame.transform.smoothscale(hint_image, (50, 47))
 
 # Initialize the game clock to control FPS
 clock = pygame.time.Clock()
@@ -310,11 +315,14 @@ def draw_restart_button_end():
     screen.blit(restart_image, (restart_button_x, restart_button_y))#removed "end_"
 
 def draw_enter_button():
-    pygame.draw.rect(screen, enter_button_color, (SCREEN_WIDTH - enter_button_width - 10, SCREEN_HEIGHT - enter_button_height - 10, enter_button_width, enter_button_height))
+    pygame.draw.rect(screen, enter_button_color, (SCREEN_WIDTH - enter_button_width - 155, SCREEN_HEIGHT - enter_button_height - 3, enter_button_width, enter_button_height))
     font = pygame.font.Font(None, 36)
     text = font.render("Enter", True, (255, 255, 255))
-    text_rect = text.get_rect(center=(SCREEN_WIDTH - enter_button_width // 2 - 10, SCREEN_HEIGHT - enter_button_height // 2 - 10))
+    text_rect = text.get_rect(center=(SCREEN_WIDTH - enter_button_width // 2 - 155, SCREEN_HEIGHT - enter_button_height // 2 - 3))
     screen.blit(text, text_rect)
+
+def draw_backspace_button():
+    screen.blit(backspace_image, (backspace_button_x, backspace_button_y))
 
 class Bobcat:
     x_coord = 0
@@ -360,7 +368,7 @@ def ai_legal(word, guessed, unusable_letters, contains_letters, correct_letters)
             return False
 
     # Check if the word contains the correct letters in the correct positions
-    for letter, position in correct_letters.items():
+    for letter, position in correct_letters:
         if word[position] != letter:
             return False
 
@@ -482,6 +490,8 @@ async def main():
                                 else:
                                     contains_letters.append(letter)
                         guess = ai_solve(valid_words, guesses, unusable_letters, contains_letters, correct_letters)
+                        for letter in guess:
+                            frames.append(0)
                         continue
 
                     #Same for hint
@@ -500,7 +510,13 @@ async def main():
                         guess = ai_solve(valid_words, guesses, unusable_letters, contains_letters, correct_letters)
                         continue
 
-                    if SCREEN_WIDTH - enter_button_width - 10 <= mouse_x <= SCREEN_WIDTH - 10 and SCREEN_HEIGHT - enter_button_height - 10 <= mouse_y <= SCREEN_HEIGHT - 10:
+                    # Check if mouse clicks within bounds of backspace button. If so, remove last letter from guess
+                    if backspace_button_x <= mouse_x <= backspace_button_x + button_width and backspace_button_y <= mouse_y <= backspace_button_y + button_height:
+                        if len(guess) > 0:
+                            guess = guess[0:-1]
+                            frames = frames[0:-1]
+
+                    if SCREEN_WIDTH - enter_button_width - 155 <= mouse_x <= SCREEN_WIDTH - 155 and SCREEN_HEIGHT - enter_button_height - 3 <= mouse_y <= SCREEN_HEIGHT - 3:
                         if guess in valid_words and guess not in guesses:
                             new_word = True
                             guesses.append(guess)
@@ -923,6 +939,7 @@ async def main():
             draw_restart_button()
             draw_solver_button()
             draw_hint_button()
+            draw_backspace_button()
             # Updates the display with all new objects
             pygame.display.update()
 
