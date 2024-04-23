@@ -951,20 +951,20 @@ async def main():
             displayGuess(guess, len(guesses), frames)
             displayKeyboard(guesses, correct_word)
 
-            restart_text = pygame.font.Font(None, 30)
+            restart_text = pygame.font.Font(None, 20)
             draw_restart_button()
             restart_text = restart_text.render("Restart", True, (255, 255, 255))
-            screen.blit(restart_text, (48, 17))
+            screen.blit(restart_text, (742, 60))
 
-            solver_text = pygame.font.Font(None, 30)
+            solver_text = pygame.font.Font(None, 20)
             draw_solver_button()
             solver_text = solver_text.render("Solve", True, (255, 255, 255))
-            screen.blit(solver_text, (48, 17))
+            screen.blit(solver_text, (746, 140))
 
-            hint_text = pygame.font.Font(None, 30)
+            hint_text = pygame.font.Font(None, 20)
             draw_hint_button()
             hint_text = hint_text.render("Hint", True, (255, 255, 255))
-            screen.blit(hint_text, (48, 17))
+            screen.blit(hint_text, (752, 220))
 
             draw_enter_button()
             draw_backspace_button()
