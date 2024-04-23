@@ -584,6 +584,7 @@ async def main():
                                                     correct_word = randomword(valid_solutions)
                                                     bobcats = []
                                                     new_word = False
+                                                    hint_used = False
                                                     start_time = pygame.time.get_ticks()
                                                     break
                                         else:
@@ -626,6 +627,7 @@ async def main():
                                                     correct_word = randomword(valid_solutions)
                                                     bobcats = []
                                                     new_word = False
+                                                    hint_used = False
                                                     start_time = pygame.time.get_ticks()
                                                     break
                                         else:
@@ -726,6 +728,7 @@ async def main():
                                                 correct_word = randomword(valid_solutions)
                                                 bobcats = []
                                                 new_word = False
+                                                hint_used = False
                                                 start_time = pygame.time.get_ticks()
                                                 break
                                     else:
@@ -768,6 +771,7 @@ async def main():
                                                 correct_word = randomword(valid_solutions)
                                                 bobcats = []
                                                 new_word = False
+                                                hint_used = False
                                                 start_time = pygame.time.get_ticks()
                                                 break
                                     else:
@@ -932,6 +936,7 @@ async def main():
                                                 correct_word = randomword(valid_solutions)
                                                 bobcats = []
                                                 new_word = False
+                                                hint_used = False
                                                 start_time = pygame.time.get_ticks()
                                                 break
                                     else:
@@ -978,6 +983,7 @@ async def main():
                                                 correct_word = randomword(valid_solutions)
                                                 bobcats = []
                                                 new_word = False
+                                                hint_used = False
                                                 start_time = pygame.time.get_ticks()
                                                 break
                                     else:
