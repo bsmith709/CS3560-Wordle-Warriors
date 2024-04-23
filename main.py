@@ -401,6 +401,16 @@ def ai_solve(words, guessed, unusable_letters, contains_letters, correct_letters
 
     return word_scores[0][1]
 
+""" 
+    Function to display text on the screen when the user inputs an invalid word
+    The text will display for 2 seconds before disappearing
+
+    Example:
+        Display text "Please only enter valid words!" for 2 seconds
+        
+    Usage: notValidWordText(120)
+
+"""
 def notValidWordText(text_display_time):
     if(text_display_time > 0):
         font = pygame.font.Font(None, 36)
