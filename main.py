@@ -300,7 +300,7 @@ def draw_hint_button():
     screen.blit(hint_image, (hint_button_x, hint_button_y))
 
 def draw_restart_button_end():
-    screen.blit(restart_image, (end_restart_button_x, end_restart_button_y))
+    screen.blit(restart_image, (restart_button_x, restart_button_y))#removed "end_"
 
 def draw_enter_button():
     pygame.draw.rect(screen, enter_button_color, (SCREEN_WIDTH - enter_button_width - 10, SCREEN_HEIGHT - enter_button_height - 10, enter_button_width, enter_button_height))
@@ -510,18 +510,43 @@ async def main():
                                 falling_image = siege
                                 #audio_siege.play()
                             if guess == correct_word:
-                                font_win = pygame.font.Font(None, 60)
+                                # font_win = pygame.font.Font(None, 60)
+                                # text_win = font_win.render("You win!", True, (255, 255, 255))
+                                # text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
+                                # screen.blit(text_win, text_rect)
+                                # draw_restart_button_end()
+
+                                # New function to show elapsed time on three separate lines.
+                                # Implemented to use with win/loss removed
+                                screen.fill('aquamarine4')
+                                displayKeyboard(guesses, correct_word)
+                                displayWords(guesses, correct_word)
+                                font_win = pygame.font.Font(None, 30)
+                                font_win2 = pygame.font.Font(None, 30)
+                                font_win3 = pygame.font.Font(None, 30)
                                 text_win = font_win.render("You win!", True, (255, 255, 255))
-                                text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
+                                text_win2 = font_win2.render(f"Time Taken: {elapsed_time // 1000} seconds.", True, (255, 255, 255))
+                                text_win3 = font_win3.render("Correct Word: " + correct_word, True, (255, 255, 255))
+                                text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, 25)) #removed screen_height // 2 - 40
+                                text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, 50)) #removed screen height // 2 + 20
+                                text_rect3 = text_win3.get_rect(center=(SCREEN_WIDTH // 2, 75))
+                                overlay_surface = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.SRCALPHA)
+                                overlay_surface.fill((0, 0, 0, 128))  # Transparent black overlay
+                                screen.blit(overlay_surface, (0, 0))
                                 screen.blit(text_win, text_rect)
+                                screen.blit(text_win2, text_rect2)
+                                screen.blit(text_win3, text_rect3)
+                                start_time = pygame.time.get_ticks()
                                 draw_restart_button_end()
+                                pygame.display.update()
 
                                 pygame.display.update()
                                 while True:
                                     for event in pygame.event.get():
                                         if event.type == pygame.MOUSEBUTTONDOWN:
                                             mouse_x, mouse_y = pygame.mouse.get_pos()
-                                            if end_restart_button_x <= mouse_x <= end_restart_button_x + end_button_width and end_restart_button_y <= mouse_y <= end_restart_button_y + end_button_height:
+                                            #changed end_restart_button_x to restart_button coordinates. added
+                                            if restart_button_x <= mouse_x <= restart_button_x + end_button_width and restart_button_y <= mouse_y <= restart_button_y + button_height:
                                                 guesses = []
                                                 guess = ""
                                                 frames = []
@@ -535,14 +560,14 @@ async def main():
                                         continue
                                     break
                             elif len(guesses) == 6 and guess != correct_word:
-                                font_win = pygame.font.Font(None, 60)
-                                text_win = font_win.render("You lose! Correct word: " + correct_word, True, (255, 255, 255))
-                                text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
-                                screen.fill('aquamarine4')
-                                screen.blit(text_win, text_rect)
-                                start_time = pygame.time.get_ticks()
-                                draw_restart_button_end()
-                                pygame.display.update()
+                                # font_win = pygame.font.Font(None, 60)
+                                # text_win = font_win.render("You lose! Correct word: " + correct_word, True, (255, 255, 255))
+                                # text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
+                                # screen.fill('aquamarine4')
+                                # screen.blit(text_win, text_rect)
+                                # start_time = pygame.time.get_ticks()
+                                # draw_restart_button_end()
+                                # pygame.display.update()
 
                                 # #New function to show elapsed time on two separate lines.
                                 # #Implemented to use with win/loss removed
@@ -558,11 +583,36 @@ async def main():
                                 # draw_restart_button_end()
                                 # pygame.display.update()
 
+                                # New function to show elapsed time on three separate lines.
+                                # Implemented to use with win/loss removed
+                                screen.fill('aquamarine4')
+                                displayKeyboard(guesses, correct_word)
+                                displayWords(guesses, correct_word)
+                                font_win = pygame.font.Font(None, 30)
+                                font_win2 = pygame.font.Font(None, 30)
+                                font_win3 = pygame.font.Font(None, 30)
+                                text_win = font_win.render("You lost.", True, (255, 255, 255))
+                                text_win2 = font_win2.render(f"Time Taken: {elapsed_time // 1000} seconds.", True, (255, 255, 255))
+                                text_win3 = font_win3.render("Correct Word: " + correct_word, True, (255, 255, 255))
+                                text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, 25)) #removed screen_height // 2 - 40
+                                text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, 50)) #removed screen height // 2 + 20
+                                text_rect3 = text_win3.get_rect(center=(SCREEN_WIDTH // 2, 75))
+                                overlay_surface = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.SRCALPHA)
+                                overlay_surface.fill((0, 0, 0, 128))  # Transparent black overlay
+                                screen.blit(overlay_surface, (0, 0))
+                                screen.blit(text_win, text_rect)
+                                screen.blit(text_win2, text_rect2)
+                                screen.blit(text_win3, text_rect3)
+                                start_time = pygame.time.get_ticks()
+                                draw_restart_button_end()
+                                pygame.display.update()
+
                                 while True:
                                     for event in pygame.event.get():
                                         if event.type == pygame.MOUSEBUTTONDOWN:
                                             mouse_x, mouse_y = pygame.mouse.get_pos()
-                                            if end_restart_button_x <= mouse_x <= end_restart_button_x + end_button_width and end_restart_button_y <= mouse_y <= end_restart_button_y + end_button_height:
+                                            #changed end_restart_button_x to restart_button coordinates. added
+                                            if restart_button_x <= mouse_x <= restart_button_x + end_button_width and restart_button_y <= mouse_y <= restart_button_y + end_button_height:
                                                 guesses = []
                                                 guess = ""
                                                 frames = []
@@ -693,17 +743,40 @@ async def main():
                                 falling_image = siege
                                 #audio_siege.play()
                             if guess == correct_word:
+                                # screen.fill('aquamarine4')
+                                # displayKeyboard(guesses, correct_word)
+                                # displayWords(guesses, correct_word)
+                                # font_win = pygame.font.Font(None, 60)
+                                # text_win = font_win.render("You win! Correct word: " + correct_word, True, (255, 255, 255))
+                                # text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
+                                # overlay_surface = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.SRCALPHA)
+                                # overlay_surface.fill((0, 0, 0, 128))  # Transparent black overlay
+                                # screen.blit(overlay_surface, (0, 0))
+                                # screen.blit(text_win, text_rect)
+                                # start_time = pygame.time.get_ticks() #added
+                                # draw_restart_button_end()
+                                # pygame.display.update()
+                                # New function to show elapsed time on three separate lines.
+                                # Implemented to use with win/loss removed
                                 screen.fill('aquamarine4')
                                 displayKeyboard(guesses, correct_word)
                                 displayWords(guesses, correct_word)
-                                font_win = pygame.font.Font(None, 60)
-                                text_win = font_win.render("You win! Correct word: " + correct_word, True, (255, 255, 255))
-                                text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
+                                font_win = pygame.font.Font(None, 30)
+                                font_win2 = pygame.font.Font(None, 30)
+                                font_win3 = pygame.font.Font(None, 30)
+                                text_win = font_win.render("You win!", True, (255, 255, 255))
+                                text_win2 = font_win2.render(f"Time Taken: {elapsed_time // 1000} seconds.", True, (255, 255, 255))
+                                text_win3 = font_win3.render("Correct Word: " + correct_word, True, (255, 255, 255))
+                                text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, 25)) #removed screen_height // 2 - 40
+                                text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, 50)) #removed screen height // 2 + 20
+                                text_rect3 = text_win3.get_rect(center=(SCREEN_WIDTH // 2, 75))
                                 overlay_surface = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.SRCALPHA)
                                 overlay_surface.fill((0, 0, 0, 128))  # Transparent black overlay
                                 screen.blit(overlay_surface, (0, 0))
                                 screen.blit(text_win, text_rect)
-                                start_time = pygame.time.get_ticks() #added
+                                screen.blit(text_win2, text_rect2)
+                                screen.blit(text_win3, text_rect3)
+                                start_time = pygame.time.get_ticks()
                                 draw_restart_button_end()
                                 pygame.display.update()
 
@@ -713,7 +786,8 @@ async def main():
                                     for event in pygame.event.get():
                                         if event.type == pygame.MOUSEBUTTONDOWN:
                                             mouse_x, mouse_y = pygame.mouse.get_pos()
-                                            if end_restart_button_x <= mouse_x <= end_restart_button_x + end_button_width and end_restart_button_y <= mouse_y <= end_restart_button_y + end_button_height:
+                                            #changed end_restart_button_x to restart_button coordinates. added
+                                            if restart_button_x <= mouse_x <= restart_button_x + end_button_width and restart_button_y <= mouse_y <= restart_button_y + end_button_height:
                                                 guesses = []
                                                 guess = ""
                                                 frames = []
@@ -730,33 +804,49 @@ async def main():
                                 # pygame.quit()
                                 # exit()
                             elif len(guesses) == 6 and guess != correct_word:
+                                # screen.fill('aquamarine4')
+                                # displayKeyboard(guesses, correct_word)
+                                # displayWords(guesses, correct_word)
+                                # font_win = pygame.font.Font(None, 60)
+                                # text_win = font_win.render("You lose! Correct word: " + correct_word, True, (255, 255, 255))
+                                # text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
+                                # overlay_surface = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.SRCALPHA)
+                                # overlay_surface.fill((0, 0, 0, 128))  # Transparent black overlay
+                                # screen.blit(overlay_surface, (0, 0))
+                                # screen.blit(text_win, text_rect)
+                                # start_time = pygame.time.get_ticks() #added
+                                # draw_restart_button_end()
+                                # pygame.display.update()
+
+                                # New function to show elapsed time on two separate lines.
+                                # Implemented to use with win/loss removed
                                 screen.fill('aquamarine4')
                                 displayKeyboard(guesses, correct_word)
                                 displayWords(guesses, correct_word)
-                                font_win = pygame.font.Font(None, 60)
-                                text_win = font_win.render("You lose! Correct word: " + correct_word, True, (255, 255, 255))
-                                text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2))
-                                overlay_surface = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.SRCALPHA)
-                                overlay_surface.fill((0, 0, 0, 128))  # Transparent black overlay
-                                screen.blit(overlay_surface, (0, 0))
-                                screen.blit(text_win, text_rect)
-                                start_time = pygame.time.get_ticks() #added
-                                draw_restart_button_end()
-                                pygame.display.update()
-
-                                #New function to show elapsed time on two separate lines.
-                                #Implemented to use with win/loss removed
                                 # font_win = pygame.font.Font(None, 60)
                                 # font_win2 = pygame.font.Font(None, 60)
                                 # text_win = font_win.render(f"You lost in {elapsed_time // 1000} seconds.", True, (255, 255, 255))
                                 # text_win2 = font_win2.render("Correct word: " + correct_word, True, (255, 255, 255))
-                                # text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, (SCREEN_HEIGHT // 2) - 40))
-                                # text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, (SCREEN_HEIGHT // 2) + 20))
-                                # screen.blit(text_win, text_rect)
-                                # screen.blit(text_win2, text_rect2)
-                                # start_time = pygame.time.get_ticks()
-                                # draw_restart_button_end()
-                                # pygame.display.update()
+                                # text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, 25)) #removed screen_height // 2 - 40
+                                # text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, 70)) #removed screen height // 2 + 20
+                                font_win = pygame.font.Font(None, 30)
+                                font_win2 = pygame.font.Font(None, 30)
+                                font_win3 = pygame.font.Font(None, 30)
+                                text_win = font_win.render("You lost.", True, (255, 255, 255))
+                                text_win2 = font_win2.render(f"Time Taken: {elapsed_time // 1000} seconds.", True, (255, 255, 255))
+                                text_win3 = font_win3.render("Correct Word: " + correct_word, True, (255, 255, 255))
+                                text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, 25)) #removed screen_height // 2 - 40
+                                text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, 50)) #removed screen height // 2 + 20
+                                text_rect3 = text_win3.get_rect(center=(SCREEN_WIDTH // 2, 75))
+                                overlay_surface = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.SRCALPHA)
+                                overlay_surface.fill((0, 0, 0, 128))  # Transparent black overlay
+                                screen.blit(overlay_surface, (0, 0))
+                                screen.blit(text_win, text_rect)
+                                screen.blit(text_win2, text_rect2)
+                                screen.blit(text_win3, text_rect3)
+                                start_time = pygame.time.get_ticks()
+                                draw_restart_button_end()
+                                pygame.display.update()
 
 
 
@@ -766,7 +856,8 @@ async def main():
                                     for event in pygame.event.get():
                                         if event.type == pygame.MOUSEBUTTONDOWN:
                                             mouse_x, mouse_y = pygame.mouse.get_pos()
-                                            if end_restart_button_x <= mouse_x <= end_restart_button_x + end_button_width and end_restart_button_y <= mouse_y <= end_restart_button_y + end_button_height:
+                                            #changed end_restart_button_x to restart_button coordinates. added
+                                            if restart_button_x <= mouse_x <= restart_button_x + end_button_width and restart_button_y <= mouse_y <= restart_button_y + end_button_height:
                                                 guesses = []
                                                 guess = ""
                                                 frames = []
