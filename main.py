@@ -520,7 +520,7 @@ async def main():
                                             correct_letters.append((letter, guess.index(letter)))
                                         else:
                                             contains_letters.append(letter)
-                                guess = ai_solve(valid_words, guesses, unusable_letters, contains_letters, correct_letters)
+                                guess = ai_solve(valid_solutions, guesses, unusable_letters, contains_letters, correct_letters)
                                 new_word = True
                                 guesses.append(guess)
                                 frames = []
@@ -647,7 +647,7 @@ async def main():
                                     correct_letters.append((letter, guess.index(letter)))
                                 else:
                                     contains_letters.append(letter)
-                        guess = ai_solve(valid_words, guesses, unusable_letters, contains_letters, correct_letters)
+                        guess = ai_solve(valid_solutions, guesses, unusable_letters, contains_letters, correct_letters)
                         for letter in guess:
                             frames.append(0)
                         continue
