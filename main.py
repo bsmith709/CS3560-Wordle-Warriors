@@ -136,12 +136,9 @@ smaller_width = 30
 smaller_height = 30
 unguessed_surface = pygame.Surface((smaller_width, smaller_height))
 unguessed_surface.fill('white')
-smaller_correct_surface = pygame.Surface((smaller_width, smaller_height))
-smaller_correct_surface.fill((34,177,76))
-smaller_partially_correct_surface = pygame.Surface((smaller_width, smaller_height))
-smaller_partially_correct_surface.fill((255,207,93))
-smaller_incorrect_surface = pygame.Surface((smaller_width, smaller_height))
-smaller_incorrect_surface.fill('gray46')
+smaller_correct_surface = pygame.image.load('assets/correctKey.png')
+smaller_partially_correct_surface = pygame.image.load('assets/partialKey.png')
+smaller_incorrect_surface = pygame.image.load('assets/incorrectKey.png')
 smaller_font_size = 40
 smaller_font = pygame.font.Font(font_type, smaller_font_size)
 
@@ -241,22 +238,28 @@ def displayGuess(guess, row, frames):
         screen.blit(text, (text_x, text_y))
 
 def displayKeyboard(guesses, correct):
-    x_cord = SCREEN_WIDTH - 700
-    y_cord = SCREEN_HEIGHT - 100
+    x_cord = SCREEN_WIDTH - 600
+    y_cord = SCREEN_HEIGHT - 110
     # If there are no guesses display all letters as unguessed
     if not guesses:
-        for letter in 'abcdefghijklmnopqrstuvwxyz':
-            if x_cord > SCREEN_WIDTH - 80:
-                x_cord = SCREEN_WIDTH - 600
+        for letter in 'qwertyuiopasdfghjklzxcvbnm':
+            if letter == 'a' or letter == 'z':
+                if letter == 'a':
+                    x_cord = SCREEN_WIDTH - 570
+                if letter == 'z':
+                    x_cord = SCREEN_WIDTH - 530
                 y_cord += SCREEN_HEIGHT / 20
             text = smaller_font.render(letter.upper(), False, 'black')
             screen.blit(unguessed_surface, (x_cord - 4, y_cord - 3))
             screen.blit(text, (x_cord, y_cord))
             x_cord += SCREEN_WIDTH / 20
         return
-    for letter in 'abcdefghijklmnopqrstuvwxyz':
-        if x_cord > SCREEN_WIDTH - 80:
-            x_cord = SCREEN_WIDTH - 600
+    for letter in 'qwertyuiopasdfghjklzxcvbnm':
+        if letter == 'a' or letter == 'z':
+            if letter == 'a':
+                x_cord = SCREEN_WIDTH - 570
+            if letter == 'z':
+                x_cord = SCREEN_WIDTH - 530
             y_cord += SCREEN_HEIGHT / 20
         text = smaller_font.render(letter.upper(), False, 'black')
         # If the current letter is in the correct word, record the indices
@@ -429,14 +432,17 @@ async def main():
                     # Get mouse position
                     mouse_x, mouse_y = pygame.mouse.get_pos()
                     # Get a list of characters for each letter in the alphabet
-                    letters = [letter for letter in 'abcdefghijklmnopqrstuvwxyz']
+                    letters = [letter for letter in 'qwertyuiopasdfghjklzxcvbnm']
                     boxes = []
-                    x = SCREEN_WIDTH - 700
-                    y = SCREEN_HEIGHT - 100
+                    x = SCREEN_WIDTH - 600
+                    y = SCREEN_HEIGHT - 110
                     # Create a box for each letter in the alphabet and record the box coordinates in a list
-                    for letter in  'abcdefghijklmnopqrstuvwxyz':
-                        if x > SCREEN_WIDTH - 80:
-                            x = SCREEN_WIDTH - 600
+                    for letter in  'qwertyuiopasdfghjklzxcvbnm':
+                        if letter == 'a' or letter == 'z':
+                            if letter == 'a':
+                                x = SCREEN_WIDTH - 570
+                            if letter == 'z':
+                                x = SCREEN_WIDTH - 530
                             y += SCREEN_HEIGHT / 20
                         box = pygame.Rect(x - 4, y - 3, smaller_width, smaller_height)
                         boxes.append(box)
