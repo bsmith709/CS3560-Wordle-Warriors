@@ -82,11 +82,11 @@ restart_button_y = 10
 
 #Solver Button Coordinates
 solver_button_x = 740
-solver_button_y = 70
+solver_button_y = 90
 
 #Hint Button Coordinates
 hint_button_x = 740
-hint_button_y = 130
+hint_button_y = 170 #was difference of 60, changed to 80
 
 #Timer Button Coordinates
 timer_image_x = 10
@@ -98,7 +98,7 @@ backspace_button_y = 687
 
 #Enter Button Coordinates
 enter_button_x = 545
-enter_button_y = 739
+enter_button_y = 767
 
 #End Restart Button size + coordinates (To be removed?)
 end_button_width = 200
@@ -111,8 +111,8 @@ restart_image = pygame.transform.smoothscale(restart_image, (50, 47))
 solver_image = pygame.transform.smoothscale(solver_image, (50, 47))
 hint_image = pygame.transform.smoothscale(hint_image, (50, 47))
 timer_image = pygame.transform.smoothscale(timer_image, (35, 33))
-backspace_image = pygame.transform.smoothscale(backspace_image, (50, 30))
-enter_image = pygame.transform.smoothscale(enter_image, (100, 58))
+backspace_image = pygame.transform.smoothscale(backspace_image, (30, 30))
+enter_image = pygame.transform.smoothscale(enter_image, (82, 30))
 
 # Initialize the game clock to control FPS
 clock = pygame.time.Clock()
@@ -255,7 +255,7 @@ def displayKeyboard(guesses, correct):
                 if letter == 'z':
                     x_cord = SCREEN_WIDTH - 530
                 y_cord += SCREEN_HEIGHT / 20
-            text = smaller_font.render(letter.upper(), False, 'white')
+            text = smaller_font.render(letter.upper(), True, 'white')
             screen.blit(unguessed_surface, (x_cord - 4, y_cord - 3))
             screen.blit(text, (x_cord, y_cord))
             x_cord += SCREEN_WIDTH / 20
@@ -267,7 +267,7 @@ def displayKeyboard(guesses, correct):
             if letter == 'z':
                 x_cord = SCREEN_WIDTH - 530
             y_cord += SCREEN_HEIGHT / 20
-        text = smaller_font.render(letter.upper(), False, 'white')
+        text = smaller_font.render(letter.upper(), True, 'white')
         # If the current letter is in the correct word, record the indices
         if letter in correct:
             indices = [i for i, x in enumerate(correct) if x == letter]
@@ -950,9 +950,22 @@ async def main():
                 displayWords(guesses, correct_word)
             displayGuess(guess, len(guesses), frames)
             displayKeyboard(guesses, correct_word)
+
+            restart_text = pygame.font.Font(None, 30)
             draw_restart_button()
+            restart_text = restart_text.render("Restart", True, (255, 255, 255))
+            screen.blit(restart_text, (48, 17))
+
+            solver_text = pygame.font.Font(None, 30)
             draw_solver_button()
+            solver_text = solver_text.render("Solve", True, (255, 255, 255))
+            screen.blit(solver_text, (48, 17))
+
+            hint_text = pygame.font.Font(None, 30)
             draw_hint_button()
+            hint_text = hint_text.render("Hint", True, (255, 255, 255))
+            screen.blit(hint_text, (48, 17))
+
             draw_enter_button()
             draw_backspace_button()
             if notValidWord:
