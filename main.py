@@ -1,3 +1,5 @@
+import sys
+import os
 import asyncio
 import random
 from sys import exit
@@ -6,13 +8,17 @@ import pygame
 import time
 #import pygame.mixer
 
+exe_dir = os.path.dirname(sys.executable)
+wordlist_file_path = os.path.join(exe_dir, 'wordlist.txt')
+valid_wordle_words_file_path = os.path.join(exe_dir, 'wordlist.txt')
+
 # Opens txt file in read mode
 # "with" ensures that file closes after reading
-with open('wordlist.txt', 'r') as file:
+with open(wordlist_file_path, 'r') as file:
     # Removes leading and trailing whitespaces and converts words to lower (implemented to work with any list file)
     valid_solutions = [word.strip().lower() for word in file.readlines()]
 
-with open('valid-wordle-words.txt', 'r') as file:
+with open(valid_wordle_words_file_path, 'r') as file:
     # Removes leading and trailing whitespaces and converts words to lower (implemented to work with any list file)
     valid_words = [word.strip().lower() for word in file.readlines()]
 
