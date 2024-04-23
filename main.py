@@ -525,7 +525,8 @@ async def main():
                                 font_win2 = pygame.font.Font(None, 30)
                                 font_win3 = pygame.font.Font(None, 30)
                                 text_win = font_win.render("You win!", True, (255, 255, 255))
-                                text_win2 = font_win2.render(f"Time Taken: {elapsed_time // 1000} seconds.", True, (255, 255, 255))
+                                # text_win2 = font_win2.render(f"Time Taken: {elapsed_time // 1000} seconds.", True, (255, 255, 255))
+                                text_win2 = font_win2.render(f"Time Taken: {elapsed_time_str} seconds", True, (255, 255, 255))
                                 text_win3 = font_win3.render("Correct Word: " + correct_word, True, (255, 255, 255))
                                 text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, 25)) #removed screen_height // 2 - 40
                                 text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, 50)) #removed screen height // 2 + 20
@@ -592,7 +593,8 @@ async def main():
                                 font_win2 = pygame.font.Font(None, 30)
                                 font_win3 = pygame.font.Font(None, 30)
                                 text_win = font_win.render("You lost.", True, (255, 255, 255))
-                                text_win2 = font_win2.render(f"Time Taken: {elapsed_time // 1000} seconds.", True, (255, 255, 255))
+                                # text_win2 = font_win2.render(f"Time Taken: {elapsed_time // 1000} seconds.", True, (255, 255, 255))
+                                text_win2 = font_win2.render(f"Time Taken: {elapsed_time_str} seconds", True, (255, 255, 255))
                                 text_win3 = font_win3.render("Correct Word: " + correct_word, True, (255, 255, 255))
                                 text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, 25)) #removed screen_height // 2 - 40
                                 text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, 50)) #removed screen height // 2 + 20
@@ -765,7 +767,8 @@ async def main():
                                 font_win2 = pygame.font.Font(None, 30)
                                 font_win3 = pygame.font.Font(None, 30)
                                 text_win = font_win.render("You win!", True, (255, 255, 255))
-                                text_win2 = font_win2.render(f"Time Taken: {elapsed_time // 1000} seconds.", True, (255, 255, 255))
+                                # text_win2 = font_win2.render(f"Time Taken: {elapsed_time // 1000} seconds.", True, (255, 255, 255))
+                                text_win2 = font_win2.render(f"Time Taken: {elapsed_time_str} seconds", True, (255, 255, 255))
                                 text_win3 = font_win3.render("Correct Word: " + correct_word, True, (255, 255, 255))
                                 text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, 25)) #removed screen_height // 2 - 40
                                 text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, 50)) #removed screen height // 2 + 20
@@ -833,7 +836,8 @@ async def main():
                                 font_win2 = pygame.font.Font(None, 30)
                                 font_win3 = pygame.font.Font(None, 30)
                                 text_win = font_win.render("You lost.", True, (255, 255, 255))
-                                text_win2 = font_win2.render(f"Time Taken: {elapsed_time // 1000} seconds.", True, (255, 255, 255))
+                                # text_win2 = font_win2.render(f"Time Taken: {elapsed_time // 1000} seconds.", True, (255, 255, 255))
+                                text_win2 = font_win2.render(f"Time Taken: {elapsed_time_str} seconds", True, (255, 255, 255))
                                 text_win3 = font_win3.render("Correct Word: " + correct_word, True, (255, 255, 255))
                                 text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, 25)) #removed screen_height // 2 - 40
                                 text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, 50)) #removed screen height // 2 + 20
