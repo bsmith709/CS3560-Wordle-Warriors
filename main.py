@@ -94,7 +94,7 @@ timer_image_y = 10
 
 #Backspace Button Coordinates
 backspace_button_x = 594
-backspace_button_y = 685
+backspace_button_y = 687
 
 #Enter button size + color
 enter_button_width = 100
@@ -112,7 +112,7 @@ restart_image = pygame.transform.smoothscale(restart_image, (50, 47))
 solver_image = pygame.transform.smoothscale(solver_image, (50, 47))
 hint_image = pygame.transform.smoothscale(hint_image, (50, 47))
 timer_image = pygame.transform.smoothscale(timer_image, (35, 33))
-backspace_image = pygame.transform.smoothscale(backspace_image, (100, 30))
+backspace_image = pygame.transform.smoothscale(backspace_image, (50, 30))
 enter_image = pygame.transform.smoothscale(enter_image, (100, 30))
 
 # Initialize the game clock to control FPS
@@ -315,7 +315,7 @@ def draw_hint_button():
     screen.blit(hint_image, (hint_button_x, hint_button_y))
 
 def draw_restart_button_end():
-    screen.blit(restart_image, (restart_button_x, restart_button_y))#removed "end_"
+    screen.blit(restart_image, (restart_button_x, restart_button_y))
 
 def draw_enter_button():
     pygame.draw.rect(screen, enter_button_color, (SCREEN_WIDTH - enter_button_width - 155, SCREEN_HEIGHT - enter_button_height - 3, enter_button_width, enter_button_height))
@@ -405,7 +405,7 @@ def notValidWordText(text_display_time):
     if(text_display_time > 0):
         font = pygame.font.Font(None, 36)
         text_not_real_word = font.render("Please only enter valid words!", True, 'white')
-        screen.blit(text_not_real_word, (SCREEN_WIDTH // 2 - 170, SCREEN_HEIGHT // 2 - 328))
+        screen.blit(text_not_real_word, (SCREEN_WIDTH // 2 - 177, SCREEN_HEIGHT // 2 - 328))
         text_display_time -= 1
     return text_display_time
 
