@@ -367,31 +367,28 @@ def ai_legal(word, guessed, unusable_letters, contains_letters, correct_letters)
     return True
 # AI Solver
 def ai_solve(words, guessed, unusable_letters, contains_letters, correct_letters):
-    letter_freq = {...}  # dictionary to store letter frequencies
-    sorted_words = PriorityQueue() # Priority queue of sorted words based on letter frequencies
+    letter_freq = {}  # dictionary to store letter frequencies
+    word_scores = []
     guess = "" # AI's guess
 
     # Loop that loads the letter frequencies dict
     for word in words:
         for letter in word:
-            if letter in letter_freq:
-                letter_freq[letter] += 1
-            else:
-                letter_freq[letter] = 1
-
+            letter_freq[letter] = letter_freq.get(letter, 0) + 1
     # Loop that sorts the words based on letter frequencies
     for word in words:
         if ai_legal(word, guessed, unusable_letters, contains_letters, correct_letters):
             word_score = 0
-            letters = []
+            letters = set()
             for letter in word:
-                letters.append(letter)
                 if letter not in letters:
-                    word_score += letter_freq[letter]
-            sorted_words.put((word_score, word))
-    
-    guess = sorted_words.get()[1]
-    return guess
+                    letters.add(letter)
+            for letter in letters:
+                word_score += letter_freq[letter]
+            word_scores.append((word_score, word))
+    word_scores.sort(reverse=True)
+
+    return word_scores[0][1]
 
 async def main():
     global falling_image
@@ -488,9 +485,20 @@ async def main():
                         continue
 
                     #Same for hint
-                    # if hint_button_x <= mouse_x <= hint_button_x + button_width and hint_button_y <= mouse_y <= hint_button_y + button_height:
-                    #     #Implement functionality
-                    #     continue
+                    if hint_button_x <= mouse_x <= hint_button_x + button_width and hint_button_y <= mouse_y <= hint_button_y + button_height:
+                        unusable_letters = []
+                        contains_letters = []
+                        correct_letters = []
+                        for guess in guesses:
+                            for letter in guess:
+                                if letter not in correct_word:
+                                    unusable_letters.append(letter)
+                                elif guess.index(letter) == correct_word.index(letter):
+                                    correct_letters.append((letter, guess.index(letter)))
+                                else:
+                                    contains_letters.append(letter)
+                        guess = ai_solve(valid_words, guesses, unusable_letters, contains_letters, correct_letters)
+                        continue
 
                     if SCREEN_WIDTH - enter_button_width - 10 <= mouse_x <= SCREEN_WIDTH - 10 and SCREEN_HEIGHT - enter_button_height - 10 <= mouse_y <= SCREEN_HEIGHT - 10:
                         if guess in valid_words and guess not in guesses:
