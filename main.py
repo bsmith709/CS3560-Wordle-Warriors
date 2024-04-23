@@ -70,7 +70,7 @@ solver_image = pygame.image.load('assets/robot_AI.png').convert_alpha()
 hint_image = pygame.image.load('assets/hint.png').convert_alpha()
 timer_image = pygame.image.load('assets/timer.png').convert_alpha()
 backspace_image = pygame.image.load('assets/backspace.png').convert_alpha()
-enter_image = pygame.image.load('assets/backspace.png').convert_alpha()
+enter_image = pygame.image.load('assets/enter.png').convert_alpha()
 
 #Uniform Button Size
 button_width = 50 
@@ -96,10 +96,9 @@ timer_image_y = 10
 backspace_button_x = 594
 backspace_button_y = 685
 
-#Enter button size + color
-enter_button_width = 100
-enter_button_height = 35
-enter_button_color = (0, 70, 0)
+#Enter Button Coordinates
+enter_button_x = 545
+enter_button_y = 725
 
 #End Restart Button size + coordinates (To be removed?)
 end_button_width = 200
@@ -113,7 +112,7 @@ solver_image = pygame.transform.smoothscale(solver_image, (50, 47))
 hint_image = pygame.transform.smoothscale(hint_image, (50, 47))
 timer_image = pygame.transform.smoothscale(timer_image, (35, 33))
 backspace_image = pygame.transform.smoothscale(backspace_image, (100, 30))
-enter_image = pygame.transform.smoothscale(enter_image, (100, 30))
+enter_image = pygame.transform.smoothscale(enter_image, (100, 73))
 
 # Initialize the game clock to control FPS
 clock = pygame.time.Clock()
@@ -318,11 +317,7 @@ def draw_restart_button_end():
     screen.blit(restart_image, (restart_button_x, restart_button_y))#removed "end_"
 
 def draw_enter_button():
-    pygame.draw.rect(screen, enter_button_color, (SCREEN_WIDTH - enter_button_width - 155, SCREEN_HEIGHT - enter_button_height - 3, enter_button_width, enter_button_height))
-    font = pygame.font.Font(None, 36)
-    text = font.render("Enter", True, (255, 255, 255))
-    text_rect = text.get_rect(center=(SCREEN_WIDTH - enter_button_width // 2 - 155, SCREEN_HEIGHT - enter_button_height // 2 - 3))
-    screen.blit(text, text_rect)
+    screen.blit(enter_image, (enter_button_x, enter_button_y))
 
 def draw_backspace_button():
     screen.blit(backspace_image, (backspace_button_x, backspace_button_y))
@@ -529,8 +524,10 @@ async def main():
                             guess = guess[0:-1]
                             frames = frames[0:-1]
 
-                    if SCREEN_WIDTH - enter_button_width - 155 <= mouse_x <= SCREEN_WIDTH - 155 and SCREEN_HEIGHT - enter_button_height - 3 <= mouse_y <= SCREEN_HEIGHT - 3:
-                        if guess in valid_words and guess not in guesses:
+                    if SCREEN_WIDTH - enter_button_x <= mouse_x <= SCREEN_WIDTH and SCREEN_HEIGHT - enter_button_y <= mouse_y <= SCREEN_HEIGHT:
+                        if mouse_x <= 600 and mouse_y <= 760:
+                            pass
+                        elif guess in valid_words and guess not in guesses:
                             new_word = True
                             guesses.append(guess)
                             frames = []
@@ -675,6 +672,9 @@ async def main():
                                         continue
                                     break
                             guess = ""
+                        elif guess not in valid_words and len(guess) == 5:
+                            notValidWord = True
+                            text_display_time = 120
 
                 # This means the user pressed a key, this is where all of our letter inputs are handled
                 if event.type == pygame.KEYDOWN:
@@ -951,10 +951,15 @@ async def main():
             else:
                 displayWords(guesses, correct_word)
             displayGuess(guess, len(guesses), frames)
+            ## Display mouse position in real time
+            font = pygame.font.Font(None, 36)
+            text = font.render(f"Mouse position: {pygame.mouse.get_pos()}", True, (255, 255, 255))
+            screen.blit(text, (0, 0))
             displayKeyboard(guesses, correct_word)
             draw_restart_button()
             draw_solver_button()
             draw_hint_button()
+            draw_enter_button()
             draw_backspace_button()
             if notValidWord:
                 text_display_time = notValidWordText(text_display_time)
