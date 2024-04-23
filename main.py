@@ -406,7 +406,7 @@ async def main():
     global falling_image
     if __name__ == "__main__": #print game board w squares
         guesses = []
-        guesses_frames = []
+        hint_used = False
         frames = []
         new_word = False
         new_word_frame = 0
@@ -523,7 +523,8 @@ async def main():
                         continue
 
                     #Same for hint
-                    if hint_button_x <= mouse_x <= hint_button_x + button_width and hint_button_y <= mouse_y <= hint_button_y + button_height:
+                    if hint_button_x <= mouse_x <= hint_button_x + button_width and hint_button_y <= mouse_y <= hint_button_y + button_height and not hint_used:
+                        hint_used = True
                         unusable_letters = []
                         contains_letters = []
                         correct_letters = []
@@ -536,6 +537,8 @@ async def main():
                                 else:
                                     contains_letters.append(letter)
                         guess = ai_solve(valid_words, guesses, unusable_letters, contains_letters, correct_letters)
+                        for letter in guess:
+                            frames.append(0)
                         continue
 
                     # Check if mouse clicks within bounds of backspace button. If so, remove last letter from guess
