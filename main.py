@@ -152,6 +152,16 @@ smaller_font = pygame.font.Font(font_type, smaller_font_size)
 global frames_per_letter
 frames_per_letter = 11
 def animateGuess(guess, guessnum, correct, frame):
+    """Animate the latest user guess
+
+    Args:
+        guess (str): The latest user guess.
+        guessnum (int): The guess number for the guess being animated.
+        correct (str): The correct word.
+        frame (int): The frame number within the animation sequence.
+        (global) frames_per_letter (int): The total number of frames per letter animation. MUST BE ODD AND AT LEAST 3 FOR PROPER ANIMATION
+    """
+
     x_coord = 120
     y_coord = 100
     row = guessnum
