@@ -98,7 +98,7 @@ backspace_button_y = 687
 
 #Enter Button Coordinates
 enter_button_x = 545
-enter_button_y = 725
+enter_button_y = 735
 
 #End Restart Button size + coordinates (To be removed?)
 end_button_width = 200
@@ -112,7 +112,7 @@ solver_image = pygame.transform.smoothscale(solver_image, (50, 47))
 hint_image = pygame.transform.smoothscale(hint_image, (50, 47))
 timer_image = pygame.transform.smoothscale(timer_image, (35, 33))
 backspace_image = pygame.transform.smoothscale(backspace_image, (50, 30))
-enter_image = pygame.transform.smoothscale(enter_image, (100, 73))
+enter_image = pygame.transform.smoothscale(enter_image, (100, 64))
 
 # Initialize the game clock to control FPS
 clock = pygame.time.Clock()
