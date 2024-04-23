@@ -10,7 +10,7 @@ import time
 
 exe_dir = os.path.dirname(sys.executable)
 wordlist_file_path = os.path.join(exe_dir, 'wordlist.txt')
-valid_wordle_words_file_path = os.path.join(exe_dir, 'wordlist.txt')
+valid_wordle_words_file_path = os.path.join(exe_dir, 'valid-wordle-words.txt')
 
 # Opens txt file in read mode
 # "with" ensures that file closes after reading
