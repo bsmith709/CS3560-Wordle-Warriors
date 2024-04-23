@@ -141,8 +141,7 @@ example_font = pygame.font.Font(font_type, font_size)
 # Creating smaller sizes for the keyboard
 smaller_width = 30
 smaller_height = 30
-unguessed_surface = pygame.Surface((smaller_width, smaller_height))
-unguessed_surface.fill('white')
+unguessed_surface = pygame.image.load('assets/unusedKey.png')
 smaller_correct_surface = pygame.image.load('assets/correctKey.png')
 smaller_partially_correct_surface = pygame.image.load('assets/partialKey.png')
 smaller_incorrect_surface = pygame.image.load('assets/incorrectKey.png')
@@ -256,7 +255,7 @@ def displayKeyboard(guesses, correct):
                 if letter == 'z':
                     x_cord = SCREEN_WIDTH - 530
                 y_cord += SCREEN_HEIGHT / 20
-            text = smaller_font.render(letter.upper(), False, 'black')
+            text = smaller_font.render(letter.upper(), False, 'white')
             screen.blit(unguessed_surface, (x_cord - 4, y_cord - 3))
             screen.blit(text, (x_cord, y_cord))
             x_cord += SCREEN_WIDTH / 20
@@ -268,8 +267,7 @@ def displayKeyboard(guesses, correct):
             if letter == 'z':
                 x_cord = SCREEN_WIDTH - 530
             y_cord += SCREEN_HEIGHT / 20
-        text = smaller_font.render(letter.upper(), False, 'black')
-        text_white = smaller_font.render(letter.upper(), False, 'white')
+        text = smaller_font.render(letter.upper(), False, 'white')
         # If the current letter is in the correct word, record the indices
         if letter in correct:
             indices = [i for i, x in enumerate(correct) if x == letter]
@@ -286,7 +284,7 @@ def displayKeyboard(guesses, correct):
         # If the letter is not in the correct word display the incorrect surface
         elif any(letter in guess for guess in guesses):
             screen.blit(smaller_incorrect_surface, (x_cord - 4, y_cord - 3))
-            screen.blit(text_white, (x_cord, y_cord))
+            screen.blit(text, (x_cord, y_cord))
         # If the letter is not in the guess display the unguessed surface
         else:
             screen.blit(unguessed_surface, (x_cord - 4, y_cord - 3))
