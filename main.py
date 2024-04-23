@@ -262,6 +262,7 @@ def displayKeyboard(guesses, correct):
                 x_cord = SCREEN_WIDTH - 530
             y_cord += SCREEN_HEIGHT / 20
         text = smaller_font.render(letter.upper(), False, 'black')
+        text_white = smaller_font.render(letter.upper(), False, 'white')
         # If the current letter is in the correct word, record the indices
         if letter in correct:
             indices = [i for i, x in enumerate(correct) if x == letter]
@@ -270,16 +271,19 @@ def displayKeyboard(guesses, correct):
         # If the letter is in the correct word and in the correct position in any of the guesses display the green correct surface
         if letter in correct and any(guess[i] == letter for i in indices for guess in guesses):
             screen.blit(smaller_correct_surface, (x_cord - 4, y_cord - 3))
+            screen.blit(text, (x_cord, y_cord))
         # If the letter is in the correct word but not in the correct position in any of the guesses display the partially correct surface
         elif letter in correct and any(letter in guess for guess in guesses):
             screen.blit(smaller_partially_correct_surface, (x_cord - 4, y_cord - 3))
+            screen.blit(text, (x_cord, y_cord))
         # If the letter is not in the correct word display the incorrect surface
         elif any(letter in guess for guess in guesses):
             screen.blit(smaller_incorrect_surface, (x_cord - 4, y_cord - 3))
+            screen.blit(text_white, (x_cord, y_cord))
         # If the letter is not in the guess display the unguessed surface
         else:
             screen.blit(unguessed_surface, (x_cord - 4, y_cord - 3))
-        screen.blit(text, (x_cord, y_cord))
+            screen.blit(text, (x_cord, y_cord))
         x_cord += SCREEN_WIDTH / 20
 
 def displayEmptyBoard():
