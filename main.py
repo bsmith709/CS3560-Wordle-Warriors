@@ -24,6 +24,17 @@ with open(valid_wordle_words_file_path, 'r') as file:
 
 # Picks a random word
 def randomword(wordlist):
+    """Choose a random word from list of valid words
+
+    Parameters:
+        wordlist (list): A list of words from which a random word will be chosen
+
+    Returns:
+        str: A randomly selected word from input list
+
+    This function takes a list of words and returns a randomly selected word from the list.
+
+    """
     # Chooses a random word from the list
     correct_word = random.choice(wordlist)
     return correct_word
