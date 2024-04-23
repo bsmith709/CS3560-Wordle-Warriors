@@ -360,7 +360,7 @@ def ai_legal(word, guessed, unusable_letters, contains_letters, correct_letters)
             return False
 
     # Check if the word contains the correct letters in the correct positions
-    for letter, position in correct_letters.items():
+    for letter, position in correct_letters:
         if word[position] != letter:
             return False
 
@@ -482,6 +482,8 @@ async def main():
                                 else:
                                     contains_letters.append(letter)
                         guess = ai_solve(valid_words, guesses, unusable_letters, contains_letters, correct_letters)
+                        for letter in guess:
+                            frames.append(0)
                         continue
 
                     #Same for hint
