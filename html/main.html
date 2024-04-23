@@ -1,0 +1,2268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>main API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>main</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">import asyncio
+import random
+from sys import exit
+from queue import PriorityQueue
+import pygame
+import time
+#import pygame.mixer
+
+# Opens txt file in read mode
+# &#34;with&#34; ensures that file closes after reading
+with open(&#39;wordlist.txt&#39;, &#39;r&#39;) as file:
+    # Removes leading and trailing whitespaces and converts words to lower (implemented to work with any list file)
+    valid_solutions = [word.strip().lower() for word in file.readlines()]
+
+with open(&#39;valid-wordle-words.txt&#39;, &#39;r&#39;) as file:
+    # Removes leading and trailing whitespaces and converts words to lower (implemented to work with any list file)
+    valid_words = [word.strip().lower() for word in file.readlines()]
+
+# Picks a random word
+def randomword(wordlist):
+    # Chooses a random word from the list
+    correct_word = random.choice(wordlist)
+    return correct_word
+
+# List of named colors in pygame: https://www.pygame.org/docs/ref/color_list.html
+
+# Initialize the pygame module
+pygame.init()
+#pygame.mixer.init()
+
+# Initialize the display area
+SCREEN_WIDTH = 800
+SCREEN_HEIGHT = 800
+screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption(&#34;Wordle&#34;)
+screen.fill(&#39;aquamarine4&#39;)
+
+#Convert alpha and smoothscale to load with anti-aliasing
+logo_image = pygame.image.load(&#39;assets/newlogo.png&#39;).convert_alpha()
+logo_width = 375
+logo_height = 75
+logo_image = pygame.transform.smoothscale(logo_image, (logo_width, logo_height))
+logo_x = (SCREEN_WIDTH - logo_image.get_width()) // 2
+logo_y = 3
+
+#Initializes falling Bobcat image
+global falling_image 
+bobcat_image = pygame.image.load(&#39;assets/bobcat.png&#39;)
+falling_image = bobcat_image
+
+#Loads easter eggs
+chang = pygame.image.load(&#39;assets/CHANG.png&#39;)
+among = pygame.image.load(&#39;assets/among.png&#39;)
+drake = pygame.image.load(&#39;assets/drake.png&#39;)
+homer = pygame.image.load(&#39;assets/Homer.png&#39;)
+sonic = pygame.image.load(&#39;assets/sanic.png&#39;)
+sigma = pygame.image.load(&#39;assets/sigma.png&#39;)
+spike = pygame.image.load(&#39;assets/spike.png&#39;)
+siege = pygame.image.load(&#39;assets/siege.png&#39;)
+
+#Audio sounds for easter eggs
+#audio_among = pygame.mixer.Sound(&#39;assets/output.wav&#39;) 
+#audio_drake = pygame.mixer.Sound(&#39;assets/output2.wav&#39;)
+#audio_siege = pygame.mixer.Sound(&#39;assets/output3.wav&#39;)
+#audio_homer = pygame.mixer.Sound(&#39;assets/output4.wav&#39;)
+#audio_spike = pygame.mixer.Sound(&#39;assets/output5.wav&#39;)
+
+#Convert alpha to load with anti-aliasing
+restart_image = pygame.image.load(&#39;assets/restart.png&#39;).convert_alpha()
+solver_image = pygame.image.load(&#39;assets/robot_AI.png&#39;).convert_alpha()
+hint_image = pygame.image.load(&#39;assets/hint.png&#39;).convert_alpha()
+timer_image = pygame.image.load(&#39;assets/timer.png&#39;).convert_alpha()
+backspace_image = pygame.image.load(&#39;assets/backspace.png&#39;).convert_alpha()
+enter_image = pygame.image.load(&#39;assets/enter.png&#39;).convert_alpha()
+
+#Uniform Button Size
+button_width = 50 
+button_height = 50 
+
+#Restart Button Coordinates
+restart_button_x = 740
+restart_button_y = 10
+
+#Solver Button Coordinates
+solver_button_x = 740
+solver_button_y = 90
+
+#Hint Button Coordinates
+hint_button_x = 740
+hint_button_y = 170 #was difference of 60, changed to 80
+
+#Timer Button Coordinates
+timer_image_x = 10
+timer_image_y = 10
+
+#Backspace Button Coordinates
+backspace_button_x = 597
+backspace_button_y = 687
+
+#Enter Button Coordinates
+enter_button_x = 545
+enter_button_y = 767
+
+#End Restart Button size + coordinates (To be removed?)
+end_button_width = 200
+end_button_height = 50
+end_restart_button_x = (SCREEN_WIDTH - button_width) // 2
+end_restart_button_y = SCREEN_HEIGHT / 2 + 50
+
+#Image transformation using smoothscale to enable anti-aliasing
+restart_image = pygame.transform.smoothscale(restart_image, (50, 47))
+solver_image = pygame.transform.smoothscale(solver_image, (50, 47))
+hint_image = pygame.transform.smoothscale(hint_image, (50, 47))
+timer_image = pygame.transform.smoothscale(timer_image, (35, 33))
+backspace_image = pygame.transform.smoothscale(backspace_image, (30, 30))
+enter_image = pygame.transform.smoothscale(enter_image, (82, 30))
+
+# Initialize the game clock to control FPS
+clock = pygame.time.Clock()
+
+#Initializes timer
+start_time = pygame.time.get_ticks()
+elapsed_time = 0
+elapsed_time = elapsed_time // 1000 #Converts from milliseconds to seconds
+
+# &#39;Surfaces&#39; are images that can be displayed using the blit() function
+width = 80
+height = 80
+correct_surface = pygame.image.load(&#39;assets/correctSq.png&#39;)
+partially_correct_surface = pygame.image.load(&#39;assets/partialSq.png&#39;)
+incorrect_surface = pygame.image.load(&#39;assets/incorrectSq.png&#39;)
+
+# Loading a surface from an image
+filePath = &#39;assets/square.png&#39;
+example_surface2 = pygame.image.load(filePath) #Example
+
+# Creating a text surface
+font_type = None
+font_size = 75
+example_font = pygame.font.Font(font_type, font_size)
+
+# Creating smaller sizes for the keyboard
+smaller_width = 30
+smaller_height = 30
+unguessed_surface = pygame.image.load(&#39;assets/unusedKey.png&#39;)
+smaller_correct_surface = pygame.image.load(&#39;assets/correctKey.png&#39;)
+smaller_partially_correct_surface = pygame.image.load(&#39;assets/partialKey.png&#39;)
+smaller_incorrect_surface = pygame.image.load(&#39;assets/incorrectKey.png&#39;)
+smaller_font_size = 40
+smaller_font = pygame.font.Font(font_type, smaller_font_size)
+
+global frames_per_letter
+frames_per_letter = 11
+def animateGuess(guess, guessnum, correct, frame):
+    &#34;&#34;&#34;Animate the latest user guess
+
+    Args:
+        guess (str): The latest user guess.
+        guessnum (int): The guess number for the guess being animated.
+        correct (str): The correct word.
+        frame (int): The frame number within the animation sequence.
+        (global) frames_per_letter (int): The total number of frames per letter animation. MUST BE ODD AND AT LEAST 3 FOR PROPER ANIMATION
+    &#34;&#34;&#34;
+
+    x_coord = 120
+    y_coord = 100
+    row = guessnum
+    column = 0
+
+    # Math to determine where letter should be displayed
+    letter_column = ((frame - (frame % frames_per_letter)) / frames_per_letter) + 1
+    letter_frame = frame % frames_per_letter
+    y_offset = 0
+    mid_frame = ((frames_per_letter - 1) / 2)
+    px_per_frame = 30 / (mid_frame + 1)
+    if letter_frame &lt;= mid_frame:
+        y_offset = (letter_frame + 1) * px_per_frame
+    else:
+        y_offset = (frames_per_letter - letter_frame) * px_per_frame
+
+
+    for letter in guess:
+        column += 1
+
+        square_center_x = x_coord * column + width / 2
+        if column == letter_column:
+            square_center_y = (y_coord * row + height / 2) - y_offset
+        else:
+            square_center_y = y_coord * row + height / 2
+
+        text = example_font.render(letter.upper(), False, &#39;white&#39;)
+        text_width, text_height = example_font.size(letter.upper())
+
+        text_x = square_center_x - text_width / 2
+        text_y = square_center_y - text_height / 2
+        if column &lt; letter_column:
+            if letter == correct[column - 1]:
+                screen.blit(correct_surface, (x_coord * column, y_coord * row))
+            elif letter in correct:
+                screen.blit(partially_correct_surface, (x_coord * column, y_coord * row))
+            else:
+                screen.blit(incorrect_surface, (x_coord * column, y_coord * row))
+        else:
+            screen.blit(incorrect_surface, (x_coord * column, y_coord * row))
+        screen.blit(text, (text_x, text_y))
+
+def displayWords(guesses, correct):
+    x_coord = 120
+    y_coord = 100
+    row = 0
+    for guess in guesses:
+        row += 1
+        column = 0
+        for letter in guess:
+            column += 1
+
+            square_center_x = x_coord * column + width / 2
+            square_center_y = y_coord * row + height / 2
+
+            text = example_font.render(letter.upper(), False, &#39;white&#39;)
+            text_width, text_height = example_font.size(letter.upper())
+
+            text_x = square_center_x - text_width / 2
+            text_y = square_center_y - text_height / 2
+
+            if letter == correct[column - 1]:
+                screen.blit(correct_surface, (x_coord * column, y_coord * row))
+            elif letter in correct:
+                screen.blit(partially_correct_surface, (x_coord * column, y_coord * row))
+            else:
+                screen.blit(incorrect_surface, (x_coord * column, y_coord * row))
+            screen.blit(text, (text_x, text_y))
+
+def displayGuess(guess, row, frames):
+    x_coord = 120
+    y_coord = 100 + (100 * row)
+    column = 0
+    for letter in guess:
+        column += 1
+        square_center_x = x_coord * column + width / 2
+        if(frames[column - 1] &lt; 5):
+            # Offsets the guess display height based on its animation frame so it appears to slide into place
+            square_center_y = (y_coord + height / 2) - (30 - (frames[column - 1] * 6))
+            frames[column - 1] += 1
+        else:
+            square_center_y = y_coord + height / 2
+
+        text = example_font.render(letter.upper(), False, &#39;white&#39;)
+        text_width, text_height = example_font.size(letter.upper())
+
+        text_x = square_center_x - text_width / 2
+        text_y = square_center_y - text_height / 2
+
+        screen.blit(incorrect_surface, (x_coord * column, y_coord))
+        screen.blit(text, (text_x, text_y))
+
+def displayKeyboard(guesses, correct):
+    x_cord = SCREEN_WIDTH - 600
+    y_cord = SCREEN_HEIGHT - 110
+    # If there are no guesses display all letters as unguessed
+    if not guesses:
+        for letter in &#39;qwertyuiopasdfghjklzxcvbnm&#39;:
+            if letter == &#39;a&#39; or letter == &#39;z&#39;:
+                if letter == &#39;a&#39;:
+                    x_cord = SCREEN_WIDTH - 570
+                if letter == &#39;z&#39;:
+                    x_cord = SCREEN_WIDTH - 530
+                y_cord += SCREEN_HEIGHT / 20
+            text = smaller_font.render(letter.upper(), True, &#39;white&#39;)
+            screen.blit(unguessed_surface, (x_cord - 4, y_cord - 3))
+            screen.blit(text, (x_cord, y_cord))
+            x_cord += SCREEN_WIDTH / 20
+        return
+    for letter in &#39;qwertyuiopasdfghjklzxcvbnm&#39;:
+        if letter == &#39;a&#39; or letter == &#39;z&#39;:
+            if letter == &#39;a&#39;:
+                x_cord = SCREEN_WIDTH - 570
+            if letter == &#39;z&#39;:
+                x_cord = SCREEN_WIDTH - 530
+            y_cord += SCREEN_HEIGHT / 20
+        text = smaller_font.render(letter.upper(), True, &#39;white&#39;)
+        # If the current letter is in the correct word, record the indices
+        if letter in correct:
+            indices = [i for i, x in enumerate(correct) if x == letter]
+        else:
+            indices = []
+        # If the letter is in the correct word and in the correct position in any of the guesses display the green correct surface
+        if letter in correct and any(guess[i] == letter for i in indices for guess in guesses):
+            screen.blit(smaller_correct_surface, (x_cord - 4, y_cord - 3))
+            screen.blit(text, (x_cord, y_cord))
+        # If the letter is in the correct word but not in the correct position in any of the guesses display the partially correct surface
+        elif letter in correct and any(letter in guess for guess in guesses):
+            screen.blit(smaller_partially_correct_surface, (x_cord - 4, y_cord - 3))
+            screen.blit(text, (x_cord, y_cord))
+        # If the letter is not in the correct word display the incorrect surface
+        elif any(letter in guess for guess in guesses):
+            screen.blit(smaller_incorrect_surface, (x_cord - 4, y_cord - 3))
+            screen.blit(text, (x_cord, y_cord))
+        # If the letter is not in the guess display the unguessed surface
+        else:
+            screen.blit(unguessed_surface, (x_cord - 4, y_cord - 3))
+            screen.blit(text, (x_cord, y_cord))
+        x_cord += SCREEN_WIDTH / 20
+
+def displayEmptyBoard():
+    screen.blit(logo_image, (logo_x, logo_y))
+    x_cord = 120
+    y_cord = 100
+    for row in range(1, 7):
+        for column in range(1, 6):
+            screen.blit(incorrect_surface, (x_cord * column, y_cord * row))
+
+def draw_restart_button():
+    screen.blit(restart_image, (restart_button_x, restart_button_y))
+
+def draw_solver_button():
+    screen.blit(solver_image, (solver_button_x, solver_button_y))
+
+def draw_timer_button():
+    screen.blit(timer_image, (timer_image_x, timer_image_y))
+
+def draw_hint_button():
+    screen.blit(hint_image, (hint_button_x, hint_button_y))
+
+def draw_restart_button_end():
+    screen.blit(restart_image, (restart_button_x, restart_button_y))
+
+def draw_enter_button():
+    screen.blit(enter_image, (enter_button_x, enter_button_y))
+
+def draw_backspace_button():
+    screen.blit(backspace_image, (backspace_button_x, backspace_button_y))
+
+class Bobcat:
+    x_coord = 0
+
+    def __init__(self, s, coords):
+        self.speed = s
+        self.rect = falling_image.get_rect()
+        self.rect.topleft = (Bobcat.x_coord, coords[1])
+        Bobcat.x_coord = Bobcat.x_coord + 70
+        if Bobcat.x_coord &gt; 750:
+            Bobcat.x_coord = 0
+
+def displayBobcats(bobcats):
+    for bobcat in bobcats:
+        if bobcat.rect.y &gt; 800 or bobcat.rect.y &lt; -300:
+            bobcats.remove(bobcat)
+
+    while(len(bobcats) &lt; 50):
+        speed = random.randint(2, 4)
+        coords = (random.randint(-50, 750), random.randint(-300, -00))
+        new_bobcat = Bobcat(speed, coords)
+        bobcats.append(new_bobcat)
+
+    for bobcat in bobcats:
+        bobcat.rect.topleft = (bobcat.rect.x, bobcat.rect.y + bobcat.speed)
+        screen.blit(falling_image, bobcat)
+    return bobcats
+
+# Legal Check for AI solver
+def ai_legal(word, guessed, unusable_letters, contains_letters, correct_letters):
+    # Check if the word is in the list of guessed words
+    if word in guessed:
+        return False
+
+    # Check if the word contains any of the unusable letters
+    for letter in unusable_letters:
+        if letter in word:
+            return False
+
+    # Check if the word contains any of the letters that the word contains
+    for letter in contains_letters:
+        if letter not in word:
+            return False
+
+    # Check if the word contains the correct letters in the correct positions
+    for letter, position in correct_letters:
+        if word[position] != letter:
+            return False
+
+    return True
+# AI Solver
+def ai_solve(words, guessed, unusable_letters, contains_letters, correct_letters):
+    letter_freq = {}  # dictionary to store letter frequencies
+    word_scores = []
+    guess = &#34;&#34; # AI&#39;s guess
+
+    # Loop that loads the letter frequencies dict
+    for word in words:
+        for letter in word:
+            letter_freq[letter] = letter_freq.get(letter, 0) + 1
+    # Loop that sorts the words based on letter frequencies
+    for word in words:
+        if ai_legal(word, guessed, unusable_letters, contains_letters, correct_letters):
+            word_score = 0
+            letters = set()
+            for letter in word:
+                if letter not in letters:
+                    letters.add(letter)
+            for letter in letters:
+                word_score += letter_freq[letter]
+            word_scores.append((word_score, word))
+    word_scores.sort(reverse=True)
+
+    return word_scores[0][1]
+
+def notValidWordText(text_display_time):
+    if(text_display_time &gt; 0):
+        font = pygame.font.Font(None, 36)
+        text_not_real_word = font.render(&#34;Please only enter valid words!&#34;, True, &#39;white&#39;)
+        screen.blit(text_not_real_word, (SCREEN_WIDTH // 2 - 177, SCREEN_HEIGHT // 2 - 328))
+        text_display_time -= 1
+    return text_display_time
+
+async def main():
+    global falling_image
+    if __name__ == &#34;__main__&#34;: #print game board w squares
+        guesses = []
+        hint_used = False
+        frames = []
+        new_word = False
+        new_word_frame = 0
+        
+        guess = &#34;&#34;
+        correct_word = randomword(valid_solutions)
+        bobcats = []
+        notValidWord = False
+        text_display_time = 0
+
+        #Starts timer
+        start_time = pygame.time.get_ticks()
+
+        # Main game loop
+        while True:
+
+            screen.fill(&#39;aquamarine4&#39;)
+            bobcats = displayBobcats(bobcats)
+            draw_enter_button()
+
+            &#34;&#34;&#34;
+            Game Timer
+
+            Provides functionality to display time in seconds and milliseconds to be displayed on the top-left
+            of the game board. Time is displayed in seconds and milliseconds. Example (7.42 seconds)
+            
+            Example:
+                Display time as 7.43 seconds
+
+            Usage:
+                Initialize start_time to effectively track time
+
+            Example:
+                &gt;&gt;&gt; start_time = pygame.time.get_ticks()
+            &#34;&#34;&#34;
+            #get current time in milliseconds
+            current_time = pygame.time.get_ticks()
+            #calculates elapsed time and converts to seconds
+            elapsed_time = (current_time - start_time) / 1000.0
+            #extracts seconds
+            seconds = int(elapsed_time)
+            #extracts milliseconds
+            milliseconds = int((elapsed_time - seconds) * 100)
+            #formats a string with format SS:MiMi
+            elapsed_time_str = f&#34;{seconds}.{milliseconds}&#34;
+            ##creates a font object of size 30
+
+            font = pygame.font.Font(None, 36) 
+            timer_text = pygame.font.Font(None, 30)
+            #draws timer icon
+            draw_timer_button()
+            #renders font using specified color and anti-aliasing
+            timer_text = timer_text.render(f&#34;{elapsed_time_str}&#34;, True, (255, 255, 255)) 
+            #draws text on screen
+            screen.blit(timer_text, (48, 17)) 
+
+            # This is the event loop it checks for any player input
+            for event in pygame.event.get():
+                # Create event for the user clicking the mouse
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    # Get mouse position
+                    mouse_x, mouse_y = pygame.mouse.get_pos()
+                    # Get a list of characters for each letter in the alphabet
+                    letters = [letter for letter in &#39;qwertyuiopasdfghjklzxcvbnm&#39;]
+                    boxes = []
+                    x = SCREEN_WIDTH - 600
+                    y = SCREEN_HEIGHT - 110
+                    # Create a box for each letter in the alphabet and record the box coordinates in a list
+                    for letter in  &#39;qwertyuiopasdfghjklzxcvbnm&#39;:
+                        if letter == &#39;a&#39; or letter == &#39;z&#39;:
+                            if letter == &#39;a&#39;:
+                                x = SCREEN_WIDTH - 570
+                            if letter == &#39;z&#39;:
+                                x = SCREEN_WIDTH - 530
+                            y += SCREEN_HEIGHT / 20
+                        box = pygame.Rect(x - 4, y - 3, smaller_width, smaller_height)
+                        boxes.append(box)
+                        x += SCREEN_WIDTH / 20
+                    # Check if the mouse was clicked inside any of the boxes and add it to the guess if it was
+                    for i in range(len(boxes)):
+                        if boxes[i].collidepoint(mouse_x, mouse_y) and len(guess) &lt; 5:
+                            guess += letters[i]
+                            frames.append(0)
+                            break
+
+                    # Check if mouse clicks within bounds of restart button. If so, restart game
+                    if restart_button_x &lt;= mouse_x &lt;= restart_button_x + button_width and restart_button_y &lt;= mouse_y &lt;= restart_button_y + button_height:
+                        guesses = []
+                        guess = &#34;&#34;
+                        frames = []
+                        falling_image = bobcat_image
+                        correct_word = randomword(valid_solutions)
+                        bobcats = []
+                        new_word = False
+                        start_time = pygame.time.get_ticks() #added
+                        continue
+
+                    # Check if mouse clicks within bounds of solve button. If so, solve game
+                    if solver_button_x &lt;= mouse_x &lt;= solver_button_x + button_width and solver_button_y &lt;= mouse_y &lt;= solver_button_y + button_height:
+                            done = False
+                            while(len(guesses) &lt; 6 and guess != correct_word and done == False):
+                                unusable_letters = []
+                                contains_letters = []
+                                correct_letters = []
+                                for guess in guesses:
+                                    for letter in guess:
+                                        if letter not in correct_word:
+                                            unusable_letters.append(letter)
+                                        elif guess.index(letter) == correct_word.index(letter):
+                                            correct_letters.append((letter, guess.index(letter)))
+                                        else:
+                                            contains_letters.append(letter)
+                                guess = ai_solve(valid_solutions, guesses, unusable_letters, contains_letters, correct_letters)
+                                new_word = True
+                                guesses.append(guess)
+                                frames = []
+                                #Easter eggs
+                                if guess == &#34;chang&#34;:
+                                    falling_image = chang
+                                if guess == &#34;among&#34;:
+                                    falling_image = among
+                                    #audio_among.play()
+                                if guess == &#34;drake&#34;:
+                                    falling_image = drake 
+                                    #audio_drake.play()
+                                if guess == &#34;homer&#34;:
+                                    falling_image = homer
+                                    #audio_homer.play()
+                                if guess == &#34;sonic&#34;:
+                                    falling_image = sonic
+                                if guess == &#34;sigma&#34;:
+                                    falling_image = sigma
+                                if guess == &#34;spike&#34;:
+                                    falling_image = spike
+                                    #audio_spike.play()
+                                if guess == &#34;siege&#34;:
+                                    falling_image = siege
+                                    #audio_siege.play()
+                                if guess == correct_word:
+                                    # Function to show elapsed time on three separate lines.
+                                    # Implemented to use with win/loss removed
+                                    screen.fill(&#39;aquamarine4&#39;)
+                                    displayKeyboard(guesses, correct_word)
+                                    displayWords(guesses, correct_word)
+                                    font_win = pygame.font.Font(None, 30)
+                                    font_win2 = pygame.font.Font(None, 30)
+                                    font_win3 = pygame.font.Font(None, 30)
+                                    text_win = font_win.render(&#34;You win!&#34;, True, (255, 255, 255))
+                                    text_win2 = font_win2.render(f&#34;Time Taken: {elapsed_time_str} seconds&#34;, True, (255, 255, 255))
+                                    text_win3 = font_win3.render(&#34;Correct Word: &#34; + correct_word, True, (255, 255, 255))
+                                    text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, 25))
+                                    text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, 50)) 
+                                    text_rect3 = text_win3.get_rect(center=(SCREEN_WIDTH // 2, 75))
+                                    overlay_surface = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.SRCALPHA)
+                                    overlay_surface.fill((0, 0, 0, 128))  # Transparent black overlay
+                                    screen.blit(overlay_surface, (0, 0))
+                                    screen.blit(text_win, text_rect)
+                                    screen.blit(text_win2, text_rect2)
+                                    screen.blit(text_win3, text_rect3)
+                                    start_time = pygame.time.get_ticks()
+                                    draw_restart_button_end()
+                                    pygame.display.update()
+                                    done = True
+                                    pygame.display.update()
+                                    while True:
+                                        for event in pygame.event.get():
+                                            if event.type == pygame.MOUSEBUTTONDOWN:
+                                                mouse_x, mouse_y = pygame.mouse.get_pos()
+                                                if restart_button_x &lt;= mouse_x &lt;= restart_button_x + end_button_width and restart_button_y &lt;= mouse_y &lt;= restart_button_y + button_height:
+                                                    guesses = []
+                                                    guess = &#34;&#34;
+                                                    frames = []
+                                                    falling_image = bobcat_image
+                                                    correct_word = randomword(valid_solutions)
+                                                    bobcats = []
+                                                    new_word = False
+                                                    hint_used = False
+                                                    start_time = pygame.time.get_ticks()
+                                                    break
+                                        else:
+                                            continue
+                                        break
+                                elif len(guesses) == 6 and guess != correct_word:
+                                    # Function to show elapsed time on three separate lines.
+                                    # Implemented to use with win/loss removed
+                                    screen.fill(&#39;aquamarine4&#39;)
+                                    displayKeyboard(guesses, correct_word)
+                                    displayWords(guesses, correct_word)
+                                    font_win = pygame.font.Font(None, 30)
+                                    font_win2 = pygame.font.Font(None, 30)
+                                    font_win3 = pygame.font.Font(None, 30)
+                                    text_win = font_win.render(&#34;You lost.&#34;, True, (255, 255, 255))
+                                    text_win2 = font_win2.render(f&#34;Time Taken: {elapsed_time_str} seconds&#34;, True, (255, 255, 255))
+                                    text_win3 = font_win3.render(&#34;Correct Word: &#34; + correct_word, True, (255, 255, 255))
+                                    text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, 25))
+                                    text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, 50))
+                                    text_rect3 = text_win3.get_rect(center=(SCREEN_WIDTH // 2, 75))
+                                    overlay_surface = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.SRCALPHA)
+                                    overlay_surface.fill((0, 0, 0, 128))  # Transparent black overlay
+                                    screen.blit(overlay_surface, (0, 0))
+                                    screen.blit(text_win, text_rect)
+                                    screen.blit(text_win2, text_rect2)
+                                    screen.blit(text_win3, text_rect3)
+                                    start_time = pygame.time.get_ticks()
+                                    draw_restart_button_end()
+                                    pygame.display.update()
+                                    done = True
+                                    while True:
+                                        for event in pygame.event.get():
+                                            if event.type == pygame.MOUSEBUTTONDOWN:
+                                                mouse_x, mouse_y = pygame.mouse.get_pos()
+                                                if restart_button_x &lt;= mouse_x &lt;= restart_button_x + end_button_width and restart_button_y &lt;= mouse_y &lt;= restart_button_y + end_button_height:
+                                                    guesses = []
+                                                    guess = &#34;&#34;
+                                                    frames = []
+                                                    falling_image = bobcat_image
+                                                    correct_word = randomword(valid_solutions)
+                                                    bobcats = []
+                                                    new_word = False
+                                                    hint_used = False
+                                                    start_time = pygame.time.get_ticks()
+                                                    break
+                                        else:
+                                            continue
+                                        break
+                                guess = &#34;&#34;
+                            continue
+
+                    #Same for hint
+                    if hint_button_x &lt;= mouse_x &lt;= hint_button_x + button_width and hint_button_y &lt;= mouse_y &lt;= hint_button_y + button_height and not hint_used:
+                        hint_used = True
+                        unusable_letters = []
+                        contains_letters = []
+                        correct_letters = []
+                        for guess in guesses:
+                            for letter in guess:
+                                if letter not in correct_word:
+                                    unusable_letters.append(letter)
+                                elif guess.index(letter) == correct_word.index(letter):
+                                    correct_letters.append((letter, guess.index(letter)))
+                                else:
+                                    contains_letters.append(letter)
+                        guess = ai_solve(valid_solutions, guesses, unusable_letters, contains_letters, correct_letters)
+                        for letter in guess:
+                            frames.append(0)
+                        continue
+
+                    # Check if mouse clicks within bounds of backspace button. If so, remove last letter from guess
+                    if backspace_button_x &lt;= mouse_x &lt;= backspace_button_x + 30 and backspace_button_y &lt;= mouse_y &lt;= backspace_button_y + 30:
+                        if len(guess) &gt; 0:
+                            guess = guess[0:-1]
+                            frames = frames[0:-1]
+
+                    if enter_button_x &lt;= mouse_x &lt;= enter_button_x + 82 and enter_button_y &lt;= mouse_y &lt;= enter_button_y + 30:
+                        if mouse_x &lt;= 600 and mouse_y &lt;= 760:
+                            pass
+                        elif guess in valid_words and guess not in guesses:
+                            new_word = True
+                            guesses.append(guess)
+                            frames = []
+                            #Easter eggs
+                            if guess == &#34;chang&#34;:
+                                falling_image = chang
+                            if guess == &#34;among&#34;:
+                                falling_image = among
+                                #audio_among.play()
+                            if guess == &#34;drake&#34;:
+                                falling_image = drake 
+                                #audio_drake.play()
+                            if guess == &#34;homer&#34;:
+                                falling_image = homer
+                                #audio_homer.play()
+                            if guess == &#34;sonic&#34;:
+                                falling_image = sonic
+                            if guess == &#34;sigma&#34;:
+                                falling_image = sigma
+                            if guess == &#34;spike&#34;:
+                                falling_image = spike
+                                #audio_spike.play()
+                            if guess == &#34;siege&#34;:
+                                falling_image = siege
+                                #audio_siege.play()
+                            if guess == correct_word:
+                                # Function to show elapsed time on three separate lines.
+                                # Implemented to use with win/loss removed
+                                screen.fill(&#39;aquamarine4&#39;)
+                                displayKeyboard(guesses, correct_word)
+                                displayWords(guesses, correct_word)
+                                font_win = pygame.font.Font(None, 30)
+                                font_win2 = pygame.font.Font(None, 30)
+                                font_win3 = pygame.font.Font(None, 30)
+                                text_win = font_win.render(&#34;You win!&#34;, True, (255, 255, 255))
+                                text_win2 = font_win2.render(f&#34;Time Taken: {elapsed_time_str} seconds&#34;, True, (255, 255, 255))
+                                text_win3 = font_win3.render(&#34;Correct Word: &#34; + correct_word, True, (255, 255, 255))
+                                text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, 25))
+                                text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, 50)) 
+                                text_rect3 = text_win3.get_rect(center=(SCREEN_WIDTH // 2, 75))
+                                overlay_surface = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.SRCALPHA)
+                                overlay_surface.fill((0, 0, 0, 128))  # Transparent black overlay
+                                screen.blit(overlay_surface, (0, 0))
+                                screen.blit(text_win, text_rect)
+                                screen.blit(text_win2, text_rect2)
+                                screen.blit(text_win3, text_rect3)
+                                start_time = pygame.time.get_ticks()
+                                draw_restart_button_end()
+                                pygame.display.update()
+
+                                pygame.display.update()
+                                while True:
+                                    for event in pygame.event.get():
+                                        if event.type == pygame.MOUSEBUTTONDOWN:
+                                            mouse_x, mouse_y = pygame.mouse.get_pos()
+                                            if restart_button_x &lt;= mouse_x &lt;= restart_button_x + end_button_width and restart_button_y &lt;= mouse_y &lt;= restart_button_y + button_height:
+                                                guesses = []
+                                                guess = &#34;&#34;
+                                                frames = []
+                                                falling_image = bobcat_image
+                                                correct_word = randomword(valid_solutions)
+                                                bobcats = []
+                                                new_word = False
+                                                hint_used = False
+                                                start_time = pygame.time.get_ticks()
+                                                break
+                                    else:
+                                        continue
+                                    break
+                            elif len(guesses) == 6 and guess != correct_word:
+                                # Function to show elapsed time on three separate lines.
+                                # Implemented to use with win/loss removed
+                                screen.fill(&#39;aquamarine4&#39;)
+                                displayKeyboard(guesses, correct_word)
+                                displayWords(guesses, correct_word)
+                                font_win = pygame.font.Font(None, 30)
+                                font_win2 = pygame.font.Font(None, 30)
+                                font_win3 = pygame.font.Font(None, 30)
+                                text_win = font_win.render(&#34;You lost.&#34;, True, (255, 255, 255))
+                                text_win2 = font_win2.render(f&#34;Time Taken: {elapsed_time_str} seconds&#34;, True, (255, 255, 255))
+                                text_win3 = font_win3.render(&#34;Correct Word: &#34; + correct_word, True, (255, 255, 255))
+                                text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, 25))
+                                text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, 50))
+                                text_rect3 = text_win3.get_rect(center=(SCREEN_WIDTH // 2, 75))
+                                overlay_surface = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.SRCALPHA)
+                                overlay_surface.fill((0, 0, 0, 128))  # Transparent black overlay
+                                screen.blit(overlay_surface, (0, 0))
+                                screen.blit(text_win, text_rect)
+                                screen.blit(text_win2, text_rect2)
+                                screen.blit(text_win3, text_rect3)
+                                start_time = pygame.time.get_ticks()
+                                draw_restart_button_end()
+                                pygame.display.update()
+
+                                while True:
+                                    for event in pygame.event.get():
+                                        if event.type == pygame.MOUSEBUTTONDOWN:
+                                            mouse_x, mouse_y = pygame.mouse.get_pos()
+                                            if restart_button_x &lt;= mouse_x &lt;= restart_button_x + end_button_width and restart_button_y &lt;= mouse_y &lt;= restart_button_y + end_button_height:
+                                                guesses = []
+                                                guess = &#34;&#34;
+                                                frames = []
+                                                falling_image = bobcat_image
+                                                correct_word = randomword(valid_solutions)
+                                                bobcats = []
+                                                new_word = False
+                                                hint_used = False
+                                                start_time = pygame.time.get_ticks()
+                                                break
+                                    else:
+                                        continue
+                                    break
+                            guess = &#34;&#34;
+                        elif guess not in valid_words and len(guess) == 5:
+                            notValidWord = True
+                            text_display_time = 120
+
+                # This means the user pressed a key, this is where all of our letter inputs are handled
+                if event.type == pygame.KEYDOWN:
+
+                    if len(guess) &lt; 5:
+                        if event.key == pygame.K_a: # K_a is the constant for the &#39;a&#39; key, the rest of the constants are at https://www.pygame.org/docs/ref/key.html
+                            guess += &#34;a&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_b:
+                            guess += &#34;b&#34;
+                            frames.append(0) 
+                        elif event.key == pygame.K_c:
+                            guess += &#34;c&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_d:
+                            guess += &#34;d&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_e:
+                            guess += &#34;e&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_f:
+                            guess += &#34;f&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_g:
+                            guess += &#34;g&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_h:
+                            guess += &#34;h&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_i:
+                            guess += &#34;i&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_j:
+                            guess += &#34;j&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_k:
+                            guess += &#34;k&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_l:
+                            guess += &#34;l&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_m:
+                            guess += &#34;m&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_n:
+                            guess += &#34;n&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_o:
+                            guess += &#34;o&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_p:
+                            guess += &#34;p&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_q:
+                            guess += &#34;q&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_r:
+                            guess += &#34;r&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_s: 
+                            guess += &#34;s&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_t: 
+                            guess += &#34;t&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_u: 
+                            guess += &#34;u&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_v: 
+                            guess += &#34;v&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_w: 
+                            guess += &#34;w&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_x: 
+                            guess += &#34;x&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_y: 
+                            guess += &#34;y&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_z: 
+                            guess += &#34;z&#34;
+                            frames.append(0)
+
+                    if event.key == pygame.K_BACKSPACE: 
+                        guess = guess[0:-1]
+                        frames = frames[0:-1]
+
+                    # This means user hit the enter key which should mean they typed a word and need it checked
+                    if event.key == pygame.K_RETURN: 
+                        if guess in valid_words and guess not in guesses:
+                            guesses.append(guess)
+                            new_word = True
+                            frames = []
+                            #Easter eggs
+                            if guess == &#34;chang&#34;:
+                                falling_image = chang
+                            if guess == &#34;among&#34;:
+                                falling_image = among
+                                #audio_among.play()
+                            if guess == &#34;drake&#34;:
+                                falling_image = drake
+                                #audio_drake.play()
+                            if guess == &#34;homer&#34;:
+                                falling_image = homer
+                                #audio_homer.play()
+                            if guess == &#34;sonic&#34;:
+                                falling_image = sonic
+                            if guess == &#34;sigma&#34;:
+                                falling_image = sigma
+                            if guess == &#34;spike&#34;:
+                                falling_image = spike
+                                #audio_spike.play()
+                            if guess == &#34;siege&#34;:
+                                falling_image = siege
+                                #audio_siege.play()
+                            if guess == correct_word:
+                                # Function to show elapsed time on three separate lines.
+                                # Implemented to use with win/loss removed
+                                screen.fill(&#39;aquamarine4&#39;)
+                                displayKeyboard(guesses, correct_word)
+                                displayWords(guesses, correct_word)
+                                font_win = pygame.font.Font(None, 30)
+                                font_win2 = pygame.font.Font(None, 30)
+                                font_win3 = pygame.font.Font(None, 30)
+                                text_win = font_win.render(&#34;You win!&#34;, True, (255, 255, 255))
+                                text_win2 = font_win2.render(f&#34;Time Taken: {elapsed_time_str} seconds&#34;, True, (255, 255, 255))
+                                text_win3 = font_win3.render(&#34;Correct Word: &#34; + correct_word, True, (255, 255, 255))
+                                text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, 25)) 
+                                text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, 50)) 
+                                text_rect3 = text_win3.get_rect(center=(SCREEN_WIDTH // 2, 75))
+                                overlay_surface = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.SRCALPHA)
+                                overlay_surface.fill((0, 0, 0, 128))  # Transparent black overlay
+                                screen.blit(overlay_surface, (0, 0))
+                                screen.blit(text_win, text_rect)
+                                screen.blit(text_win2, text_rect2)
+                                screen.blit(text_win3, text_rect3)
+                                start_time = pygame.time.get_ticks()
+                                draw_restart_button_end()
+                                pygame.display.update()
+
+                                #Click functionality for restart and quit
+                                guess = &#34;&#34;
+                                while True:
+                                    for event in pygame.event.get():
+                                        if event.type == pygame.MOUSEBUTTONDOWN:
+                                            mouse_x, mouse_y = pygame.mouse.get_pos()
+                                            if restart_button_x &lt;= mouse_x &lt;= restart_button_x + end_button_width and restart_button_y &lt;= mouse_y &lt;= restart_button_y + end_button_height:
+                                                guesses = []
+                                                guess = &#34;&#34;
+                                                frames = []
+                                                falling_image = bobcat_image
+                                                correct_word = randomword(valid_solutions)
+                                                bobcats = []
+                                                new_word = False
+                                                hint_used = False
+                                                start_time = pygame.time.get_ticks()
+                                                break
+                                    else:
+                                        continue
+                                    break
+                            elif len(guesses) == 6 and guess != correct_word:
+                                # Function to show elapsed time on two separate lines.
+                                # Implemented to use with win/loss removed
+                                screen.fill(&#39;aquamarine4&#39;)
+                                displayKeyboard(guesses, correct_word)
+                                displayWords(guesses, correct_word)
+                                font_win = pygame.font.Font(None, 30)
+                                font_win2 = pygame.font.Font(None, 30)
+                                font_win3 = pygame.font.Font(None, 30)
+                                text_win = font_win.render(&#34;You lost.&#34;, True, (255, 255, 255))
+                                text_win2 = font_win2.render(f&#34;Time Taken: {elapsed_time_str} seconds&#34;, True, (255, 255, 255))
+                                text_win3 = font_win3.render(&#34;Correct Word: &#34; + correct_word, True, (255, 255, 255))
+                                text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, 25))
+                                text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, 50))
+                                text_rect3 = text_win3.get_rect(center=(SCREEN_WIDTH // 2, 75))
+                                overlay_surface = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.SRCALPHA)
+                                overlay_surface.fill((0, 0, 0, 128))  # Transparent black overlay
+                                screen.blit(overlay_surface, (0, 0))
+                                screen.blit(text_win, text_rect)
+                                screen.blit(text_win2, text_rect2)
+                                screen.blit(text_win3, text_rect3)
+                                start_time = pygame.time.get_ticks()
+                                draw_restart_button_end()
+                                pygame.display.update()
+
+
+
+                                #Click functionality for restart and quit
+                                guess = &#34;&#34;
+                                while True:
+                                    for event in pygame.event.get():
+                                        if event.type == pygame.MOUSEBUTTONDOWN:
+                                            mouse_x, mouse_y = pygame.mouse.get_pos()
+                                            if restart_button_x &lt;= mouse_x &lt;= restart_button_x + end_button_width and restart_button_y &lt;= mouse_y &lt;= restart_button_y + end_button_height:
+                                                guesses = []
+                                                guess = &#34;&#34;
+                                                frames = []
+                                                falling_image = bobcat_image
+                                                correct_word = randomword(valid_solutions)
+                                                bobcats = []
+                                                new_word = False
+                                                hint_used = False
+                                                start_time = pygame.time.get_ticks()
+                                                break
+                                    else:
+                                        continue
+                                    break
+                            guess = &#34;&#34;
+                        elif guess not in valid_words and len(guess) == 5:
+                            notValidWord = True
+                            text_display_time = 120
+                        pass
+
+                # This means the user closed the window
+                if event.type == pygame.QUIT:
+                    # Terminates the program
+                    pygame.quit()
+                    exit()
+
+            # Display guesses and current word being typed
+            displayEmptyBoard()
+            if new_word:
+                if len(guesses) &gt; 1:
+                    displayWords(guesses[0:-1], correct_word)
+                    animateGuess(guesses[-1], len(guesses), correct_word, new_word_frame)
+                else:
+                    animateGuess(guesses[-1], len(guesses), correct_word, new_word_frame)
+                new_word_frame += 1
+                if new_word_frame &gt; (frames_per_letter * 5) - 1:
+                    new_word = False
+                    new_word_frame = 0
+            else:
+                displayWords(guesses, correct_word)
+            displayGuess(guess, len(guesses), frames)
+            displayKeyboard(guesses, correct_word)
+
+            restart_text = pygame.font.Font(None, 20)
+            draw_restart_button()
+            restart_text = restart_text.render(&#34;Restart&#34;, True, (255, 255, 255))
+            screen.blit(restart_text, (742, 60))
+
+            solver_text = pygame.font.Font(None, 20)
+            draw_solver_button()
+            solver_text = solver_text.render(&#34;Solve&#34;, True, (255, 255, 255))
+            screen.blit(solver_text, (746, 140))
+
+            hint_text = pygame.font.Font(None, 20)
+            draw_hint_button()
+            hint_text = hint_text.render(&#34;Hint&#34;, True, (255, 255, 255))
+            screen.blit(hint_text, (752, 220))
+
+            draw_enter_button()
+            draw_backspace_button()
+            if notValidWord:
+                text_display_time = notValidWordText(text_display_time)
+                if text_display_time == 0:
+                    notValidWord = False
+            # Updates the display with all new objects
+            pygame.display.update()
+
+            #Sets the maximum number of iterations for the while loop per second
+            clock.tick(60)
+            await asyncio.sleep(0)
+asyncio.run(main())</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="main.ai_legal"><code class="name flex">
+<span>def <span class="ident">ai_legal</span></span>(<span>word, guessed, unusable_letters, contains_letters, correct_letters)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ai_legal(word, guessed, unusable_letters, contains_letters, correct_letters):
+    # Check if the word is in the list of guessed words
+    if word in guessed:
+        return False
+
+    # Check if the word contains any of the unusable letters
+    for letter in unusable_letters:
+        if letter in word:
+            return False
+
+    # Check if the word contains any of the letters that the word contains
+    for letter in contains_letters:
+        if letter not in word:
+            return False
+
+    # Check if the word contains the correct letters in the correct positions
+    for letter, position in correct_letters:
+        if word[position] != letter:
+            return False
+
+    return True</code></pre>
+</details>
+</dd>
+<dt id="main.ai_solve"><code class="name flex">
+<span>def <span class="ident">ai_solve</span></span>(<span>words, guessed, unusable_letters, contains_letters, correct_letters)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def ai_solve(words, guessed, unusable_letters, contains_letters, correct_letters):
+    letter_freq = {}  # dictionary to store letter frequencies
+    word_scores = []
+    guess = &#34;&#34; # AI&#39;s guess
+
+    # Loop that loads the letter frequencies dict
+    for word in words:
+        for letter in word:
+            letter_freq[letter] = letter_freq.get(letter, 0) + 1
+    # Loop that sorts the words based on letter frequencies
+    for word in words:
+        if ai_legal(word, guessed, unusable_letters, contains_letters, correct_letters):
+            word_score = 0
+            letters = set()
+            for letter in word:
+                if letter not in letters:
+                    letters.add(letter)
+            for letter in letters:
+                word_score += letter_freq[letter]
+            word_scores.append((word_score, word))
+    word_scores.sort(reverse=True)
+
+    return word_scores[0][1]</code></pre>
+</details>
+</dd>
+<dt id="main.animateGuess"><code class="name flex">
+<span>def <span class="ident">animateGuess</span></span>(<span>guess, guessnum, correct, frame)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Animate the latest user guess</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>guess</code></strong> :&ensp;<code>str</code></dt>
+<dd>The latest user guess.</dd>
+<dt><strong><code>guessnum</code></strong> :&ensp;<code>int</code></dt>
+<dd>The guess number for the guess being animated.</dd>
+<dt><strong><code>correct</code></strong> :&ensp;<code>str</code></dt>
+<dd>The correct word.</dd>
+<dt><strong><code>frame</code></strong> :&ensp;<code>int</code></dt>
+<dd>The frame number within the animation sequence.</dd>
+</dl>
+<p>(global) frames_per_letter (int): The total number of frames per letter animation. MUST BE ODD AND AT LEAST 3 FOR PROPER ANIMATION</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def animateGuess(guess, guessnum, correct, frame):
+    &#34;&#34;&#34;Animate the latest user guess
+
+    Args:
+        guess (str): The latest user guess.
+        guessnum (int): The guess number for the guess being animated.
+        correct (str): The correct word.
+        frame (int): The frame number within the animation sequence.
+        (global) frames_per_letter (int): The total number of frames per letter animation. MUST BE ODD AND AT LEAST 3 FOR PROPER ANIMATION
+    &#34;&#34;&#34;
+
+    x_coord = 120
+    y_coord = 100
+    row = guessnum
+    column = 0
+
+    # Math to determine where letter should be displayed
+    letter_column = ((frame - (frame % frames_per_letter)) / frames_per_letter) + 1
+    letter_frame = frame % frames_per_letter
+    y_offset = 0
+    mid_frame = ((frames_per_letter - 1) / 2)
+    px_per_frame = 30 / (mid_frame + 1)
+    if letter_frame &lt;= mid_frame:
+        y_offset = (letter_frame + 1) * px_per_frame
+    else:
+        y_offset = (frames_per_letter - letter_frame) * px_per_frame
+
+
+    for letter in guess:
+        column += 1
+
+        square_center_x = x_coord * column + width / 2
+        if column == letter_column:
+            square_center_y = (y_coord * row + height / 2) - y_offset
+        else:
+            square_center_y = y_coord * row + height / 2
+
+        text = example_font.render(letter.upper(), False, &#39;white&#39;)
+        text_width, text_height = example_font.size(letter.upper())
+
+        text_x = square_center_x - text_width / 2
+        text_y = square_center_y - text_height / 2
+        if column &lt; letter_column:
+            if letter == correct[column - 1]:
+                screen.blit(correct_surface, (x_coord * column, y_coord * row))
+            elif letter in correct:
+                screen.blit(partially_correct_surface, (x_coord * column, y_coord * row))
+            else:
+                screen.blit(incorrect_surface, (x_coord * column, y_coord * row))
+        else:
+            screen.blit(incorrect_surface, (x_coord * column, y_coord * row))
+        screen.blit(text, (text_x, text_y))</code></pre>
+</details>
+</dd>
+<dt id="main.displayBobcats"><code class="name flex">
+<span>def <span class="ident">displayBobcats</span></span>(<span>bobcats)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def displayBobcats(bobcats):
+    for bobcat in bobcats:
+        if bobcat.rect.y &gt; 800 or bobcat.rect.y &lt; -300:
+            bobcats.remove(bobcat)
+
+    while(len(bobcats) &lt; 50):
+        speed = random.randint(2, 4)
+        coords = (random.randint(-50, 750), random.randint(-300, -00))
+        new_bobcat = Bobcat(speed, coords)
+        bobcats.append(new_bobcat)
+
+    for bobcat in bobcats:
+        bobcat.rect.topleft = (bobcat.rect.x, bobcat.rect.y + bobcat.speed)
+        screen.blit(falling_image, bobcat)
+    return bobcats</code></pre>
+</details>
+</dd>
+<dt id="main.displayEmptyBoard"><code class="name flex">
+<span>def <span class="ident">displayEmptyBoard</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def displayEmptyBoard():
+    screen.blit(logo_image, (logo_x, logo_y))
+    x_cord = 120
+    y_cord = 100
+    for row in range(1, 7):
+        for column in range(1, 6):
+            screen.blit(incorrect_surface, (x_cord * column, y_cord * row))</code></pre>
+</details>
+</dd>
+<dt id="main.displayGuess"><code class="name flex">
+<span>def <span class="ident">displayGuess</span></span>(<span>guess, row, frames)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def displayGuess(guess, row, frames):
+    x_coord = 120
+    y_coord = 100 + (100 * row)
+    column = 0
+    for letter in guess:
+        column += 1
+        square_center_x = x_coord * column + width / 2
+        if(frames[column - 1] &lt; 5):
+            # Offsets the guess display height based on its animation frame so it appears to slide into place
+            square_center_y = (y_coord + height / 2) - (30 - (frames[column - 1] * 6))
+            frames[column - 1] += 1
+        else:
+            square_center_y = y_coord + height / 2
+
+        text = example_font.render(letter.upper(), False, &#39;white&#39;)
+        text_width, text_height = example_font.size(letter.upper())
+
+        text_x = square_center_x - text_width / 2
+        text_y = square_center_y - text_height / 2
+
+        screen.blit(incorrect_surface, (x_coord * column, y_coord))
+        screen.blit(text, (text_x, text_y))</code></pre>
+</details>
+</dd>
+<dt id="main.displayKeyboard"><code class="name flex">
+<span>def <span class="ident">displayKeyboard</span></span>(<span>guesses, correct)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def displayKeyboard(guesses, correct):
+    x_cord = SCREEN_WIDTH - 600
+    y_cord = SCREEN_HEIGHT - 110
+    # If there are no guesses display all letters as unguessed
+    if not guesses:
+        for letter in &#39;qwertyuiopasdfghjklzxcvbnm&#39;:
+            if letter == &#39;a&#39; or letter == &#39;z&#39;:
+                if letter == &#39;a&#39;:
+                    x_cord = SCREEN_WIDTH - 570
+                if letter == &#39;z&#39;:
+                    x_cord = SCREEN_WIDTH - 530
+                y_cord += SCREEN_HEIGHT / 20
+            text = smaller_font.render(letter.upper(), True, &#39;white&#39;)
+            screen.blit(unguessed_surface, (x_cord - 4, y_cord - 3))
+            screen.blit(text, (x_cord, y_cord))
+            x_cord += SCREEN_WIDTH / 20
+        return
+    for letter in &#39;qwertyuiopasdfghjklzxcvbnm&#39;:
+        if letter == &#39;a&#39; or letter == &#39;z&#39;:
+            if letter == &#39;a&#39;:
+                x_cord = SCREEN_WIDTH - 570
+            if letter == &#39;z&#39;:
+                x_cord = SCREEN_WIDTH - 530
+            y_cord += SCREEN_HEIGHT / 20
+        text = smaller_font.render(letter.upper(), True, &#39;white&#39;)
+        # If the current letter is in the correct word, record the indices
+        if letter in correct:
+            indices = [i for i, x in enumerate(correct) if x == letter]
+        else:
+            indices = []
+        # If the letter is in the correct word and in the correct position in any of the guesses display the green correct surface
+        if letter in correct and any(guess[i] == letter for i in indices for guess in guesses):
+            screen.blit(smaller_correct_surface, (x_cord - 4, y_cord - 3))
+            screen.blit(text, (x_cord, y_cord))
+        # If the letter is in the correct word but not in the correct position in any of the guesses display the partially correct surface
+        elif letter in correct and any(letter in guess for guess in guesses):
+            screen.blit(smaller_partially_correct_surface, (x_cord - 4, y_cord - 3))
+            screen.blit(text, (x_cord, y_cord))
+        # If the letter is not in the correct word display the incorrect surface
+        elif any(letter in guess for guess in guesses):
+            screen.blit(smaller_incorrect_surface, (x_cord - 4, y_cord - 3))
+            screen.blit(text, (x_cord, y_cord))
+        # If the letter is not in the guess display the unguessed surface
+        else:
+            screen.blit(unguessed_surface, (x_cord - 4, y_cord - 3))
+            screen.blit(text, (x_cord, y_cord))
+        x_cord += SCREEN_WIDTH / 20</code></pre>
+</details>
+</dd>
+<dt id="main.displayWords"><code class="name flex">
+<span>def <span class="ident">displayWords</span></span>(<span>guesses, correct)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def displayWords(guesses, correct):
+    x_coord = 120
+    y_coord = 100
+    row = 0
+    for guess in guesses:
+        row += 1
+        column = 0
+        for letter in guess:
+            column += 1
+
+            square_center_x = x_coord * column + width / 2
+            square_center_y = y_coord * row + height / 2
+
+            text = example_font.render(letter.upper(), False, &#39;white&#39;)
+            text_width, text_height = example_font.size(letter.upper())
+
+            text_x = square_center_x - text_width / 2
+            text_y = square_center_y - text_height / 2
+
+            if letter == correct[column - 1]:
+                screen.blit(correct_surface, (x_coord * column, y_coord * row))
+            elif letter in correct:
+                screen.blit(partially_correct_surface, (x_coord * column, y_coord * row))
+            else:
+                screen.blit(incorrect_surface, (x_coord * column, y_coord * row))
+            screen.blit(text, (text_x, text_y))</code></pre>
+</details>
+</dd>
+<dt id="main.draw_backspace_button"><code class="name flex">
+<span>def <span class="ident">draw_backspace_button</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def draw_backspace_button():
+    screen.blit(backspace_image, (backspace_button_x, backspace_button_y))</code></pre>
+</details>
+</dd>
+<dt id="main.draw_enter_button"><code class="name flex">
+<span>def <span class="ident">draw_enter_button</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def draw_enter_button():
+    screen.blit(enter_image, (enter_button_x, enter_button_y))</code></pre>
+</details>
+</dd>
+<dt id="main.draw_hint_button"><code class="name flex">
+<span>def <span class="ident">draw_hint_button</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def draw_hint_button():
+    screen.blit(hint_image, (hint_button_x, hint_button_y))</code></pre>
+</details>
+</dd>
+<dt id="main.draw_restart_button"><code class="name flex">
+<span>def <span class="ident">draw_restart_button</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def draw_restart_button():
+    screen.blit(restart_image, (restart_button_x, restart_button_y))</code></pre>
+</details>
+</dd>
+<dt id="main.draw_restart_button_end"><code class="name flex">
+<span>def <span class="ident">draw_restart_button_end</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def draw_restart_button_end():
+    screen.blit(restart_image, (restart_button_x, restart_button_y))</code></pre>
+</details>
+</dd>
+<dt id="main.draw_solver_button"><code class="name flex">
+<span>def <span class="ident">draw_solver_button</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def draw_solver_button():
+    screen.blit(solver_image, (solver_button_x, solver_button_y))</code></pre>
+</details>
+</dd>
+<dt id="main.draw_timer_button"><code class="name flex">
+<span>def <span class="ident">draw_timer_button</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def draw_timer_button():
+    screen.blit(timer_image, (timer_image_x, timer_image_y))</code></pre>
+</details>
+</dd>
+<dt id="main.main"><code class="name flex">
+<span>async def <span class="ident">main</span></span>(<span>)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">async def main():
+    global falling_image
+    if __name__ == &#34;__main__&#34;: #print game board w squares
+        guesses = []
+        hint_used = False
+        frames = []
+        new_word = False
+        new_word_frame = 0
+        
+        guess = &#34;&#34;
+        correct_word = randomword(valid_solutions)
+        bobcats = []
+        notValidWord = False
+        text_display_time = 0
+
+        #Starts timer
+        start_time = pygame.time.get_ticks()
+
+        # Main game loop
+        while True:
+
+            screen.fill(&#39;aquamarine4&#39;)
+            bobcats = displayBobcats(bobcats)
+            draw_enter_button()
+
+            &#34;&#34;&#34;
+            Game Timer
+
+            Provides functionality to display time in seconds and milliseconds to be displayed on the top-left
+            of the game board. Time is displayed in seconds and milliseconds. Example (7.42 seconds)
+            
+            Example:
+                Display time as 7.43 seconds
+
+            Usage:
+                Initialize start_time to effectively track time
+
+            Example:
+                &gt;&gt;&gt; start_time = pygame.time.get_ticks()
+            &#34;&#34;&#34;
+            #get current time in milliseconds
+            current_time = pygame.time.get_ticks()
+            #calculates elapsed time and converts to seconds
+            elapsed_time = (current_time - start_time) / 1000.0
+            #extracts seconds
+            seconds = int(elapsed_time)
+            #extracts milliseconds
+            milliseconds = int((elapsed_time - seconds) * 100)
+            #formats a string with format SS:MiMi
+            elapsed_time_str = f&#34;{seconds}.{milliseconds}&#34;
+            ##creates a font object of size 30
+
+            font = pygame.font.Font(None, 36) 
+            timer_text = pygame.font.Font(None, 30)
+            #draws timer icon
+            draw_timer_button()
+            #renders font using specified color and anti-aliasing
+            timer_text = timer_text.render(f&#34;{elapsed_time_str}&#34;, True, (255, 255, 255)) 
+            #draws text on screen
+            screen.blit(timer_text, (48, 17)) 
+
+            # This is the event loop it checks for any player input
+            for event in pygame.event.get():
+                # Create event for the user clicking the mouse
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    # Get mouse position
+                    mouse_x, mouse_y = pygame.mouse.get_pos()
+                    # Get a list of characters for each letter in the alphabet
+                    letters = [letter for letter in &#39;qwertyuiopasdfghjklzxcvbnm&#39;]
+                    boxes = []
+                    x = SCREEN_WIDTH - 600
+                    y = SCREEN_HEIGHT - 110
+                    # Create a box for each letter in the alphabet and record the box coordinates in a list
+                    for letter in  &#39;qwertyuiopasdfghjklzxcvbnm&#39;:
+                        if letter == &#39;a&#39; or letter == &#39;z&#39;:
+                            if letter == &#39;a&#39;:
+                                x = SCREEN_WIDTH - 570
+                            if letter == &#39;z&#39;:
+                                x = SCREEN_WIDTH - 530
+                            y += SCREEN_HEIGHT / 20
+                        box = pygame.Rect(x - 4, y - 3, smaller_width, smaller_height)
+                        boxes.append(box)
+                        x += SCREEN_WIDTH / 20
+                    # Check if the mouse was clicked inside any of the boxes and add it to the guess if it was
+                    for i in range(len(boxes)):
+                        if boxes[i].collidepoint(mouse_x, mouse_y) and len(guess) &lt; 5:
+                            guess += letters[i]
+                            frames.append(0)
+                            break
+
+                    # Check if mouse clicks within bounds of restart button. If so, restart game
+                    if restart_button_x &lt;= mouse_x &lt;= restart_button_x + button_width and restart_button_y &lt;= mouse_y &lt;= restart_button_y + button_height:
+                        guesses = []
+                        guess = &#34;&#34;
+                        frames = []
+                        falling_image = bobcat_image
+                        correct_word = randomword(valid_solutions)
+                        bobcats = []
+                        new_word = False
+                        start_time = pygame.time.get_ticks() #added
+                        continue
+
+                    # Check if mouse clicks within bounds of solve button. If so, solve game
+                    if solver_button_x &lt;= mouse_x &lt;= solver_button_x + button_width and solver_button_y &lt;= mouse_y &lt;= solver_button_y + button_height:
+                            done = False
+                            while(len(guesses) &lt; 6 and guess != correct_word and done == False):
+                                unusable_letters = []
+                                contains_letters = []
+                                correct_letters = []
+                                for guess in guesses:
+                                    for letter in guess:
+                                        if letter not in correct_word:
+                                            unusable_letters.append(letter)
+                                        elif guess.index(letter) == correct_word.index(letter):
+                                            correct_letters.append((letter, guess.index(letter)))
+                                        else:
+                                            contains_letters.append(letter)
+                                guess = ai_solve(valid_solutions, guesses, unusable_letters, contains_letters, correct_letters)
+                                new_word = True
+                                guesses.append(guess)
+                                frames = []
+                                #Easter eggs
+                                if guess == &#34;chang&#34;:
+                                    falling_image = chang
+                                if guess == &#34;among&#34;:
+                                    falling_image = among
+                                    #audio_among.play()
+                                if guess == &#34;drake&#34;:
+                                    falling_image = drake 
+                                    #audio_drake.play()
+                                if guess == &#34;homer&#34;:
+                                    falling_image = homer
+                                    #audio_homer.play()
+                                if guess == &#34;sonic&#34;:
+                                    falling_image = sonic
+                                if guess == &#34;sigma&#34;:
+                                    falling_image = sigma
+                                if guess == &#34;spike&#34;:
+                                    falling_image = spike
+                                    #audio_spike.play()
+                                if guess == &#34;siege&#34;:
+                                    falling_image = siege
+                                    #audio_siege.play()
+                                if guess == correct_word:
+                                    # Function to show elapsed time on three separate lines.
+                                    # Implemented to use with win/loss removed
+                                    screen.fill(&#39;aquamarine4&#39;)
+                                    displayKeyboard(guesses, correct_word)
+                                    displayWords(guesses, correct_word)
+                                    font_win = pygame.font.Font(None, 30)
+                                    font_win2 = pygame.font.Font(None, 30)
+                                    font_win3 = pygame.font.Font(None, 30)
+                                    text_win = font_win.render(&#34;You win!&#34;, True, (255, 255, 255))
+                                    text_win2 = font_win2.render(f&#34;Time Taken: {elapsed_time_str} seconds&#34;, True, (255, 255, 255))
+                                    text_win3 = font_win3.render(&#34;Correct Word: &#34; + correct_word, True, (255, 255, 255))
+                                    text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, 25))
+                                    text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, 50)) 
+                                    text_rect3 = text_win3.get_rect(center=(SCREEN_WIDTH // 2, 75))
+                                    overlay_surface = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.SRCALPHA)
+                                    overlay_surface.fill((0, 0, 0, 128))  # Transparent black overlay
+                                    screen.blit(overlay_surface, (0, 0))
+                                    screen.blit(text_win, text_rect)
+                                    screen.blit(text_win2, text_rect2)
+                                    screen.blit(text_win3, text_rect3)
+                                    start_time = pygame.time.get_ticks()
+                                    draw_restart_button_end()
+                                    pygame.display.update()
+                                    done = True
+                                    pygame.display.update()
+                                    while True:
+                                        for event in pygame.event.get():
+                                            if event.type == pygame.MOUSEBUTTONDOWN:
+                                                mouse_x, mouse_y = pygame.mouse.get_pos()
+                                                if restart_button_x &lt;= mouse_x &lt;= restart_button_x + end_button_width and restart_button_y &lt;= mouse_y &lt;= restart_button_y + button_height:
+                                                    guesses = []
+                                                    guess = &#34;&#34;
+                                                    frames = []
+                                                    falling_image = bobcat_image
+                                                    correct_word = randomword(valid_solutions)
+                                                    bobcats = []
+                                                    new_word = False
+                                                    hint_used = False
+                                                    start_time = pygame.time.get_ticks()
+                                                    break
+                                        else:
+                                            continue
+                                        break
+                                elif len(guesses) == 6 and guess != correct_word:
+                                    # Function to show elapsed time on three separate lines.
+                                    # Implemented to use with win/loss removed
+                                    screen.fill(&#39;aquamarine4&#39;)
+                                    displayKeyboard(guesses, correct_word)
+                                    displayWords(guesses, correct_word)
+                                    font_win = pygame.font.Font(None, 30)
+                                    font_win2 = pygame.font.Font(None, 30)
+                                    font_win3 = pygame.font.Font(None, 30)
+                                    text_win = font_win.render(&#34;You lost.&#34;, True, (255, 255, 255))
+                                    text_win2 = font_win2.render(f&#34;Time Taken: {elapsed_time_str} seconds&#34;, True, (255, 255, 255))
+                                    text_win3 = font_win3.render(&#34;Correct Word: &#34; + correct_word, True, (255, 255, 255))
+                                    text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, 25))
+                                    text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, 50))
+                                    text_rect3 = text_win3.get_rect(center=(SCREEN_WIDTH // 2, 75))
+                                    overlay_surface = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.SRCALPHA)
+                                    overlay_surface.fill((0, 0, 0, 128))  # Transparent black overlay
+                                    screen.blit(overlay_surface, (0, 0))
+                                    screen.blit(text_win, text_rect)
+                                    screen.blit(text_win2, text_rect2)
+                                    screen.blit(text_win3, text_rect3)
+                                    start_time = pygame.time.get_ticks()
+                                    draw_restart_button_end()
+                                    pygame.display.update()
+                                    done = True
+                                    while True:
+                                        for event in pygame.event.get():
+                                            if event.type == pygame.MOUSEBUTTONDOWN:
+                                                mouse_x, mouse_y = pygame.mouse.get_pos()
+                                                if restart_button_x &lt;= mouse_x &lt;= restart_button_x + end_button_width and restart_button_y &lt;= mouse_y &lt;= restart_button_y + end_button_height:
+                                                    guesses = []
+                                                    guess = &#34;&#34;
+                                                    frames = []
+                                                    falling_image = bobcat_image
+                                                    correct_word = randomword(valid_solutions)
+                                                    bobcats = []
+                                                    new_word = False
+                                                    hint_used = False
+                                                    start_time = pygame.time.get_ticks()
+                                                    break
+                                        else:
+                                            continue
+                                        break
+                                guess = &#34;&#34;
+                            continue
+
+                    #Same for hint
+                    if hint_button_x &lt;= mouse_x &lt;= hint_button_x + button_width and hint_button_y &lt;= mouse_y &lt;= hint_button_y + button_height and not hint_used:
+                        hint_used = True
+                        unusable_letters = []
+                        contains_letters = []
+                        correct_letters = []
+                        for guess in guesses:
+                            for letter in guess:
+                                if letter not in correct_word:
+                                    unusable_letters.append(letter)
+                                elif guess.index(letter) == correct_word.index(letter):
+                                    correct_letters.append((letter, guess.index(letter)))
+                                else:
+                                    contains_letters.append(letter)
+                        guess = ai_solve(valid_solutions, guesses, unusable_letters, contains_letters, correct_letters)
+                        for letter in guess:
+                            frames.append(0)
+                        continue
+
+                    # Check if mouse clicks within bounds of backspace button. If so, remove last letter from guess
+                    if backspace_button_x &lt;= mouse_x &lt;= backspace_button_x + 30 and backspace_button_y &lt;= mouse_y &lt;= backspace_button_y + 30:
+                        if len(guess) &gt; 0:
+                            guess = guess[0:-1]
+                            frames = frames[0:-1]
+
+                    if enter_button_x &lt;= mouse_x &lt;= enter_button_x + 82 and enter_button_y &lt;= mouse_y &lt;= enter_button_y + 30:
+                        if mouse_x &lt;= 600 and mouse_y &lt;= 760:
+                            pass
+                        elif guess in valid_words and guess not in guesses:
+                            new_word = True
+                            guesses.append(guess)
+                            frames = []
+                            #Easter eggs
+                            if guess == &#34;chang&#34;:
+                                falling_image = chang
+                            if guess == &#34;among&#34;:
+                                falling_image = among
+                                #audio_among.play()
+                            if guess == &#34;drake&#34;:
+                                falling_image = drake 
+                                #audio_drake.play()
+                            if guess == &#34;homer&#34;:
+                                falling_image = homer
+                                #audio_homer.play()
+                            if guess == &#34;sonic&#34;:
+                                falling_image = sonic
+                            if guess == &#34;sigma&#34;:
+                                falling_image = sigma
+                            if guess == &#34;spike&#34;:
+                                falling_image = spike
+                                #audio_spike.play()
+                            if guess == &#34;siege&#34;:
+                                falling_image = siege
+                                #audio_siege.play()
+                            if guess == correct_word:
+                                # Function to show elapsed time on three separate lines.
+                                # Implemented to use with win/loss removed
+                                screen.fill(&#39;aquamarine4&#39;)
+                                displayKeyboard(guesses, correct_word)
+                                displayWords(guesses, correct_word)
+                                font_win = pygame.font.Font(None, 30)
+                                font_win2 = pygame.font.Font(None, 30)
+                                font_win3 = pygame.font.Font(None, 30)
+                                text_win = font_win.render(&#34;You win!&#34;, True, (255, 255, 255))
+                                text_win2 = font_win2.render(f&#34;Time Taken: {elapsed_time_str} seconds&#34;, True, (255, 255, 255))
+                                text_win3 = font_win3.render(&#34;Correct Word: &#34; + correct_word, True, (255, 255, 255))
+                                text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, 25))
+                                text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, 50)) 
+                                text_rect3 = text_win3.get_rect(center=(SCREEN_WIDTH // 2, 75))
+                                overlay_surface = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.SRCALPHA)
+                                overlay_surface.fill((0, 0, 0, 128))  # Transparent black overlay
+                                screen.blit(overlay_surface, (0, 0))
+                                screen.blit(text_win, text_rect)
+                                screen.blit(text_win2, text_rect2)
+                                screen.blit(text_win3, text_rect3)
+                                start_time = pygame.time.get_ticks()
+                                draw_restart_button_end()
+                                pygame.display.update()
+
+                                pygame.display.update()
+                                while True:
+                                    for event in pygame.event.get():
+                                        if event.type == pygame.MOUSEBUTTONDOWN:
+                                            mouse_x, mouse_y = pygame.mouse.get_pos()
+                                            if restart_button_x &lt;= mouse_x &lt;= restart_button_x + end_button_width and restart_button_y &lt;= mouse_y &lt;= restart_button_y + button_height:
+                                                guesses = []
+                                                guess = &#34;&#34;
+                                                frames = []
+                                                falling_image = bobcat_image
+                                                correct_word = randomword(valid_solutions)
+                                                bobcats = []
+                                                new_word = False
+                                                hint_used = False
+                                                start_time = pygame.time.get_ticks()
+                                                break
+                                    else:
+                                        continue
+                                    break
+                            elif len(guesses) == 6 and guess != correct_word:
+                                # Function to show elapsed time on three separate lines.
+                                # Implemented to use with win/loss removed
+                                screen.fill(&#39;aquamarine4&#39;)
+                                displayKeyboard(guesses, correct_word)
+                                displayWords(guesses, correct_word)
+                                font_win = pygame.font.Font(None, 30)
+                                font_win2 = pygame.font.Font(None, 30)
+                                font_win3 = pygame.font.Font(None, 30)
+                                text_win = font_win.render(&#34;You lost.&#34;, True, (255, 255, 255))
+                                text_win2 = font_win2.render(f&#34;Time Taken: {elapsed_time_str} seconds&#34;, True, (255, 255, 255))
+                                text_win3 = font_win3.render(&#34;Correct Word: &#34; + correct_word, True, (255, 255, 255))
+                                text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, 25))
+                                text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, 50))
+                                text_rect3 = text_win3.get_rect(center=(SCREEN_WIDTH // 2, 75))
+                                overlay_surface = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.SRCALPHA)
+                                overlay_surface.fill((0, 0, 0, 128))  # Transparent black overlay
+                                screen.blit(overlay_surface, (0, 0))
+                                screen.blit(text_win, text_rect)
+                                screen.blit(text_win2, text_rect2)
+                                screen.blit(text_win3, text_rect3)
+                                start_time = pygame.time.get_ticks()
+                                draw_restart_button_end()
+                                pygame.display.update()
+
+                                while True:
+                                    for event in pygame.event.get():
+                                        if event.type == pygame.MOUSEBUTTONDOWN:
+                                            mouse_x, mouse_y = pygame.mouse.get_pos()
+                                            if restart_button_x &lt;= mouse_x &lt;= restart_button_x + end_button_width and restart_button_y &lt;= mouse_y &lt;= restart_button_y + end_button_height:
+                                                guesses = []
+                                                guess = &#34;&#34;
+                                                frames = []
+                                                falling_image = bobcat_image
+                                                correct_word = randomword(valid_solutions)
+                                                bobcats = []
+                                                new_word = False
+                                                hint_used = False
+                                                start_time = pygame.time.get_ticks()
+                                                break
+                                    else:
+                                        continue
+                                    break
+                            guess = &#34;&#34;
+                        elif guess not in valid_words and len(guess) == 5:
+                            notValidWord = True
+                            text_display_time = 120
+
+                # This means the user pressed a key, this is where all of our letter inputs are handled
+                if event.type == pygame.KEYDOWN:
+
+                    if len(guess) &lt; 5:
+                        if event.key == pygame.K_a: # K_a is the constant for the &#39;a&#39; key, the rest of the constants are at https://www.pygame.org/docs/ref/key.html
+                            guess += &#34;a&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_b:
+                            guess += &#34;b&#34;
+                            frames.append(0) 
+                        elif event.key == pygame.K_c:
+                            guess += &#34;c&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_d:
+                            guess += &#34;d&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_e:
+                            guess += &#34;e&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_f:
+                            guess += &#34;f&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_g:
+                            guess += &#34;g&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_h:
+                            guess += &#34;h&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_i:
+                            guess += &#34;i&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_j:
+                            guess += &#34;j&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_k:
+                            guess += &#34;k&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_l:
+                            guess += &#34;l&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_m:
+                            guess += &#34;m&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_n:
+                            guess += &#34;n&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_o:
+                            guess += &#34;o&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_p:
+                            guess += &#34;p&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_q:
+                            guess += &#34;q&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_r:
+                            guess += &#34;r&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_s: 
+                            guess += &#34;s&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_t: 
+                            guess += &#34;t&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_u: 
+                            guess += &#34;u&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_v: 
+                            guess += &#34;v&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_w: 
+                            guess += &#34;w&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_x: 
+                            guess += &#34;x&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_y: 
+                            guess += &#34;y&#34;
+                            frames.append(0)
+                        elif event.key == pygame.K_z: 
+                            guess += &#34;z&#34;
+                            frames.append(0)
+
+                    if event.key == pygame.K_BACKSPACE: 
+                        guess = guess[0:-1]
+                        frames = frames[0:-1]
+
+                    # This means user hit the enter key which should mean they typed a word and need it checked
+                    if event.key == pygame.K_RETURN: 
+                        if guess in valid_words and guess not in guesses:
+                            guesses.append(guess)
+                            new_word = True
+                            frames = []
+                            #Easter eggs
+                            if guess == &#34;chang&#34;:
+                                falling_image = chang
+                            if guess == &#34;among&#34;:
+                                falling_image = among
+                                #audio_among.play()
+                            if guess == &#34;drake&#34;:
+                                falling_image = drake
+                                #audio_drake.play()
+                            if guess == &#34;homer&#34;:
+                                falling_image = homer
+                                #audio_homer.play()
+                            if guess == &#34;sonic&#34;:
+                                falling_image = sonic
+                            if guess == &#34;sigma&#34;:
+                                falling_image = sigma
+                            if guess == &#34;spike&#34;:
+                                falling_image = spike
+                                #audio_spike.play()
+                            if guess == &#34;siege&#34;:
+                                falling_image = siege
+                                #audio_siege.play()
+                            if guess == correct_word:
+                                # Function to show elapsed time on three separate lines.
+                                # Implemented to use with win/loss removed
+                                screen.fill(&#39;aquamarine4&#39;)
+                                displayKeyboard(guesses, correct_word)
+                                displayWords(guesses, correct_word)
+                                font_win = pygame.font.Font(None, 30)
+                                font_win2 = pygame.font.Font(None, 30)
+                                font_win3 = pygame.font.Font(None, 30)
+                                text_win = font_win.render(&#34;You win!&#34;, True, (255, 255, 255))
+                                text_win2 = font_win2.render(f&#34;Time Taken: {elapsed_time_str} seconds&#34;, True, (255, 255, 255))
+                                text_win3 = font_win3.render(&#34;Correct Word: &#34; + correct_word, True, (255, 255, 255))
+                                text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, 25)) 
+                                text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, 50)) 
+                                text_rect3 = text_win3.get_rect(center=(SCREEN_WIDTH // 2, 75))
+                                overlay_surface = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.SRCALPHA)
+                                overlay_surface.fill((0, 0, 0, 128))  # Transparent black overlay
+                                screen.blit(overlay_surface, (0, 0))
+                                screen.blit(text_win, text_rect)
+                                screen.blit(text_win2, text_rect2)
+                                screen.blit(text_win3, text_rect3)
+                                start_time = pygame.time.get_ticks()
+                                draw_restart_button_end()
+                                pygame.display.update()
+
+                                #Click functionality for restart and quit
+                                guess = &#34;&#34;
+                                while True:
+                                    for event in pygame.event.get():
+                                        if event.type == pygame.MOUSEBUTTONDOWN:
+                                            mouse_x, mouse_y = pygame.mouse.get_pos()
+                                            if restart_button_x &lt;= mouse_x &lt;= restart_button_x + end_button_width and restart_button_y &lt;= mouse_y &lt;= restart_button_y + end_button_height:
+                                                guesses = []
+                                                guess = &#34;&#34;
+                                                frames = []
+                                                falling_image = bobcat_image
+                                                correct_word = randomword(valid_solutions)
+                                                bobcats = []
+                                                new_word = False
+                                                hint_used = False
+                                                start_time = pygame.time.get_ticks()
+                                                break
+                                    else:
+                                        continue
+                                    break
+                            elif len(guesses) == 6 and guess != correct_word:
+                                # Function to show elapsed time on two separate lines.
+                                # Implemented to use with win/loss removed
+                                screen.fill(&#39;aquamarine4&#39;)
+                                displayKeyboard(guesses, correct_word)
+                                displayWords(guesses, correct_word)
+                                font_win = pygame.font.Font(None, 30)
+                                font_win2 = pygame.font.Font(None, 30)
+                                font_win3 = pygame.font.Font(None, 30)
+                                text_win = font_win.render(&#34;You lost.&#34;, True, (255, 255, 255))
+                                text_win2 = font_win2.render(f&#34;Time Taken: {elapsed_time_str} seconds&#34;, True, (255, 255, 255))
+                                text_win3 = font_win3.render(&#34;Correct Word: &#34; + correct_word, True, (255, 255, 255))
+                                text_rect = text_win.get_rect(center=(SCREEN_WIDTH // 2, 25))
+                                text_rect2 = text_win2.get_rect(center=(SCREEN_WIDTH // 2, 50))
+                                text_rect3 = text_win3.get_rect(center=(SCREEN_WIDTH // 2, 75))
+                                overlay_surface = pygame.Surface((SCREEN_WIDTH, SCREEN_HEIGHT), pygame.SRCALPHA)
+                                overlay_surface.fill((0, 0, 0, 128))  # Transparent black overlay
+                                screen.blit(overlay_surface, (0, 0))
+                                screen.blit(text_win, text_rect)
+                                screen.blit(text_win2, text_rect2)
+                                screen.blit(text_win3, text_rect3)
+                                start_time = pygame.time.get_ticks()
+                                draw_restart_button_end()
+                                pygame.display.update()
+
+
+
+                                #Click functionality for restart and quit
+                                guess = &#34;&#34;
+                                while True:
+                                    for event in pygame.event.get():
+                                        if event.type == pygame.MOUSEBUTTONDOWN:
+                                            mouse_x, mouse_y = pygame.mouse.get_pos()
+                                            if restart_button_x &lt;= mouse_x &lt;= restart_button_x + end_button_width and restart_button_y &lt;= mouse_y &lt;= restart_button_y + end_button_height:
+                                                guesses = []
+                                                guess = &#34;&#34;
+                                                frames = []
+                                                falling_image = bobcat_image
+                                                correct_word = randomword(valid_solutions)
+                                                bobcats = []
+                                                new_word = False
+                                                hint_used = False
+                                                start_time = pygame.time.get_ticks()
+                                                break
+                                    else:
+                                        continue
+                                    break
+                            guess = &#34;&#34;
+                        elif guess not in valid_words and len(guess) == 5:
+                            notValidWord = True
+                            text_display_time = 120
+                        pass
+
+                # This means the user closed the window
+                if event.type == pygame.QUIT:
+                    # Terminates the program
+                    pygame.quit()
+                    exit()
+
+            # Display guesses and current word being typed
+            displayEmptyBoard()
+            if new_word:
+                if len(guesses) &gt; 1:
+                    displayWords(guesses[0:-1], correct_word)
+                    animateGuess(guesses[-1], len(guesses), correct_word, new_word_frame)
+                else:
+                    animateGuess(guesses[-1], len(guesses), correct_word, new_word_frame)
+                new_word_frame += 1
+                if new_word_frame &gt; (frames_per_letter * 5) - 1:
+                    new_word = False
+                    new_word_frame = 0
+            else:
+                displayWords(guesses, correct_word)
+            displayGuess(guess, len(guesses), frames)
+            displayKeyboard(guesses, correct_word)
+
+            restart_text = pygame.font.Font(None, 20)
+            draw_restart_button()
+            restart_text = restart_text.render(&#34;Restart&#34;, True, (255, 255, 255))
+            screen.blit(restart_text, (742, 60))
+
+            solver_text = pygame.font.Font(None, 20)
+            draw_solver_button()
+            solver_text = solver_text.render(&#34;Solve&#34;, True, (255, 255, 255))
+            screen.blit(solver_text, (746, 140))
+
+            hint_text = pygame.font.Font(None, 20)
+            draw_hint_button()
+            hint_text = hint_text.render(&#34;Hint&#34;, True, (255, 255, 255))
+            screen.blit(hint_text, (752, 220))
+
+            draw_enter_button()
+            draw_backspace_button()
+            if notValidWord:
+                text_display_time = notValidWordText(text_display_time)
+                if text_display_time == 0:
+                    notValidWord = False
+            # Updates the display with all new objects
+            pygame.display.update()
+
+            #Sets the maximum number of iterations for the while loop per second
+            clock.tick(60)
+            await asyncio.sleep(0)</code></pre>
+</details>
+</dd>
+<dt id="main.notValidWordText"><code class="name flex">
+<span>def <span class="ident">notValidWordText</span></span>(<span>text_display_time)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def notValidWordText(text_display_time):
+    if(text_display_time &gt; 0):
+        font = pygame.font.Font(None, 36)
+        text_not_real_word = font.render(&#34;Please only enter valid words!&#34;, True, &#39;white&#39;)
+        screen.blit(text_not_real_word, (SCREEN_WIDTH // 2 - 177, SCREEN_HEIGHT // 2 - 328))
+        text_display_time -= 1
+    return text_display_time</code></pre>
+</details>
+</dd>
+<dt id="main.randomword"><code class="name flex">
+<span>def <span class="ident">randomword</span></span>(<span>wordlist)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def randomword(wordlist):
+    # Chooses a random word from the list
+    correct_word = random.choice(wordlist)
+    return correct_word</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="main.Bobcat"><code class="flex name class">
+<span>class <span class="ident">Bobcat</span></span>
+<span>(</span><span>s, coords)</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Bobcat:
+    x_coord = 0
+
+    def __init__(self, s, coords):
+        self.speed = s
+        self.rect = falling_image.get_rect()
+        self.rect.topleft = (Bobcat.x_coord, coords[1])
+        Bobcat.x_coord = Bobcat.x_coord + 70
+        if Bobcat.x_coord &gt; 750:
+            Bobcat.x_coord = 0</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="main.Bobcat.x_coord"><code class="name">var <span class="ident">x_coord</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="main.ai_legal" href="#main.ai_legal">ai_legal</a></code></li>
+<li><code><a title="main.ai_solve" href="#main.ai_solve">ai_solve</a></code></li>
+<li><code><a title="main.animateGuess" href="#main.animateGuess">animateGuess</a></code></li>
+<li><code><a title="main.displayBobcats" href="#main.displayBobcats">displayBobcats</a></code></li>
+<li><code><a title="main.displayEmptyBoard" href="#main.displayEmptyBoard">displayEmptyBoard</a></code></li>
+<li><code><a title="main.displayGuess" href="#main.displayGuess">displayGuess</a></code></li>
+<li><code><a title="main.displayKeyboard" href="#main.displayKeyboard">displayKeyboard</a></code></li>
+<li><code><a title="main.displayWords" href="#main.displayWords">displayWords</a></code></li>
+<li><code><a title="main.draw_backspace_button" href="#main.draw_backspace_button">draw_backspace_button</a></code></li>
+<li><code><a title="main.draw_enter_button" href="#main.draw_enter_button">draw_enter_button</a></code></li>
+<li><code><a title="main.draw_hint_button" href="#main.draw_hint_button">draw_hint_button</a></code></li>
+<li><code><a title="main.draw_restart_button" href="#main.draw_restart_button">draw_restart_button</a></code></li>
+<li><code><a title="main.draw_restart_button_end" href="#main.draw_restart_button_end">draw_restart_button_end</a></code></li>
+<li><code><a title="main.draw_solver_button" href="#main.draw_solver_button">draw_solver_button</a></code></li>
+<li><code><a title="main.draw_timer_button" href="#main.draw_timer_button">draw_timer_button</a></code></li>
+<li><code><a title="main.main" href="#main.main">main</a></code></li>
+<li><code><a title="main.notValidWordText" href="#main.notValidWordText">notValidWordText</a></code></li>
+<li><code><a title="main.randomword" href="#main.randomword">randomword</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="main.Bobcat" href="#main.Bobcat">Bobcat</a></code></h4>
+<ul class="">
+<li><code><a title="main.Bobcat.x_coord" href="#main.Bobcat.x_coord">x_coord</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

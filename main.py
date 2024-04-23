@@ -158,6 +158,16 @@ smaller_font = pygame.font.Font(font_type, smaller_font_size)
 global frames_per_letter
 frames_per_letter = 11
 def animateGuess(guess, guessnum, correct, frame):
+    """Animate the latest user guess
+
+    Args:
+        guess (str): The latest user guess.
+        guessnum (int): The guess number for the guess being animated.
+        correct (str): The correct word.
+        frame (int): The frame number within the animation sequence.
+        (global) frames_per_letter (int): The total number of frames per letter animation. MUST BE ODD AND AT LEAST 3 FOR PROPER ANIMATION
+    """
+
     x_coord = 120
     y_coord = 100
     row = guessnum
@@ -251,6 +261,17 @@ def displayGuess(guess, row, frames):
         screen.blit(text, (text_x, text_y))
 
 def displayKeyboard(guesses, correct):
+    """
+    Display Keyboard Function
+
+    Function to display the current status of the keyboard.
+
+    Example:
+        Display the keyboard with letters in the array of strings that are correct in green, partially correct in yellow, and incorrect in dark gray
+
+    Usage:
+        displayKeyboard(['words', 'chang', 'ohiou'], 'watch')
+    """
     x_cord = SCREEN_WIDTH - 600
     y_cord = SCREEN_HEIGHT - 110
     # If there are no guesses display all letters as unguessed
@@ -322,6 +343,15 @@ def draw_restart_button_end():
     screen.blit(restart_image, (restart_button_x, restart_button_y))
 
 def draw_enter_button():
+    """
+    Draw Enter Button Function
+
+    Function to display the enter button image on the screen
+
+    Usage:
+        draw_enter_button()
+
+    """
     screen.blit(enter_image, (enter_button_x, enter_button_y))
 
 def draw_backspace_button():
@@ -401,17 +431,19 @@ def ai_solve(words, guessed, unusable_letters, contains_letters, correct_letters
 
     return word_scores[0][1]
 
-""" 
+def notValidWordText(text_display_time):
+    """ 
+    Not Valid Words Function
+
     Function to display text on the screen when the user inputs an invalid word
     The text will display for 2 seconds before disappearing
 
     Example:
         Display text "Please only enter valid words!" for 2 seconds
         
-    Usage: notValidWordText(120)
-
-"""
-def notValidWordText(text_display_time):
+    Usage:
+        notValidWordText(120)
+    """
     if(text_display_time > 0):
         font = pygame.font.Font(None, 36)
         text_not_real_word = font.render("Please only enter valid words!", True, 'white')
