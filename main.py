@@ -483,7 +483,7 @@ async def main():
                     #     continue
 
                     if SCREEN_WIDTH - enter_button_width - 10 <= mouse_x <= SCREEN_WIDTH - 10 and SCREEN_HEIGHT - enter_button_height - 10 <= mouse_y <= SCREEN_HEIGHT - 10:
-                        if guess in valid_words:
+                        if guess in valid_words and guess not in guesses:
                             new_word = True
                             guesses.append(guess)
                             frames = []
@@ -666,7 +666,7 @@ async def main():
 
                     # This means user hit the enter key which should mean they typed a word and need it checked
                     if event.key == pygame.K_RETURN: 
-                        if guess in valid_words:
+                        if guess in valid_words and guess not in guesses:
                             guesses.append(guess)
                             new_word = True
                             frames = []
@@ -693,6 +693,7 @@ async def main():
                                 falling_image = siege
                                 #audio_siege.play()
                             if guess == correct_word:
+                                screen.fill('aquamarine4')
                                 displayKeyboard(guesses, correct_word)
                                 displayWords(guesses, correct_word)
                                 font_win = pygame.font.Font(None, 60)
@@ -729,6 +730,7 @@ async def main():
                                 # pygame.quit()
                                 # exit()
                             elif len(guesses) == 6 and guess != correct_word:
+                                screen.fill('aquamarine4')
                                 displayKeyboard(guesses, correct_word)
                                 displayWords(guesses, correct_word)
                                 font_win = pygame.font.Font(None, 60)
